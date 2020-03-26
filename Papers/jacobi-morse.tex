@@ -1,0 +1,113 @@
+\documentclass[notitlepage]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+\title{Summary of Jacobi Metric and Morse Theory of Dynamical Systems}
+\author{Samuel Wallace}
+\begin{document}
+
+\maketitle
+
+This is a summary of notes from the paper "Jacobi Metric and Morse Theory of Dynamical Systems" by A. A. Izquierdo et al., available \href{https://arxiv.org/pdf/math-ph/0212017.pdf}{here}.
+
+\section{The Maupertius-Jacobi Principle}
+\subsubsection{Geodesics}
+\indent Geodesics on a Riemannian manifold are extremals of the functionals:
+\begin{equation}\label{eq:1}
+S_0[\gamma]=\int_{t_1}^{t_2} \frac{1}{2}\Vert \dot{\gamma}(t) \Vert^2 dt; \hspace{6pt} L[\gamma]=\int_{t_1}^{t_2}\Vert \dot{\gamma}(t)\Vert dt
+\end{equation}
+And the solution satisfy the Geodesic Equation:
+\begin{equation}\label{eq:2}
+\delta S_0 = 0 \Rightarrow \nabla_{\dot{\gamma}}\dot{\gamma}=0
+\end{equation}
+To see if a path is a minimum we look at the second-variation formula:
+
+\begin{equation} \label{eq:3}
+\delta^2S_0=\int_{s_1}^{s_2}\langle \Delta V, V \rangle ds; \hspace{6pt} \Delta V = - \nabla_{\gamma^{\prime}} \nabla_{\gamma^{\prime}} V - R(\gamma^{\prime}, V) \gamma^{\prime}
+\end{equation}
+
+\indent Where $V$ is an infinitesimal variation of a path from the initial to final points, so that $V(s_1) = V(s_2)=0$.\\
+\indent We can form a 'mechanical system' action by 
+\begin{equation}\label{eq:4}
+    S[\gamma]=\int_{t_1}^{t_2}\left( \frac{1}{2}\Vert \dot{\gamma}(t) \Vert^2 - U(\gamma(t)) \right) dt
+\end{equation}
+
+Giving Euler-Lagrange Equations:
+\begin{equation}\label{eq:5}
+    \frac{D\dot{\gamma}}{dt}=\nabla_{\dot{\gamma}}\dot{\gamma} = - \mathrm{grad}U
+\end{equation}
+
+
+And the second variation formula is 
+\begin{equation}\label{eq:6}
+    \delta^2 S = \int_{t_1}^{t_2} \left( \langle \Delta V, V \rangle - H(U)(V,V) \right) = \int_{t_1}^{t_2}\langle \Delta V - \nabla_V \mathrm{grad}U, V \rangle dt
+\end{equation}
+
+\subsection{The Jacobi Metric}
+\indent The definition of the Jacobi metric is 
+$$h(X,Y) = 2(E-U(x))g(X,Y)$$
+\indent Where $g$ is the 'kinetic energy' metric and $E$ is a constant. To remain Riemannian, this metric only holds in the region $U(x) < E$.
+
+\begin{thm}[Jacobi]
+The extremal trajectories of \ref{eq:4} are the geodesics of the Jacobi metric.
+\end{thm}
+
+\section{Geometric and Dynamical Stability}
+\begin{thm}
+
+Let $\gamma(t)$ be an extremal of the $S$ functional \ref{eq:4}, and $S_0^J$ the corresponding geodesic extremal of the associated Jacobi metric. Then 
+\begin{equation}\label{eq:7}
+    \delta^2 S_0^J[\gamma] = \delta^2 S[\gamma] + \int_{t_1}^{t_2} 2 \langle \dot{\gamma}, \frac{DV}{dt}\rangle \langle F, V \rangle dt
+\end{equation}
+\indent Where $F=\text{grad ln}(2(E-U(x)))$.
+\end{thm}
+
+\begin{thm}
+Let $\gamma$ be a extremal of the $S[\gamma]$ functional and let $L^J[\gamma]$ be the length functional of the Jacobi metric associated with $S[\gamma]$. Then
+\begin{equation}\label{eq:8}
+    \delta^2L^J[\gamma] = \delta^2 S[\gamma] - \int_{t_1}^{t_2} \frac{dt}{2(E-U(x))}[\langle \nabla_{\dot{\gamma}} \dot{\gamma}, V \rangle - \langle \dot{\gamma} \nabla_{\dot{\gamma}}V \rangle]^2
+\end{equation}
+\end{thm}
+
+\section{Jacobi Fields and Morse Series}
+
+Jacobi Fields are easy to find outside of direct computation from the second variation formula:
+
+\begin{prop}
+If $\gamma = \gamma(t,a)$ is a one-parameter family of geodesics, then $\frac{d \gamma}{da}$ is a Jacobi field.
+\end{prop}
+
+Morse Theory relates the topology of a manifold to the extremals of its functions. A summary is as follows: \\
+
+\indent Let $\Omega M$ be the loop space of $M$ with a fixed base point. Then some topological features of $\Omega M$ are encoded into the Poincar\'e series:
+\begin{equation}
+    \sum_k b_k t^k; \hspace{6pt} b_k = \mathrm{dim}H_k(\Omega M, \mathbb{R})
+\end{equation}
+\indent For any functional $S$ on $\Omega M$, we can define a Morse Series 
+\begin{equation}
+    \mathcal{M(S)}=\sum_{N_c}P_t(N_c) t^{\mu(N_c)}
+\end{equation}
+Where $N_c$ are critical submanifolds of $\Omega M$ and $\mu(N_c)$ is the dimension of the submanifold, called the Morse Index. An important result is the following:
+\begin{thm}[Morse Index Theorem]
+The Morse index of a critical path $\gamma_c$ is equal to the number of conjugate points to the base point crossed by $\gamma_c$ counted with multiplicity.
+\end{thm}
+
+The critical result of this section is that $\mathcal{M}(S)=\mathcal{M}(L^J)$, so the Morse structure of the two Riemannian metrics is the same.
+
+\section{Conclusion}
+The paper is finished with an example, the Garnier System. The Jacobi fields and the Morse series is computer for the system, and the Morse structure of the system is related to a topological space.
+
+
+\end{document}

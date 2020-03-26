@@ -1,0 +1,789 @@
+
+\documentclass{article}
+
+\usepackage{amsmath}                                                               
+\usepackage{amssymb}                                                               
+\usepackage{mathrsfs}                                                              
+\usepackage{mathtools}                                                             
+\newtheorem{thm}{Theorem}                                                          
+\newtheorem{defn}{Definition}                                                      
+\newtheorem{prop}{Proposition}                                                     
+\newtheorem{rmk}{Remark}                                                           
+\newtheorem{cor}{Corollary}                                                        
+\newtheorem{lem}{Lemma}
+
+\begin{document}   
+
+
+\section{Foundational Material}
+\subsection{Rudiments of Several Complex Variables}
+\subsubsection{Cauchy's Formula and Applications}
+
+
+\begin{thm}
+
+	For $\Delta$ a disc in $ \mathbb{C}$, $f \in C^{\infty}( \overline{\Delta} ), z \in \Delta$,
+
+\[
+	f(z) = \frac{-1}{2 \pi \sqrt{-1}} \int_{\partial \Delta} \frac{f(w)dw}{w-z}+ \frac{1}{2 \pi \sqrt{-1}} \int_{\Delta} \frac{\partial f(w)}{d \overline{w}} \frac{dw \wedge d \overline{w}}{w-z}
+\]
+
+\end{thm}
+
+
+
+\begin{lem}
+
+	Given $g \in C^{\infty}( \overline{\Delta} ) $, the function
+\[
+	f(z) = \frac{1}{2 \pi \sqrt{-1}} \int_{\Delta} \frac{g(w)}{w-z} dw \wedge d \overline{w}
+\]
+is defined, belongs to $ C^{\infty}( U ) ; \hspace{4pt} U \subset \Delta$ and satisfies
+\[
+	\frac{\partial f}{\partial \overline{z}}= g
+\]
+\end{lem}
+
+\subsubsection{Several Variables}
+
+
+\begin{defn}
+
+The total differential of a function $f$ on $ \mathbb{C}^n$ is defined as
+\[
+	df = \sum \left( \frac{ \partial f }{\partial z_i } dz_i + \frac{ \partial f }{\partial \overline{z}_i } d\overline{z}_i \right)  
+\]
+We call the first set of summands $ \partial f$ and the second set $\overline{\partial} f$. A function is holomorphic if $ \overline{\partial} f = 0$ (which is the same as being holomorphic in each variable separately).\\
+\indent Many results of one-variable complex analysis extend to multiple variable; for example, a function is analytic in each variable iff it is holomorphic, two functions holomorphic on a connected open set, equal on an open subset, are identical, and the absolute value of a holomorphic function has no maximum in an open subset.There are some differences, however.
+
+\end{defn}
+
+
+\begin{thm}
+
+Any holomorphic function defined in a neighborhood of $U \backslash V$ extends to a holomorphic function on $U$.
+
+\end{thm}
+
+
+\begin{defn}
+
+A Weierstrass polynomial in $w$ is a polynomial of the form
+\[
+	w^d + a_1(z) w^{d-1} + \cdots + a_d(z); \hspace{4pt} a_i(0)=0
+\]
+
+
+\end{defn}
+
+
+\begin{thm}
+
+If $f$ is holomorphic around the origin in $ \mathbb{C}^n$ and is not identically zero on the $w$-axis, then in some neighborhood of the origin, $f$ can be written uniquely as $f =g \cdot h$ where $g$ is a Weierstrass polynomial and $h(0) \neq 0$.
+
+\end{thm}
+
+This theorem says that the zero locus (set of zeros) of a function $f$, $ \mathcal{Z}(f)$ is the zero locus of a Weierstrass polynomial 
+\[
+	g(z,w) = w^d + a_1(z) w^{d-1} + \cdots + a_d(z)
+\]
+The roots $b_i(z)$ of the polynomial $g(z, \cdot)$ are, away from those values for which $g(z, \cdot)$ has a root with nonunity multiplicity, locally single valued holomorphic functions of $z$. Since the discriminant of $g(z, \cdot)$ is an analytic function of $z$, \\
+\indent \textit{The zero locus of an analytic function $f(z_1, \ldots, z_{n-1},w)$ not vanishing identically on the $w$-axis projects locally onto the hyperplane ($w=0$) as a finite-sheeted cover branched over the zero locus of an analytic function.}
+
+
+\begin{thm}
+
+	Suppose $f(z,w)$ is holomorphic in a disc $\Delta \subset \mathbb{C}^n$ and $g(z,w)$ is holomorphic in $\overline{\Delta} \backslash \mathcal{Z}(f)$ and is bounded. Then $g$ extends to a holomorphic function on $\Delta$.
+
+\end{thm}
+
+Now we recall some basic algebra. Let $R$ be an integral domain (a ring in which the zero product property holds). An element $u$ is a unit if there exists $v \in R$ such that $u \cdot v = 1$; $u$ is irreducible if $ u = v \cdot w \Rightarrow u$ is a unit or $v$ is a unit. $R$ is a Unique Factorization Domain (UFD) if every element can be written as a product of irreducible elements unique up to multiplication by units. The main facts we will use are:
+
+\begin{enumerate}
+	\item $R$ is a UFD $\Rightarrow$ $R[t]$ is a UFD (Gauss' lemma)
+	\item $R$ is a UFD, $u,v \in R[t]$ are relatively prime, then there are relatively prime polynomials $\alpha, \beta$ and $\gamma$ such that $\alpha u + \beta v = \gamma$, $\gamma$ is called the resultant of $u$ and $v$.
+\end{enumerate}
+
+Let $ \mathcal{O}_{n,z}$ be the ring of holomorphic functions defined in some neighborhood of $z \in \mathbb{C}^n$; write $\mathcal{O}_n$ for $\mathcal{O}_{n,0}$. $ \mathcal{ O }_n$ is an integral domain by the identity theorem, and moreover is a local ring whose maximal ideal $m$ is $ \{ f: f(0)=0 \} $. $f \in \mathcal{ O }_n$ is a unit iff $f(0) \neq 0$. Now we begin with the results.
+
+
+\begin{prop}
+
+$ \mathcal{ O }_n$ is a UFD.
+
+\end{prop}
+
+
+\begin{prop}
+
+	If $f$ and $g$ are relatively prime in $ \mathcal{ O }_n$, then for $ \Vert z \Vert < \epsilon$, $f$ and $g$ are relatively prime in $ \mathcal{ O }_{n,z}$.
+
+\end{prop}
+
+
+\begin{thm}
+
+	Let $g(z,w) \in \mathcal{ O }_{n-1}[w]$ be a Weierstrass polynomial of degree $k$ in $w$. Then for any $f \in \mathcal{ O }_n$, we can write $f = g \cdot h + r$ with $r(z,w)$ a polynomial of degree strictly less than $k$ in $w$.
+
+\end{thm}
+
+
+\begin{cor}
+
+	If $f(z,w) \in \mathcal{ O }_n$ is irreducible and $h \in \mathcal{ O }_n$ vanishes on $ \mathcal{Z}(f)$, then $f$ divides $h$ in $ \mathcal{ O }_n$.
+
+\end{cor}
+
+\subsubsection{Analytic Varieties}
+\indent The main purpose of the results given so far is describe the properties of analytic varieties in $ \mathbb{C}^n$.
+
+
+\begin{defn}
+
+	We say a subset $V$ of an open set $U \subset \mathbb{C}^n$ is an \textit{analytic variety} in $U$ if, for any $p \in U$ there exists a neighborhood $U'$ of $p$ in $U$ such that $V \cap U'$ is the common zero locus of a finite collection of holomorphic functions $f_1, \ldots, f_k$ on $U'$. $V$ is called an analytic hypersurface if $V$ is locally the zero locus of a single nonzero holomorphic function $f$.\\
+\indent An analytic variety $V \subset U \subset \mathcal{ C }^n$ is said to be \textit{irreducible} if $V$ cannot be written as the union of proper analytic subvarieties; it is irreducible at a point $p$ if the variety is irreducible in any neighborhood of the point. 
+
+\end{defn}
+
+Note first that if $f \in \mathcal{O}_n$ is irreducible in the ring $ \mathcal{O}_n$, then the analytic hypersurface $V$ equal to the zero locus of $f$ is irreducible at 0. Additionally:
+
+\begin{enumerate}
+	\item Suppose $V$ is an analytic hypersurface that is $ \mathcal{Z}(f)$ in some neighborhood of $0$. Since $ \mathcal{O}_n$ is a UFD, we can write $f = f_1 \cdots f_n$ with $f_i$ irreducible in $ \mathcal{O}_n$; if we set $V_i = \mathcal{Z}(f_i)$, then $V = V_1 \cup \cdots \cup V_k$. Thus for $ p \in V$, \textit{V can be expressed uniquely in some neighborhood of p as the union of a finite number of analytic hypersurfaces irreducible at p.}
+	\item Let $W \subset U \subset \mathbb{C}^n$ be an analytic variety given in a neighborhood $\Delta$ of $0 \in W$ as the zero locus of two functions $f,g \in \mathcal{O}_n$. If $W$ contains no analytic hypersurface through 0, then $f$ and $g$ are necessarily relatively prime in $ \mathcal{O}_n$; if $W$ does not contain the line $z' = 0$, the by taking linear combinations we may assume that $ \mathcal{Z}(f)$ or $ \mathcal{Z}(g)$ contains $z' = 0$, and hence that $f$ and $g$ are Weierstrass polynomials in $z_n$. Let
+\[
+	\gamma = \alpha f + \beta g \neq 0 \in \mathcal{O}_{n-1}
+\]
+be the resultant of $f$ and $g$. We claim that the image under the projection map $
+\pi: \mathbb{C}^n \to \mathbb{C}^{n-1}$ is just $ \mathcal{Z}( \gamma )$. To see this, write
+\[
+\alpha = hg + r
+\]
+with $ \mathrm{deg}(r) < \mathrm{deg}(g)$. Then $\gamma = rf + (\beta + hf) g$. Now if for some $z \in \mathbb{C}^{n-1}, \gamma$ vanishes at $z$ but $f$ and $g$ have no common zeros of along the line $\pi^{-1}(z)$, if follows that $r$ vanishes at all the zeroes of $g$ in $\pi^{-1}(z)$; since $\mathrm{deg}(r)  \mathrm{deg}(g)$, this means that $r$, and hence $ \beta + hf$, vanish identically on $\pi^{-1}(z)$. Thus $r$ and $\beta + hf$ both are zero on the inverse image of any components of the zero locus of $ \gamma$ other than $\pi(W)$; but $r$ and $\beta + hf$ are relatively prime and so have no common components. We see then that $\pi(W)$ \textit{is an analytic hypersurface in a neighborhood of the origin in} $ \mathbb{C}^{n-1}$, and that \textit{projection of W  onto a suitably chosen $(n-2)$ plane expresses W locally as a finite sheeted branche dcover of a neighborhood of the origin in} $ \mathbb{C}^{n-2}$
+\item Let $V \subset U \subset \mathbb{C}^n$ be an analytic variety irreducible at $0 \in V$ such that for small neighborhoods $\Delta$ of 0 in $ \mathbb{C}^n$, $\pi(V \cap \Delta)$ contains a neighborhood of 0 in $ \mathbb{C}^{n-1}$. Let $V = \mathcal{Z}(f_1) \cap \cdots \cap \mathcal{Z}(f_k)$ near 0. Then the $f_i$ must all have a common factor in $ \mathcal{O}_n$, since otherwise $V$ would be contained in the comon locus of two relatively prime functions, and by 2, $\pi(V \cap \Delta)$ would be a proper analytic subvariety of $ \mathbb{C}^{n-1}$. If we let $g(z)$ be the greatest common divisor of all the $f_i$'s, then we can write
+\[
+	V = \mathcal{Z}(g) \cup \left( \mathcal{Z}(f_1/g) \cap \cdots \cap \mathcal{Z}(f_k/g) \right) 
+\]
+Since $V$ is irreducible at 0 and since the loci $ \mathcal{Z}(f_i/g)$ cannot contain $ \mathcal{Z}(g)$, we must have $V = \mathcal{Z}(g)$ near 0.
+
+
+\end{enumerate}
+
+The previous 3 points, with our basic description of an analytic hypersurface, give us a picture of an analytic hypersurface, gives us a picture of the local behavior of those analytic varieties cut out locally by one or two holomorphic function. In fact, the same picture is in almost all respects valid for general analytic varieties, but to prove this requires some relatively sophisticated techniques from the theory of several complex variables. Since the primary focus of the book is on the codimension 1 case, we will simply state here without proof the analogous results for general analytic varieties:
+
+\begin{enumerate}
+\item If $V \subset U \subset \mathbb{C}^n$ is any analytic variety and $p \in V$, then in some neighborhood of $p$, $V$ can be uniquely written as disjoint union of analytic varieties irreducible at $p$.
+\item Any analytic variety can be expressed locally by a projection map as a finite-sheeted cover of a poydisc $\Delta$ branched over an analytic hypersurface of $\Delta$.
+\item If $V \subset \mathcal{C}^n$ does not contain the line $ \mathcal{Z}(z_1) \cap \cdots \cap \mathcal{Z}(z_{n-1})$ then the image of a neighborhood of 0 in $V$ under the projection map $\pi: \mathbb{C}^n \to \mathbb{C}^{n-1}$ is an analytic subvariety in a neighborhood of 0.
+
+\end{enumerate}
+
+\subsection{Complex Manifolds}
+\subsubsection{Complex Manifolds}
+
+
+\begin{defn}
+
+	A \textit{complex manifold} is a differentiable manifold admitting an open cover $ \{ U_{\alpha} \} $ and coordinate maps $ \phi_{\alpha}: U_{\alpha} \to \mathbb{C}^n$ such that $\phi_{\alpha} \circ \phi_{\beta}^{-1}$ is holomorphic for all $\alpha, \beta$.\\
+\indent A function on an open set $U \subset M$ is \textit{holomorphic} if, its representation in coordinates is holomorphic. A set of functions $ \{ z_1, \ldots, z_n \} $ is a holomorphic coordinate system if their coordinate representation is biholomorphic. A map between complex manifolds is holomorphic if its representation in holomorphic coordinate system is holomorphic.
+
+\end{defn}
+
+[Examples...]
+
+
+\subsubsection{Submanifolds and Subvarieties}
+
+
+\begin{thm}
+
+	Let $U,V$ be open sets in $ \mathbb{C}^n$ with $0 \in U$ and $ f: U \to V$ a holomorphic map with with Jacobian $ \mathcal{J}(f) = [ \frac{ \partial f_i }{\partial z_j } ]$ nonsingular at 0. Then $f$ is injective in a neighborhood of 0, and $f^{-1}$ is holomorphic at $f(0)$.
+
+\end{thm}
+
+
+\begin{thm}
+
+Given $f_1, \ldots, f_k \in \mathcal{O}_n$ with 
+\[
+	\mathrm{det} \left( \frac{ \partial f_i }{\partial z_j }(0)  \right) \neq 0
+\]
+there exist functions $w_1, \ldots, w_k \in \mathcal{O}_{n-k}$ such that in a neighborhood of 0 in $ \mathbb{C}^n$,
+\[
+	f_1(z) = \ldots = f_k(z) = 0 \iff z_i = w_i (z_{k+1}, \ldots, z_n)
+\]
+
+
+\end{thm}
+
+
+
+\begin{defn}
+
+	A \textit{complex submanifold} $S$ of a complex manifold $M$ is a subset $S \subset M$ given locally either as the zeros of a collection $f_1,\ldots, f_k$ of holomorphic functions with rank $ \mathcal{J}(f) = k$, or as the image of an open set $U \subset \mathbb{C}^{n-k}$ under a map $ f: U \to M$ with rank $ \mathcal{J}(f) = n-k$.
+
+\end{defn}
+
+
+\begin{defn}
+
+	An \textit{Analytic Subvariety} $V$ of a complex manifold $M$ is a subset given locally as the zeros of a finite collection of holomorphic functions. A point $p \in V$ is called a \textit{smooth point} of $V$ if V is a submanifold in some sufficiently small neighborhood of $p$. The set of smooth point of $V$ is denoted $V^*$. A point $p \in V \backslash V^*$ is called a \textit{singular point}, the set of singular points is denoted by $V_s$. $V$ is called \textit{smooth} or nonsingular if $V$ is a submanifold of $M$.
+
+\end{defn}
+
+\indent In particular, if $p$ is a point of an analytic hypersurface $V \subset M$ given in terms of local coordinates $z$ by the function $f$ at $p$, we define the multiplicity of $f$ at $p$, $ \mathrm{mult}_p (V)$, to be the order of vanishing of $f$ at $p$, that is, the greatest integer $m$ such that all partial derivatives
+\[
+	\frac{ \partial^k f }{\partial z_{i_1} \cdots \partial z_{i_k} } (p)=0
+\]
+
+
+\begin{defn}
+
+A commonly used word in algebraic geometry is \textit{generic}. When dealing with a family of objects parametrized by a complex manifold a property of the family being 'generic' means the set of objects not having this property is contained in a submanifold of strictly smaller dimension.
+
+\end{defn}
+
+
+
+\begin{prop}
+
+$V_s$ is contained in an analytic subvariety of $M$ not equal to $V$.
+
+\end{prop}
+
+
+\begin{prop}
+
+An analytic variety $V$ is irreducible iff $V^*$ is connected.
+
+\end{prop}
+
+We take the \textit{dimension} of an irreducible analytic variety $V$ to be the dimension of the complex manifold $V^*$; a general analytic variety is of dimension $k$ if all of its components are. \\
+\indent A note: if $V \subset M$ is an analytic subvariety of a complex manifold $M$, then we may define the \textit{tangent cone} $T_p(V) \subset T_p'(M)$ to $V$ at any point $p \in V$ as follows: if $V = \mathcal{Z}(f)$ is an analytic hypersurface, and in terms of holomorphic coordinates $z_1, \ldots, z_n$ on $M$ centered around $p$, we write
+\[
+	f(z_1, \ldots, z_n) = f_m(z_1, \ldots, z_n) + f_{m+1} (z_1, \ldots, z_n) + \cdots
+\]
+with $f_k$ a homogeneous degree $k$ polynomial in all its variables, then the tangent cone to $V$ at $p$ is taken to be the subvariety of $T_p'(M)$ defined by 
+\[
+	\left\{ \sum \alpha_i \frac{ \partial  }{\partial z_i } : f_m(\alpha_1, \ldots, \alpha_n) = 0 \right\} 
+\]
+
+The \textit{multiplicity} of a subvariety $V$ of dimension $k$ in $M$ at a point $p$, denoted by $\mathrm{mult}_p(V)$, is taken to be the number of sheets in the projection, in a small coordinate polydisc on $M$ around $p$, of $V$ onto a generic $k$-dimensional polydisc; note that $p$ isa smooth point of $V$ iff $ \mathrm{mult}_p(V) = 1$. In general, if $W \subset M$ is an irreducible subvariety, we define the \textit{multiplicity} $\mathrm{mult}_W(V)$ \textit{of V along W} to be simply the multiplicity of $V$ at a generic point of $W$.
+
+\subsubsection{De Rham and Dolbeault Cohomology}
+
+\indent Let $M$ be a differentiable manifold. Let $A^P(M, \mathbb{R})$ denote the space of differential forms of degree $p$ on $M$, and $Z^p(M, \mathbb{R})$ the subspace of closed $p$-forms. Since $d^2 = 0$, $d( A^{p-1}(M, \mathbb{R})) \subset Z^p(M, \mathbb{R})$; the quotient groups
+\[
+	H^P_{DR}(M, \mathbb{R}) = \frac{Z^p(M, \mathbb{R})}{dA^{p-1}(M, \mathbb{R})}
+\]
+of closed forms modulo exact forms are called the \textit{de Rham cohomology groups of M}. \\
+\indent In the same way, we can let $A^p(M)$ and $Z^p(M)$ denote the spaces of complex-valued p-forms and closed complex-valued $p$-forms on $M$, respectively, and let
+\[
+	H^P_{DR}(M) = \frac{Z^p(M)}{dA^{p-1}(M)}
+\]
+be the corresponding quotient; clearly
+\[
+	H^p_{DR}(M) = H^p_{DR}(M, \mathbb{R}) \otimes \mathbb{C}
+\]
+\indent Now let $M$ be a complex manifold. By linear algebra, the decomposition
+\[
+	T^*_{ \mathbb{C},z}(M) = T^*_z (M) \oplus T^*_z (M)
+\]
+of the cotangent space to $M$ at each point $z$ gives a decomposition
+\[
+	\wedge^n T^*_{ \mathbb{C},z} (M) = \oplus_{p+q = n} \left( \wedge^p T^*_z(M) \otimes \wedge^q T^*_z (M) \right) 
+\]
+Correspondingly, we can write
+\[
+	A^n(M) = \oplus_{p+q = n} A^{p,q}(M)
+\]
+And we have projection maps
+\[
+	\pi^{(p,q)}: A^*(M) \to A^{p,q}(M)
+\]
+that correspond to the direct sum decomposition. We define the operators
+\[
+	\overline{\partial}: A^{p,q}(M) \to A^{p, q+1}(M)
+\]
+\[
+	\partial: A^{p,q}(M) \to A^{p+1,q}(M)
+\]
+by
+\[
+	\overline{\partial} = \pi^{(p,q+1)} \circ d, \partial = \pi^{(p+1,q)} \circ d
+\]
+So that $d = \partial + \overline{\partial}$. A form $\phi$ is holomorphic if $\overline{\partial} \phi = 0$. Note that since the decomposition of holomorphic and antiholomorphic forms is preserved under holomorphic maps, $ \overline{\partial} \circ f^* = f^* \circ \overline{\partial}$. Note that $ \overline{\partial}^2 = 0$, we can analogously define
+\[
+	H^{p,q}_{ \overline{\partial} } (M) =  \frac{Z^{p,q}_{ \overline{\partial} }(M)}{ \overline{\partial} A^{p, q-1} (M) }
+\]
+Note that holomorphic maps induce maps of $ \overline{\partial}$-cohomology groups, and the Poincar\`e lemma guarantees that de Rham groups are locally trivial.
+
+
+\begin{lem}
+
+	For $\Delta = \Delta(r)$ a polycylinder in $ \mathbb{C}^n$,
+	\[
+		H^{p,q}_{ \overline{\partial} } (\Delta) = 0
+	\]
+	
+
+\end{lem}
+
+\subsubsection{Calculus on Complex Manifolds}
+
+\indent Let $M$ be a complex manifold of dimension $n$. A \textit{Hermitian metric} on $M$ is given by a positive definite Hermitian inner product
+\[
+	\left( , \right) :  T_z(M) \otimes \overline{T_z (M)} \to \mathbb{C} 
+\]
+on the holomorphic tangent bundle at $z$ for each $z \in M$, with smooth dependence on $z$. We can write a hermitian metric in terms of its basis as an element of $ \left( T_z(M) \otimes \overline{T_z(M)} \right)^* = T^*_z (M) \otimes T^*_z(M)$, $dz_i \otimes d\overline{z}_j$:
+\[
+	ds^2 = \sum h_{ij} dz_i \otimes d \overline{z}_j
+\]
+A \textit{coframe} for a hermitian metric is an $n$-tuple of holomorphic one-forms $\phi_i$ such that
+\[
+	ds^2 = \sum \phi_i \otimes \overline{\phi_i}
+\]
+so that the $\phi_i$ are an orthonormal basis for the cotangent space. Clearly coframes exist locally. \\
+\indent The real and imaginary part of a hermitian inner product on a complex vector space give an ordinary inner product and an alternating two-form, respectively, on the underlying real vector space. Since we have an natural $ \mathbb{R}$-linear isomorphism $ R_{ \mathbb{R},z}(M) \to T_z (M)$ we see that
+\[
+	\mathrm{Re} ds^2: T_{ \mathbb{R},z} \otimes T_{ \mathbb{R},z}(M) \to \mathbb{R}
+\]
+
+is a \textit{Riemannian metric} on $M$, called the induced Riemannian metric of the hermitian metric. we also see that the two-form
+\[
+	\mathrm{Im}ds^2: T_{ \mathbb{R},p}(M) \otimes T_{ \mathbb{R},p}(M) \to \mathbb{R}
+\]
+is a real differential two-form on $M$; $\omega = - \frac{1}{2} \mathrm{Im}ds^2$ is called the \textit{associated (1,1) form} of the metric.\\
+\indent If a coframe $\phi_i$ has the associated decomposition $\phi_i = \alpha_i + \sqrt{-1} \beta_i$, then the associated metric and two-form take the form:
+\[
+	\mathrm{Re}ds^2 = \sum ( \alpha_i \otimes \alpha_i + \beta_i \otimes \beta_i)
+\]
+\[
+	\omega = \frac{\sqrt{-1}}{2}\sum \phi_i \wedge \overline{\phi_i}
+\]
+
+
+\begin{thm}
+If $S$ is a $d$-dimensional submanifold
+\[
+	\mathrm{vol}(S) = \frac{1}{d!}\int_S \omega^d
+\]
+\end{thm}
+
+
+\begin{prop}
+
+	$V^*$ has finite volume in bounded regions.
+
+\end{prop}
+
+
+\begin{thm}
+
+For $M$ a complex manifold, $V \subset M$ an analytic subvariety of dimension $k$, and $\phi$ a differential form of degree $2k-1$ with compact support in $M$,
+\[
+\int_V d \phi = 0
+\]
+
+
+\end{thm}
+
+
+\begin{thm}
+
+	If $M,N$ are complex manifolds, $f:M \to N$ a holomorphic map, and $V \subset M$ an analytic variety such that $f \restriction_V$ is proper, then $f(V)$ is an analytic subvariety of $N$.
+
+\end{thm}
+
+\subsection{Sheaves and Cohomology}
+
+\subsubsection{Origins: The Mittag-Leffler Problem}
+Let $S$ be a Riemann surface, not necessarily compact, with $p \in S$ and a local coordinate $z$ centered at $p$. A \textit{principal part} is the polar part $ \sum a_k z^{-k}$ of a Laurent series. If $ \mathcal{O}_p$ is the local ring of holomorphic functions around $p$, $ \mathcal{M}_p$ the field of meromorphic functions around $p$, a principal part is an element of the quotient group $ \mathcal{M}_p \backslash \mathcal{O}_p$. The \textit{Mittag Leffler} question is, given a discrete set $ \left\{ p_n \right\} $ and a principal part at $p_n$ for every $n$, does there exist a function holomorphic away from the $ \left\{ p_n \right\} $ that has the prescribed principal parts at each $p_n$? The question is cleary a global one. There are two approaches (Cech and Dolbeault) both of which lead to cohomology theories.
+
+\subsubsection{Sheaves}
+
+\indent Given $X$ a topological space, a \textit{sheaf} $ \mathcal{F}$ on $X$ associates to each open set $U \subset X$ a group $ \mathcal{F}(U)$, called the sections over $U$, and to each pair $U \subset V$  a map $ r_{V,U}: \mathcal{F}(V) \to \mathcal{F}(U)$, called the restriction map, satisfying:
+
+\begin{enumerate}
+\item For any triple $U \subset V \subset W$ of open sets, 
+	\[
+		r_{W,U} = r_{V,U} \circ r_{W,V}
+	\]
+	So that we can write $\sigma \restriction_U = r_{V,U} \left( \sigma \right) $ without loss of information.
+\item For any pair of open sets $U, V \subset M$ and sections $\sigma \in \mathcal{F}(U), \tau \in \mathcal{F}(V)$ such that 
+\[
+	\sigma \restriction_{U \cap V} = \tau \restriction_{U \cap V}
+\]
+there exists a section $ \rho \in \mathcal{F}(U \cup V)$ with 
+\[
+\rho \restriction_U = \sigma; \hspace{4pt} \rho \restriction_V = \tau
+\]
+\item If $\sigma \in \mathcal{F}(U \cup V)$ and
+\[
+\sigma \restriction_U = \sigma \restriction_V = 0
+\]
+then $\sigma = 0$.
+\end{enumerate}
+
+The most commonly used sheaves we will use are listed below:
+
+\begin{enumerate}
+\item On any $ C^{\infty} $ manifold $M$, we define sheaves $ C^{\infty} , C^*, \mathcal{A}^p, \mathcal{Z}^p, \mathbb{Z}, \mathcal{Q}, \mathcal{R}, \mathcal{C}$ by
+
+	\begin{enumerate}
+	\item $ C^{\infty}( U ) $, the smooth functions on $U$,
+	\item $ C^*(U)$, the smooth nonzero functions on $U$ under multiplication
+	\item $ \mathcal{A}^p(U)$, smooth $p$-forms on $U$
+	\item $ \mathbb{Z}(U), \mathbb{Q}(U), \mathbb{C}(U)$, the locally constant sheaves with value of the respective field
+	\end{enumerate}
+
+\item If $M$ is a complex manifold, $V \subset M$, an analytic subvariety of $M$, and $ E \to M$ a holomorphic vector bundle, we define the sheaves $ \mathcal{O}, \mathcal{O}^*, \Omega^*, \mathcal{A}^{p,q}, \mathcal{Z}^{p,q}_{ \overline{\partial} }, \mathcal{J}_V, \mathcal{O}(E), \mathcal{A}^{p,q}(E)$ by 
+	\begin{enumerate}
+		\item $ \mathcal{O}(U)$, the holomorphic functions on $U$
+		\item $ \mathcal{O}^*(U)$, the multiplicative group of nonzero holomorphic functions on $U$
+		\item $\Omega^p(U)$, the holomorphic $p$ forms on $U$
+		\item $ \mathcal{A}^{p,q}(U)$, the closed forms of type $(p,q)$
+		\item $ \mathcal{Z}^{p,q}_{ \overline{\partial} } (U)$, $ \overline{\partial}$-closed forms on $U$,
+		\item $ \mathcal{J}_V(U)$, holomorphic functions vanishing on $V \cap U$
+
+		\item $ \mathcal{O}(E)(U)$, the holomorphic sections of $E$ over $U$,
+		\item $ \mathcal{A}^{p,q}(E)(U)$, $E$-valued $(p,q)$-forms over $U$.
+	\end{enumerate}
+
+\item If $M$ is a complex manifold, a \textit{meromorphic function} on an open set $U \subset M$ is given locally as the quotient of two holomorphic functions. A meromorphic function is \textit{not}, strictly speaking, a function even if we consider $\infty$ a value, as the function is undefined still at points were the numerator and denominator both vanish. The sheaf of meromorphic function on $M$ is denoted $ \mathcal{M}$; the multiplicative sheaf of meromorphic functions not identically zero is denoted $ \mathcal{M}^*$.
+\end{enumerate}
+
+A \textit{map of sheaves} $ \mathcal{F} \xrightarrow{\alpha} \mathcal{G}$ on $M$ is given by a collection of homomorphisms $ \left\{ \alpha_U: \mathcal{F}(U) \to \mathcal{G}(U) \right\}_{U \subset M}$ such that for $U \subset V \subset M$, $\alpha_U$ and $\alpha_V$ commute with the restriction maps. The kernel of the map $\alpha: \mathcal{F} \to \mathcal{G}$ is just the sheaf given by the kernel of each homomorphsm; it does indeed define a sheaf. The \textit{cokernel} is harder to define; it may not even define a sheaf.\\
+Instead of taking a direct cokernel of each homomorphism, we define $ \mathrm{Coker}(\alpha)$ as follows: the section over $U$ is given by an open cover $ \left\{ U_{\alpha} \right\} $ of $U$ together with section $\sigma_{\alpha} \in \mathcal{G}(U_{\alpha})$ such that for all $\alpha, \beta$,
+\[
+	\sigma_{\alpha} \restriction_{U_{\alpha} \cap U_{\beta}} - \sigma_{\beta} \restriction_{U_{\alpha} \cap U_{\beta} } \in \alpha_{U_{\alpha \cap U_{\beta}}} \left( \mathcal{F}(U_{\alpha} \cap U_{\beta}) \right) 
+\]
+and we identify two such collections $ \left\{ (U_{\alpha}, \sigma_{\alpha} ) \right\} $ and $ \left\{ (U_{\alpha}', \sigma_{\alpha}') \right\} $ if for all $p \in U$ and $p \in U_{\alpha}, U_{\beta}'$ there exists $V$ with $p \in V \subset \left( U_{\alpha} \cap U_{\beta}' \right) $ such that $\sigma_{\alpha}' \restriction_V - \sigma_{\beta}' \restriction_V \in \alpha_V \left( \mathcal{F}(V) \right) $.
+\indent We say that a sequence of sheaf maps
+\[
+	0 \to \mathcal{E} \xrightarrow{\alpha} \mathcal{F} \xrightarrow{\beta} \mathcal{G} \to 0
+\]
+is \textit{exact} if $ \mathcal{E} = \mathrm{Ker}(\beta)$ and $ \mathcal{G} = \mathrm{Coker}(\alpha)$; in this case, we also call $ \mathcal{E}$ a \textit{subsheaf} of $ \mathcal{F}$ and $ \mathcal{G}$ the \textit{quotient sheaf} of $ \mathcal{F}$ by $ \mathcal{G}$, written $ \mathcal{F} \backslash \mathcal{G}$. More generally, we say a sequence 
+\[
+	\cdots \to \mathcal{F}_n \xrightarrow{\alpha_n} \mathcal{F}_{n+1} \xrightarrow{\alpha_{n+1}} \mathcal{F}_{n+2} \to \cdots
+\]
+is exact if $ \alpha_{n+1} \circ \alpha_n = 0$ and 
+\[
+	0 \to \mathrm{Ker} \left( \alpha_n \right) \to \mathcal{F}_n \to \mathrm{Ker} \left( \alpha_{n+1} \right) \to 0
+\]
+is exact for each $n$. Note that by our definition of Coker, this does not imply that 
+\[
+	0 \to \mathcal{E}(U) \xrightarrow{\alpha_U} \mathcal{F}(U) \xrightarrow{\beta_U} \mathcal{G}(U) \to 0
+\]
+is exact for all $U$; it does imply that this sequence is exact at the first two stages for $U$, and that for any section $ \sigma \in \mathcal{G}(U)$ and at any point $p \in U$ there exists a neighborhood $V$ of $p$ in $U$ such that $\sigma \restriction_V$ is in the image of $\beta_V$. \\
+
+\subsubsection{Cohomology of Sheaves}
+
+Let $ \mathcal{F}$ be a sheaf on $M$, and $\underline{U} = \left\{ U_{\alpha} \right\} $ a locally finite open cover. We define
+\[
+	C^0 \left( \underline{U}, \mathcal{F} \right) = \prod_{\alpha} \mathcal{F}(U_{\alpha})
+\]
+\[
+	C^1 \left( \underline{U}, \mathcal{F} \right) = \prod_{\alpha_1 \neq \alpha_2} \mathcal{F} \left( U_{\alpha_1} \cap U_{\alpha_2} \right) 
+\]
+\[
+\vdots
+\]
+\[
+	C^p( \underline{U}, \mathcal{F}) = \prod_{\alpha_1 \neq \alpha_2 \neq \cdots \neq \alpha_p} \mathcal{F} \left( U_{\alpha_1} \cap \cdots \cap U_{\alpha_p} \right) 
+\]
+An element $\sigma \in C^p \left( \underline{U}, \mathcal{F} \right) $ is called a \textit{p-cochain} of $ \mathcal{F}$. We define a \textit{coboundary operator}
+\[
+	\delta: C^p \left( \underline{U}, \mathcal{F} \right)  \to C^{p+1} \left( \underline{U}, \mathcal{F} \right) 
+\]
+by the formula
+\[
+	\left( \delta \sigma \right)_{i_1, \ldots, i_{p+1}} = \sum_j (-1)^j \sigma_{i_1, \ldots, i_j, \ldots, i_{p+1}} \restriction_{U_{i_1} \cap \cdots \cap U_{i_p}}
+\]
+\indent A $p$-cochain is called a \textit{cocycle} if $\delta \sigma = 0$. Note that any cocycle $\sigma$ must satisfy the skew symmetry condition; i.e. switching two indices gives the negative of the coboundary. $\sigma$ is called a \textit{coboundary} if $\sigma = \delta \tau$ for some $\tau \in C^{p-1} \left( \underline{U}, \mathcal{F} \right)$. We define the usual cohomology classes:
+\[
+H^p \left( \underline{U}, \mathcal{F} \right) = \frac{Z^p \left( \underline{U}, \mathcal{F} \right) }{\delta C^{p-1} \left( \underline{U}, \mathcal{F} \right) }
+\]
+
+Now for a refinement $ \underline{U}'$ of $ \underline{U}$, there is a map
+\[
+	\rho: C^p( \underline{U}, \mathcal{F}) \to C^p \left( \underline{U}', \mathcal{F} \right) 
+\]
+given by taking the 'smaller elements of the refinement' and restricting the section to these elements. Explicitly, given a map $\phi: \underline{U}' \to \underline{U}$ putting 'smaller elements in the bigger one', so that
+\[
+	\left( \rho \sigma \right)_{i_1 \cdots i_p} = \sigma_{ \phi i_0 \cdots \phi i_p} \restriction_{ U_{i_1} \cap \cdots \cap U_{i_p} }
+\]
+Since $\delta \circ \rho = \rho \circ \delta$, $\rho$ induces a homomorphism of $H^p \left( \underline{U}, \mathcal{F} \right) \to H^p \left( \underline{U}', \mathcal{F} \right) $, which is independent of $\phi$. We define the $p$-th \v{C}ech cohomology group of $ \mathcal{F}$ on $M$ to be the direct limit of the $H^p \left( \underline{U}, \mathcal{F} \right) $ as $ \underline{U}$ becomes finer:
+\[
+	H^p \left( M, \mathcal{F} \right) = \xrightarrow[U]{ \mathrm{lim} } H^p \left( \underline{U}, \mathcal{F} \right) 
+\]
+If there is possibility of confusion, these groups may also be denoted by \v{H}.
+
+
+\begin{thm}
+
+	If the covering $ \underline{U}$ is acyclic for the sheaf $ \mathcal{F}$, in the sense that
+\[
+	H^q( U_{i_1} \cap \cdots \cap U_{i_p}, \mathcal{F}) = 0, \hspace{4pt} q>0, 
+\]
+then $H^* \left( \underline{U}, \mathcal{F} \right) \approx H^* (M, \mathcal{F})$.\\
+\indent
+
+\end{thm}
+
+
+\begin{prop}
+
+	For an exact sequence $ 0 \to \mathcal{E} \xrightarrow{\alpha} \mathcal{F} \xrightarrow{\beta} \mathcal{G} \to 0$ of sheaves on $M$, the induced sequence
+	\[
+		0 \to H^0 \left( M, \mathcal{E} \right) \to H^0 \left( M, \mathcal{F} \right) \to H^0 \left( M, \mathcal{G} \right) 
+	\]
+	\[
+		\to H^1 \left( M, \mathcal{E} \right) \to H^1 \left( M, \mathcal{F} \right) \to H^1 \left( M, \mathcal{G} \right) \to \cdots
+	\]
+	\[
+	\vdots
+	\]
+\[
+\to H^p \left( M, \mathcal{E} \right) \to H^p \left( M, \mathcal{F} \right) \to H^p \left( M, \mathcal{G} \right) \to \cdots
+\]
+is exact.
+
+\end{prop}
+
+There are a couple observations to make about certain sheaves:
+
+\begin{enumerate}
+	\item $H^P \left( M, \mathcal{A}^{r,s} \right) =0$ for strictly positive $p$.
+	\item For $K$ a simplicial complex with underlying topological space $M$,
+		\[
+			H^* \left( K, \mathbb{Z} \right) \approx H^* \left( M, \mathbb{Z} \right) 
+		\]
+		which is to say, the simplicial cohomology is isomorphic to the \v{C}ech cohomology.
+\end{enumerate}
+
+\subsubsection{The de Rham Theorem}
+
+\indent Let $M$ be a real $ C^{\infty}$ manifold. We say that a singular $p$-chain $\sigma$ on $M$, given as a formal linear combination $\sum a_i f_i$ of maps $\Delta \xrightarrow{f_i} M$ of the standard $p$-simplex $\Delta \subset \mathbb{R}^p$ to $M$, is \textit{piecewise smooth} if the maps $f_i$ extend to $ C^{\infty}$ maps of a neighborhood of $\Delta$ to $M$. Let $C^{ps}_p \left( M, \mathbb{Z} \right) $ denote the space of piece-wise smooth integral $p$-chains. Clearly the boundary of a piecewise smooth chain is again piecewise smooth, so $C^{ps}_* \left( M, \mathbb{Z} \right) $ forms a subcomplex of $C_* \left( M, \mathbb{Z} \right) $ so that we can set
+\[
+	Z^{ps}_p \left( M, \mathbb{Z} \right) = \mathrm{Ker}\partial
+\]
+\[
+	H^{ps}_p \left( M, \mathbb{Z} \right) = \frac{Z^{ps}_p \left( M, \mathbb{Z} \right) }{\partial C^{ps}_{p+1} \left( M, \mathbb{Z} \right) }
+\]
+By a big result in differential topology, the inclusion map $ C^{ps}_* \left( M, \mathbb{Z} \right) \to C_* \left( M, \mathbb{Z} \right) $ induces an isomorphism
+\[
+	H^{ps}_p \left( M, \mathbb{Z} \right) \approx H_p \left( M, \mathbb{Z} \right) 
+\]
+\indent Now let $ \phi \in A^p (M)$ be a $ C^{\infty} $ $p$-form and $\sigma = \sum a_i f_i$ a piecewise smooth $p$-chain; set
+\[
+	\langle \phi, \sigma \rangle = \int_{\sigma} \phi = \sum a_i \int_{f_i (\Delta)} \phi
+\]
+Now Stokes' theorem says that the addition of a coboundary or an exact form will not change this value, so we have an isomorphism
+\[
+	H^*_{DR} (M) \to H^*_{ \mathrm{sing} } (M, \mathbb{R})
+\]
+
+\subsubsection{The Dolbeault Theorem}
+
+
+\begin{thm}
+
+For $M$ a complex manifold,
+\[
+	H^q (M, \Omega^p) \approx H^{p,q}_{ \overline{\partial} } (M)
+\]
+
+
+\end{thm}
+Now for some computations:
+
+\begin{enumerate}
+\item If $M$ is any $n$-dimensional complex manifold, then
+	\[
+		H^q (M, \mathcal{O}) \approx H^{0,q}_{ \overline{\partial} }(M) = 0
+	\]
+\item By te $ \overline{\partial}$-Poincar\'e lemma,
+	\[
+		H^q ( \mathbb{C}^n, \mathbb{O} ) = 0
+	\]
+\item $H^0 ( \mathbb{P}^1, \mathcal{O}) \approx \mathbb{C}$
+\item Let $M = \mathbb{C}^2 \backslash \left\{ 0 \right\} $. Then $ \mathrm{dim}H^1 ( M, \mathcal{O}) = \infty$.
+\end{enumerate}
+
+\subsection{Topology of Manifolds}
+
+\subsubsection{Intersection of Cycles}
+
+\begin{defn}
+	Let $M$ be an oriented $n$-manifold, $A$ and $B$ two peicewise smooth cycles on $M$ of dimension $k$ and $n-k$, respectively, and $p \in A \cap B$ a point of transverse intersection of $A$ and $B$. Let $v_1, \ldots, v_k \in T_p (A)$ be an oriented basis for $T_p A$, $w_1, \ldots, w_{n-k}$ an oriented basis for $T_pB$, we define the \textit{intersection index} $\iota_p(A \cdot B)$ of $A$ with $B$ at $p$ to be the $+1$ if $ v_1, \ldots, v_k, w_1, \ldots, w_{n-k}$ is an oriented basis for $T_pM$, and $-1$ otherwise. then define the intersection number $ \#(A \cdot B)$ to be 
+\[
+	\# \left( A \cdot B \right) = \sum_{p \in A \cap B} \iota_p (A \cdot B)
+\]
+
+\end{defn}
+
+\begin{prop}
+	$\#(A \cdot B)$ depends only on the homology classes of $A$ and $B$.
+\end{prop}
+
+\subsubsection{Poincar\'e Duality}
+
+\begin{thm}
+	If $M$ is a compact, oriented $n$-manifold, the intersection pairing:
+	\[
+		H_k \left( M, \mathbb{Z} \right) \times H_{n-k} \left( M, \mathbb{Z} \right) \to \mathbb{Z}
+	\]
+	is unimodular; i.e., any linear functional $H_{n-k} \left( M, \mathbb{Z} \right) \to \mathbb{Z}$ is expressible as intersection with some class $\alpha \in H_k \left( M, \mathbb{Z} \right) $ and any class $ \alpha \in H_k \left( M, \mathbb{Z} \right) $ having intersection number 0 with all classes in $H_{n-k} \left( M, \mathbb{Z} \right) $ is a torsion class.
+\end{thm}
+
+\begin{prop}
+	The K\"unneth Formula formula states that
+	\[
+		H_* \left( M \times N , \mathbb{Q}\right) \approx H_* \left( M, \mathbb{Q} \right) \otimes H_* \left( N, \mathbb{Q} \right)
+	\]
+	which says that \textit{the intersection of cycles in homology is Poincar\'e dual to wedge product in cohomology.}
+\end{prop}
+
+\subsubsection{Intersection of Analytic Cycles}
+
+\indent Suppose $M$ is a compact complex manifold of dimension $n$, $V \subset M$ a possibly singular analytic subvariety of dimension $k$. As we have seen, 
+\[
+	\int_V d\phi = 0
+\]
+holds for any $(2k-1)$ form $  \phi$ on $M$. We may thus define a linear functional on $H^{2k}_{DR} (M)$ by 
+\[
+	\left[ \phi \right] \mapsto \int_V \phi
+\]
+
+We may also define fundamental class of $V$ by means of the intersection pairing. For any homology class $ \alpha \in H_{2n-2k} \left( M, \mathbb{Z} \right) $ we may find a cycle $A$ representing $ \alpha$ and intersecting $V$ transversely in smooth points. In fact, the intersection number
+\[
+	\# \left( V \cdot A \right)
+\]
+depends only on the cohomology class of $ \alpha $.
+
+\begin{prop}
+	The intersection number of two analytic subvarieties meeting transversely is always positive.
+\end{prop}
+
+Let $V$ and $W$ be two analytic varieties of dimension $k$ and $n-k$ in the polycylinder $\Delta$ of radius 1 in $ \mathbb{C}^n$ having the origin as their only point of intersection. Consider in the product $ \Delta \times \Delta$ of the polycylinder of radius $ \frac{1}{2} $ with itself the two varieties
+\[
+	\Tilde{V} = \pi_1^{-1} \left( V \right) = \left\{ \left( z,w \right): z \in V \right\} 
+\]
+and
+\[
+	\Tilde{W} = \left\{ (z,w): z-w \in W \right\}
+\]
+For each $ \epsilon $, the varieties $ \Tilde{V}$ and $ \Tilde{W}$ meet the fiber $ \pi_2^{-1} \left( \epsilon \right) = \Delta' \times \left\{ \epsilon \right\}$ in the analytic variety $V$ and the analytic $W + \epsilon$ ($W$ translated by $ \epsilon$) respectively; moreover, $ \pi_2^{-1} \left( \epsilon \right)$ will meet the intersection $ \Tilde{V} \cap \Tilde{W}$ transvresely at a point $ \left( p, \epsilon \right)$ exactly when $V$ and $ W + \epsilon$ meet tranversely at $p$. The intersection $ \Tilde{V} \cap \Tilde{W} \subset \Delta' \times \Delta'$ is an analytic variety of dimension $n$, and so the projection $ \pi_2: \Tilde{V} \cap \Tilde{W} \to \Delta'$ expresses $ \Tilde{V} \cap \Tilde{W}$ as a branched $ \mu$ sheeted cover of $ \Delta'$. We are led to the following definition:
+
+\begin{defn}
+	For $ \epsilon \in \Delta'$ lying outside an analytic subvariety of $ \Delta'$, the varieties $V$ and $W + \epsilon$ will meet transversely in $ \mu$ points in $ \Delta'$. $ \mu$ is called the \textit{intersection mutliplicity} of $V$ and $W$ of at 0 and is written $ \mu = m_0 (V \cdot W)$.
+\end{defn}
+
+\begin{prop}
+	\[
+		\# \left( V \cdot W \right) = \sum_{p \in V \cap W} m_p \left( V \cdot W \right)
+	\]
+	
+\end{prop}
+
+\begin{thm}
+	The topological intersection number $ \# \left( V \cdot W \right)$ of two analytic subvarieties of complementary dimension meeting in a finite set of point ona compact complex manifold is given by 
+	\[
+		\# \left( V \cdot W \right) = \sum_{p \in V \cap W} m_p (V \cdot W)
+	\]
+	The intersection multiplicity satisfies
+	\[
+		m_p \left( V \cdot W \right) \geq 1
+	\]
+	with equality holding if and only if $V$ and $W$ meet transversely at $p$.
+\end{thm}
+
+\begin{cor}
+	If $M$ is any complex submanifold of projective space $ \mathbb{P}^n$, $ V \subset M$ an analytic subvariety, then the fundamnetal class of $V$ is nonzero in the homology of $M$.
+\end{cor}
+
+\subsection{Vector Bundles, Connections, and Curvature}
+\subsubsection{Complex and Holomorphic Vector Bundles}
+
+\begin{defn}
+	Let $M$ be a differentiable manifold. A $ C^{\infty}$ compex vector bundle on $M$ consists of a family $ \left\{ E_x \right\}_{x \in M}$ of complex vector spaces parametrized by $M$, together with a $ C^{\infty}$ manifold structure on $E = \cup_{x \in M} E_x$ such that
+	\begin{enumerate}
+		\item The projection map $ \pi: E \to M$ taking $E_x$ to $x$ is $ C^{\infty}$
+		\item For every $x_0 \in M$, there exists an open set $U$ in $M$ containing $x_0$ and a diffeomorphism
+			\[
+				\phi_U: \pi^{-1} \left( U \right) \to U \times \mathbb{C}^k
+			\]
+			taking the vector space $E_x$ isomorphically onto $ \left\{ x \right\} \times \mathbb{C}^k$ for each $x \in U$; $ \phi_U$ is called a \textit{trivialization} of $E$ over $U$.
+	\end{enumerate}
+	The dimension of the \textit{fibers} $E_x$ of $E$ is called the \textit{rank} of $E$; in particular, a vector bundle of rank 1 is called a \textit{line bundle}.
+\end{defn}
+
+\begin{defn}
+	For any pair of trivialization $ \phi_U$ and $ \phi_V$ the map
+	\[
+		g_{UV}: U \cap V \to \mathrm{GL}(k, \mathbb{C})
+	\]
+	given by 
+	\[
+		g_{UV}(x) = \left( \phi_U \circ \phi_V^{-1} \right) \restriction_{ \left\{ x \right\} \times \mathbb{C}^k }
+	\]
+	is called a \textit{transition function} for $E$ relative to the trivializations $ \phi_U, \phi_V$
+\end{defn}
+
+All of these constructions can be brought to the complex category by replacing smooth with holomorphic, and differentiable with complex.
+
+\begin{prop}
+	There is a natural exterior derivative $ \overline{\partial}: A^{p,q}(E) \to A^{p,q+1}(E)$ from $E$ valued $(p,q)$-forms to $E$-valued $(p, q+1)$ forms, given in coordinates by 
+	\[
+	\overline{\partial} \sigma = \sum \overline{\partial}\omega_i \otimes e_i
+	\]
+	The holomorphicity of transition functions shows that $ \overline{\partial}\sigma$ does not depend on the frame chosen.	
+\end{prop}
+
+\subsubsection{Metrics, Connections, and Curvature}
+\begin{defn}
+
+
+Let $ E \to M$ be a complex vector bundle. A \textit{hermitian metric} on $E$ is a hermitian inner product on each fiber $E_x$ of $E$, varying smoothly with $ x \in M$. A frame $\zeta$ is called \textit{unitary} if $ \zeta_1, \ldots, \zeta_2$ is an orthonormal basis for $E_x$ for each $x$; unitary frames exist locally by the Graham-Schmidt process for a local basis. A holomorphic vector bundle with a hermitian metric is called a \textit{hermitian vector bundle}.
+
+\end{defn}
+
+\begin{defn}
+
+A \textit{connection} $D$ on a complex vector bundle $E \to M$ is a linear map
+\[
+	D: \mathcal{A}^0 (E) \to \mathcal{A}^1(E)
+\]
+satisfying Leibnitz' rule
+\[
+	D(f \cdot \zeta) = df \otimes \zeta + f \cdot D( \zeta )
+\]
+
+
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

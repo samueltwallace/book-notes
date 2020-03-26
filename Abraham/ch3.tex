@@ -1,0 +1,318 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+
+\begin{document}
+
+\section{Hamiltonian and Lagrangian Systems}
+
+\subsection{Symplectic Geometry}
+
+\begin{defn}
+
+Let $M$ be a manifold and $\omega \in \Omega^2(M) $. Then define the isomorphism $ \flat: \mathfrak{X}(M) \to \mathfrak{X}^* (M); \hspace{6pt} X \mapsto X^{\flat} = i_X \omega$, and the map $\sharp$ be its inverse.
+
+\end{defn}
+\begin{thm}[Darboux]
+Suppose $\omega$ is a nondegenerate two-form on a $2n$-manifold. Then $d\omega = 0$ iff there is a chart $(U, \phi)$ around each point $m$ such that $\phi(m) = 0$ and $\omega\vert_U$ is canonical.
+\end{thm}
+
+\begin{defn}
+A \textbf{sympletic form} on a manifold $M$ is a nondegenerate, closed two-form $\omega$ on $M$. A \textbf{Symplectic Manifold} is a manifold equipped with a symplectic form. The associated volume form is $\Omega_{\omega} = [(-1)^{[n/2]}/n!]\omega^n$. The charts in which the symplectic form takes the canonical form are called \textbf{symplectic charts}, and the coordinate functions are called \textbf{canonical coordinates}.
+\end{defn}
+
+\begin{defn}
+
+If $(M,\omega)$ and $(N, \rho)$ are symplectic manifolds, a $C^{\infty}$ map between them that preserves the symplectic structure is called a \textbf{canonical transformation}.
+
+\end{defn}
+
+\begin{prop}
+
+A canonical transformation has determinant 1 and is a local diffeomorphism.
+
+\end{prop}
+
+\begin{thm}
+
+Let $M = T^*Q$, with $\tau^*_Q: M \to Q$ and $T\tau^*_Q: TQ \to TM$. Let $\alpha_q \in M$ and $\omega_{\alpha_q} \in T_{\alpha_q}M$. Then let $ \theta_{alpha_q}: T_{\alpha_q}M \to \mathbb{R}: \omega_{\alpha_q} \mapsto \langle \alpha_q, T \tau^*_Q(\omega_{\alpha_q})\rangle  $, and $ \theta_0: \alpha_q \mapsto \theta_{\alpha_q} $. Then $\omega_0 = - d\theta_0$ is symplectic and the forms $\omega_0$ and $ \theta_0 $ are called the \textbf{canonical forms}.
+
+\end{thm}
+\indent The canonical forms, given in the usual coordinates of a cotangent bundle, take the form: 
+\[\theta_0 = \sum p_i dq^i\]
+\[\omega = \sum dq^i \wedge dp_i\]
+\indent The canonical one-form can be thought of as a 'formal adjoint' to the projection operator:
+\[\langle \theta(\alpha_q), w_{\alpha_q}\rangle  = \langle T\tau^*_Q w_{\alpha_q}, \alpha_q\rangle \]
+
+\subsection{Hamiltonain Vector Fields and Poisson Brackets}
+
+
+
+\begin{defn}
+
+On a symplectic manifold, given a function $H: M \to \mathbb{R}$, the \textbf{Hamiltonian Vector Field} associate to the function is a the vector field $X_H$ satisfying $ \omega(X_H, Y) = \langle dH, Y\rangle $, or that $ i_{X_H}\omega = dH$. 
+
+\end{defn}
+
+\begin{prop}
+
+$H$ is constant along the flow of $X_H$.
+
+\end{prop}
+
+\begin{prop}
+
+Along a Hamiltonian flow, the symplectic form is conserved.
+
+\end{prop}
+
+\begin{defn}
+
+A vector field $X$ is \textbf{locally Hamiltonian} if for every point, there is a neighborhood $U$ of $m$ such that $X\vert_U$ is Hamiltonian
+
+\end{defn}
+
+\begin{prop}
+
+TFAE:
+
+\begin{enumerate}
+    \item $X$ is locally Hamiltonian
+    \item $\mathcal{L}_X \omega = 0$ 
+    \item The flow of $X$ consists of canonical transformations
+    
+\end{enumerate}
+
+\end{prop}
+
+\begin{rmk}
+
+Locally Hamiltonian vector fields for a Lie subalgebra of $\mathfrak{X}(M)$. Globally Hamiltonian vector fields are locally Hamiltonian, but the other way around requires $H^1(M) = 0$. 
+
+\end{rmk}
+
+\begin{defn}
+
+Let $\alpha, \beta \in \mathfrak{X}^*(M)$. Then the Poisson Bracket of $alpha$ and $\beta$ is the one-form $-[\alpha^{\sharp}, \beta^{\sharp}]^{\flat}$
+
+\end{defn}
+
+\begin{defn}
+
+Let $M$ be a sympletic manifold and $f,g: M \to \mathbb{R}$, then the Poisson bracket of $f$ and $g$ is $ \{f,g\} = - i_{X_f} i_{X_g} \omega$.
+
+\end{defn}
+
+\begin{prop}
+\[\{f,g\} = - \mathcal{L}_{X_f}g = \mathcal{L}_{X_g}f\]
+\indent Which mean the Poisson bracket is a derivation over $f$ and $g$ individually.
+\end{prop}
+
+\begin{cor}
+\hfill
+\begin{enumerate}
+    \item $\frac{d}{dt}(f \circ F^{X_H}_t) = \{f \circ F^{X_H}_t, H\}$
+    \item $d\{f,g\} = \{df, dg\}$
+\end{enumerate}
+
+\end{cor}
+
+\begin{defn}
+
+The \textbf{Lagrange Bracket} of two vector fields is the function $ [[X,Y]] = \omega(X,Y) $ and the Lagrange bracket of a chart is a matrix formed from the Lagrange bracket of each coordinate vector.
+
+\end{defn}
+
+\begin{thm}
+
+Let $(u, \varphi)$ be a chart on a symplectic manifold. Then
+
+\begin{enumerate}
+    \item $\omega \vert_U = \sum [[u^i, u^j]]du^i \wedge du^j$
+    \item In a symplectic chart, the matrix $\omega_{ij}$ takes the off-diagonal block matrix form of a almost-complex structure.
+    \item If $f(q,p) = (Q,P)$, then $[[Q,P]] = \sum \left( \frac{\partial q^i}{\partial Q} \frac{\partial p^i}{\partial P}   - \frac{\partial q^i}{\partial P} \frac{\partial p^i}{\partial Q} \right) $ 
+    \item $ [[q,p]]\circ f^{-1} = [[Q, P]] $
+\end{enumerate}
+
+\end{thm}
+
+\begin{thm}
+
+If $X$ is a locally Hamiltonian vector field, and the pushforward of the canonical coordinates by the flow is denoted $(Q_t,P_t)$, then $[[Q_t,P_t]]\circ F^X_t = [[q,p]]$
+
+\end{thm}
+
+\subsection{Integral Invariants, Energy Surfaces, and Stability}
+
+\begin{defn}
+
+An invariant form for a vector field is one whose Lie derivative is zero.
+
+\end{defn}
+
+\begin{prop}
+
+Let $X$ be a vector field and $\alpha, \beta$ invariant forms of it. Then 
+\begin{enumerate}
+    \item $i_X\alpha$ is invariant
+    \item $d\alpha$ is invariant
+    \item $\mathcal{L}_X \gamma$ is closed $\iff d\gamma$ is invariant
+    \item $\alpha \wedge \beta$ is invariant
+\end{enumerate}
+
+\end{prop}
+
+\begin{defn}
+
+$\alpha$ is relatively invariant $\iff \mathcal{L}_X \alpha$ is closed.
+
+\end{defn}
+
+\begin{defn}
+
+$\mathcal{A}_X$ is the algebra of all invariant forms of $X$, $\mathcal{R}_X$ the relatively invariant forms of $X$, $\mathcal{C}$ the closed forms of $\Omega (M)$ and $\mathcal{E}$ the exact forms.
+
+\end{defn}
+
+\begin{thm}
+
+The following sequences are exact:
+\begin{enumerate}
+    \item $0 \to \mathcal{A}_X \overset{i}{\to} \Omega(M) \overset{\mathcal{L}_X}{\to} \Omega (M) \overset{\pi}{\to} \Omega (M)/ Im(\mathcal{L}_X) \to 0$
+    \item $0 \to \mathcal{C} \overset{i}{\to} \mathcal{R}_X \overset{d}{\to} \mathcal{A}_X \overset{\pi}{\to} \mathcal{A}_X / (\mathcal{E} \cap \mathcal{A}_X ) \to 0$
+\end{enumerate}
+\end{thm}
+
+Let $\Sigma_e$ be a connected component of $H^{-1}(e)$, where $e$ is a regular value of $H$. 
+
+\begin{thm}
+There is a volume element $\mu_e$ invariant on $\Sigma_e$ invariant under $X\vert \Sigma_e$
+\end{thm}
+\begin{defn}
+
+$V \subset M$ is a submanifold is an invariant manifold of a vector field if the vector field is tangent to $V$ at every point.
+
+\end{defn}
+
+\begin{defn}
+
+Let $f_k:M \to \mathbb{R}$ be constants of motion for a Hamiltonian system $X_H$, and let $\Vec{F} = (f_1, \ldots, f_n): M \to \mathbb{R}^k$, and $c$ a regular value of $\Vec{F}$, and let $\Sigma_c = \Vec{F}^{-1}(c)$. Then $\Sigma_c$ is an invariant manifold of $X_H$ of codimension $n$ and there is an invariance volume $\mu_c$ defined on $\Sigma_c$. 
+
+\end{defn}
+
+\subsection{Lagrangian Systems}
+
+\begin{defn}
+
+Let $f$ be any map between vector bundles $E,F$ over the same base space. Then the \textbf{Fiber Derivative} of the function $f$ is the function $\textbf{F}f:E \to L(E,F); \hspace{4pt} e \mapsto Df(e)$.
+
+\end{defn}
+
+\begin{prop}
+
+Let $L: TQ \to \mathbb{R}$. Then $\textbf{F}L:TQ \to T^*Q$ is smooth and fiber-preserving.
+
+\end{prop}
+
+\begin{defn}
+
+Let $\omega_0$ be the canonical symplectic form on $T^*Q$ and let $L: TQ \to \mathbb{R}$. Then the \textbf{Lagrange two-form} is $\omega_L = (\textbf{F}L)^* \omega_0$
+
+\end{defn}
+
+\begin{defn}
+
+Let $Q$ be a manifold and $L$ a function on the tangent bundle. Then $L$ is a regular Lagrangian if every point is a regular point of $\textbf{F}L$
+
+\end{defn}
+
+\begin{defn}
+
+Given $L:TQ \to \mathbb{R}$, define the action $A: TQ \to \mathbb{R}$ by $A(v) = \langle \textbf{F}L(v), v\rangle $ and the energy $E = A - L$. A Lagrangian vector field for $L$ is a vector field $X_L$ s.t. $i_{X_L} \omega_L = dE$.
+
+\end{defn}
+
+\begin{thm}
+
+Let $X_L$ be a  Lagrangian vector field for $L$, then in a chart, the integral curves $(u(t), v(t))$ satisfy Lagrange's Equations:
+\[\frac{d}{dt}u(t) = v(t)\]
+\[\frac{d}{dt}\left( \langle D_2 L(u(t),v(t)), w\rangle  \right) = \langle D_1 L(u(t),v(t)),w\rangle \]
+$\forall w \in TQ$.
+
+\end{thm}
+
+\begin{thm}
+
+Let $L$ and $\tilde{L}$ be regular Lagrangians, and $X_L, X_{\tilde{L}}$ be their respective vector fields. Then TFAE:
+
+\begin{enumerate}
+    \item $L = \tilde{L} + \alpha + C$, $d \alpha = 0$
+    \item $ X_L = X_{\tilde{L}} $ \& $ \omega_L = \omega_{\tilde{L}} $
+\end{enumerate}
+
+\end{thm}
+
+The set of closed one-forms on $Q$ form the 'gauge group' of Lagrangians, i.e. Lagrangians can be transformed without changing the dynamics.
+
+\subsection{The Legendre Transformation}
+
+\begin{defn}
+
+$L$ is a hyperregular Lagrangian if $\textbf{F}L: TQ \to T^*Q$ is a diffeomorphism.
+
+\end{defn}
+
+\begin{thm}
+
+Let $L$ be a hyperregular Lagrangian on $Q$ and let $H = E \circ (\textbf{F}L)^{-1}: T^*Q \to \mathbb{R}$, where $E$ is the energy of $L$. Then $\textbf{F}L$ conjugates the flow $X_L$ to $X_H$.
+
+\end{thm}
+
+\begin{thm}
+
+$\textbf{F}H = (\textbf{F}L)^{-1}$
+
+\end{thm}
+
+\begin{cor}
+
+Hyperregular Hamiltonians and Lagrangians correspond bijectively by their fiber derivatives.
+
+\end{cor}
+
+\subsection{Variational Principles in Mechanics}
+
+\begin{defn}
+
+The path space between two points is defined as $ \Omega(q_1, q_2, [a,b]) = \{c: [a,b] \to Q \vert $ c is a $C^2$ curve,$ c(a)=q_1; \hspace{2pt} c(b) = q_2 \} $
+
+\end{defn}
+
+\begin{prop}
+
+The tangent space of the path space is $ T_c \Omega(q_1, q_2, [a,b]) = \{v:[a,b] \to TQ \vert \pi_Q(v)=c, v(a) = 0, v(b)=0 \}$
+
+\end{prop}
+
+\begin{thm}
+
+A function satisfies the Euler-Lagrange equations iff the resulting curve is a critical point of the action functional.
+
+\end{thm}
+
+\begin{thm}{(Euler-Lagrange-Jacobi-Maupertuis Principle of Least Action)}
+
+Let $c_0(t)$ be a base integral curve of $X_L$, $q_1 = c_0(a); q_2 = c_0(b)$, and $e$ be the energy of $c_0(t)$ and be a regular value of a $e$. Let $A$ be the accumulated (integrate) action along a path. Then $dA(c)=0$, and the converse holds.
+
+\end{thm}
+
+
+\end{document}

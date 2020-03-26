@@ -1,0 +1,577 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+
+\section{Hamiltonian Systems With Symmetry}
+
+\subsection{The Momentum Mapping}
+
+\begin{defn}
+
+Let $(P,\omega)$ be a connected symplectic manifold and $\Phi: G \times P \to P$ a symplectic action of the Lie group $G$ on $P$. Then a \textbf{Momentum Mapping} for the action is a map $J:P \to \mathfrak{g}^*$ provided that $dJ (\xi) = i_{\xi_P} \omega$, where $\xi_P (x) = \frac{d}{dt}\Phi(\mathrm{exp}(\xi t) x)$.
+\end{defn}
+
+\begin{thm}
+
+Let $\Phi$ be a symplectic action of a Lie group with momentum mapping $J$. Suppose a function $H: P \to \mathbb{R}$ is an invariant of the action, i.e. $\mathcal{L}_{\xi_P} H = 0 \hspace{2pt} \forall \xi \in \mathfrak{g}$. Then $J$ is invariant for the flow of $H$, i.e. $\mathcal{L}_{X_H}J = 0$.
+\end{thm}
+
+\begin{prop}
+
+Let $(\Phi, J)$ be a symplectic action and a momentum mapping. Define for $g \in G$ \& $\xi \in \mathfrak{g}$:
+$\psi_{g,\xi}:P \to \mathbb{R}: \hspace{4pt} x \mapsto J(\xi)(\Phi_g(x)) - J(\mathrm{Ad}_{g^{-1}}\xi)(x)$
+
+Then $\psi_{g,\xi}$ is constant on $P$. Let $\sigma:G \to \mathfrak{g}^*$ be defined by $\sigma(g) \cdot \xi = \psi_{g,\xi}$, the \textbf{co-adjoint cocycle} associated to $J$. It satisfies the \textbf{cocycle identity} $\sigma(gh) = \sigma(g) + \mathrm{Ad}^*_{g^{-1}}\sigma(h)$.
+\end{prop}
+
+\begin{prop}
+
+Let $G$ be a Lie group and $\mathfrak{g}$ its Lie Algebra. A \textbf{(co-adjoint) cocycle} is a map $\sigma: G \to \mathfrak{g}^*$ that satisfies the cocycle identity: $\sigma(gh) = \sigma(g) + \mathrm{Ad}^*_{g^{-1}} \sigma(h)$. \\
+\indent A cocycle $\Delta$ is a \textbf{coboundary} if there is a $\Delta(g) = \mu - \mathrm{Ad}^*_{g^{-1}} \mu$. The cocycles form a vector space and coboundaries form a subspace, so the quotient space of cocycles over coboundaries, $[\sigma]$, is the \textbf{cohomology} of G.
+
+\end{prop}
+
+\begin{prop}
+
+Let $\Phi$ be a symplectic action of $G$ and $P$, and two momentum mappings $J_1$ and $J_2$. Then $[\sigma_1] = [\sigma_2]$. So every symplectic group action there is a well-defined cohomology class.
+\end{prop}
+
+\begin{defn}
+
+A momentum mapping is $\mathrm{Ad}^*$-\textbf{equivariant} when $J(\Phi_g(x)) = \mathrm{Ad}^*_{g^{-1}} J(x)$
+
+\end{defn}
+
+\begin{prop}
+
+Let $J$ be a momentum mapping for the symplectic action $\Phi$ with cocycle $\sigma$. Then: 
+\begin{enumerate}
+    \item The map $\Psi: G \times \mathfrak{g}^* \to \mathfrak{g}^*; \hspace{4pt} (g, \mu) \mapsto \mathrm{Ad}^*_{g^{-1}} \mu + \sigma(g) $
+    \item $J$ is equivariant with respect to the action in 1.
+\end{enumerate}
+
+\end{prop}
+
+\begin{thm}
+Let $\Phi$ be symplectic action of a Lie group with momentum mapping $J$ with cocycle $\sigma$ and define
+$\Sigma: \mathfrak{g} \times \mathfrak{g} \to \mathbb{R}; \hspace{6pt} \Sigma(\xi, \eta) = d\widehat{\sigma}_{\eta} (e) \cdot \xi$
+Where $\widehat{\sigma}_{\eta} : G \to \mathbb{R}: \hspace{4pt} g \mapsto \sigma(g) \cdot \eta$ then:
+
+\begin{enumerate}
+    \item $\Sigma$ is a skew symmetric bilinear form on $\mathfrak{g}$ and satisfies Jacobi's identity
+    \item $J([\xi, \eta]) - \{ J(\xi), J(\eta) \} = \Sigma(\xi, \eta)$
+\end{enumerate}
+
+Since $\Sigma(\xi, \eta)$ is constant, we have that $X_{ \{ J(\xi), J(\eta) \} } = X_{ J([\xi, \eta]) }$
+\end{thm}
+
+\begin{prop}
+
+If $J$ is an $\mathrm{Ad}^*$-equivariant momentum mapping, then $\{ J(\xi), J(\eta) \} = J([\xi, \eta])$. 
+
+\end{prop}
+
+\indent $\Sigma$ satisfying the Jacobi identity means that $\Sigma$ defines a \textbf{two-cocycle} on $\mathfrak{g}$. A two-cocycle is called \textbf{exact} if there is a $\mu \in \mathfrak{g}^*$ such that $\Sigma(\xi, \eta) = \langle \mu, [\xi, \eta] \rangle$. So requiring any two-cocycle to be exact is a limitation on the cohomology condition on $\mathfrak{g}$. If $\Sigma$ is exact, then $J(\xi) - \mu(\xi)$ is again a momentum mapping. 
+
+\begin{thm}
+
+Let $\Phi$ be a symplectic action on $P$, where the symplectic form is exact, i.e. $\omega = - d\theta$, and the group action leaves $\theta$ invariant. Then $\theta$ forms an $\mathrm{Ad}^*$-equivariant momentum map by $J(x) \cdot \xi = (i_{\xi_P} \theta)(x)$.
+
+\end{thm}
+
+Every symplectic action $\Phi$ can be lifted to an action on the tangent bundle by adjointness to the tangent map. i.e. $\langle T^* \Phi w, v \rangle = \langle w, T\Phi v \rangle$. We will write $T^*\Phi$ as $\Phi^{T^*}$ to avoid confusion.
+
+\begin{cor}
+
+The canonical momentum mapping for a canonical symplectic structure is given by $J: T^*Q \to \mathfrak{g}^*; \hspace{4pt} J(\xi)(\alpha_q) = \langle \alpha_q, \xi_Q(q) $ for each one-form (momentum vector) $\alpha_q$.
+\end{cor}
+
+\begin{cor}
+
+Let $G$ act on $Q$ by the map $\Phi$ (not necessarily symplectically) and let $\Phi^T$ denote the pushforward on the tangent bundle. Now let $L$ be a regular Lagrangian, and let $\theta_L = (FL)^*\theta_0$, and $L$ is invariant under the action of $\Phi$. Then
+
+\begin{enumerate}
+    \item $(\Phi^T_g)^* \theta_L = \theta_L $
+    \item The momentum for this action is $J(\xi)(v_q) = \langle FL(v_q), xi_Q(q) \rangle$ and is $\mathrm{Ad}^*$-equivariant
+    \item The momentum of 2. is a conserved quantity of the Lagrange Equations.
+    
+\end{enumerate}
+
+\end{cor}
+
+\subsection{Reduction of Phase Spaces with Symmetry}
+
+\begin{defn}
+
+The \textbf{Isotropy Group} of a group action on an element is the set of mappings which hold that element fixed.
+
+\end{defn}
+
+\begin{thm} \label{thm:1}
+
+Let $(P,\omega)$ is a (weak, i.e. degenerate) symplectic manifold on which the Lie group $G$ acts symplectically and let $J:P \to \mathfrak{g}^*$ be an $\mathrm{Ad}^*$-equivariant momentum mapping for the action. \\
+\indent Let $\mu \in \mathfrak{g}^*$ be a regular value of $J$, and that $G_{\mu}$, acting coadjointly on $\mathfrak{g}^*$, is the isotropy group acts freely and transitively on $J^{-1}(\mu)$. Then $P_{\mu} = J^{-1}(\mu) / G_{\mu} $ has a unique weakly symplectic form $\omega_{\mu}$ with the property
+$\pi^*_{\mu}\omega_{\mu} = i^*_{\mu} \omega$
+\end{thm}
+
+\begin{lem}\label{lem:1}
+
+For $p \in J^{-1}(\mu)$,
+\begin{enumerate}
+    \item $T_p(G_\mu \cdot p) = T_p(G \cdot p) \cap T_p(J^{-1}(\mu))$
+    \item $v \in T_p(J^{-1}(\mu)), w \in T_p(G \cdot p) \Rightarrow \omega(v,w)=0$, i.e. $T_p(J^{-1}(\mu))$ is the $\omega$-orthogonal complement of $T_p(G \cdot p)$
+\end{enumerate}
+\end{lem}
+
+\begin{rmk}
+
+If $\mu$ is a regular value of $J$, the action of $G_{\mu}$ is locally free, even if not globally free and proper. A sufficient condition for later work is that $\mu$ is \textbf{weakly regular}, $J^{-1}(\mu)$ is submanifold with $T_pJ^{-1}(\mu) = \mathrm{ker}T_p J$.
+\end{rmk}
+
+\begin{thm}\label{thm:4}
+
+\indent Let $G$ act on $Q$ and cotangently on $T^*Q$ and let $J(\xi)(\alpha_q) = \langle \alpha_q, \xi_Q(q) \rangle$ be the canonical momentum mapping, and let the conditions on a regular value $\mu$ of $J$ from theorem \ref{thm:1} theorem hold. \\
+\indent Additionally assume there is a $G_{\mu}$-equivariant one-form $\alpha_{\mu}$ on $Q$ with values in $J^{-1}(\mu)$. Now let $\Omega_{\mu} = \omega_0 + (\tau^*_Q)^* d \alpha_{\mu}$ be a symplectic form on $T^*Q$ and let $T^*Q_{\mu}$ be given the corresponding induced symplectic form (where $Q_{\mu} = Q/G_{\mu}$). 
+\indent Then there exists a symplectic embedding $\phi_{\mu}: (T^*Q)_{\mu} \to T^* Q_{\mu} $ onto a subbundle over $Q_{\mu}$. The map is a diffeomorphism onto $T^*Q_{\mu}$ $\iff$ $\mathfrak{g}=\mathfrak{g}_{\mu}$.
+
+\end{thm}
+
+\begin{thm} \label{thm:2}
+
+Under the assumptions of theorem \ref{thm:1}, let $H: P \to \mathbb{R}$ be invariant under the action of $G$. Then the flow $F^{X_H}_t$ leaves $J^{-1}(\mu)$ invariant and commutes with the action of $G_{\mu}$ on $J^{-1}(\mu)$, so there is a flow $H_t$ on $P_{\mu}$ satisfying $\pi_{\mu} \circ F^{X_H}_t = H_t \circ \pi_{\mu}$. This flow is a Hamiltonian flow on $P_{\mu}$ satisfying $H_{\mu} \circ \pi_{\mu} = H \circ i_{\mu}$. $H_{\mu}$ is called the \textbf{Reduced Hamiltonian}.
+
+\end{thm}
+
+If we know the flow $H_t$ on the reduced system $P_{\mu}$, then we can find the flow of $F^{X_H}_t$ on $J^{-1}(\mu)$ by the following: Let $p_0 \in J^{-1}(\mu)$ and let $c(t)$ and $[c(t)]$ be the integral curves of $X_H$ and $X_{H_{\mu}}$ with $c(0)=p_0$. Pick $d(t) \in [c(t)]$ so that $c(t) = \Phi_{g(t)} (d(t))$, and we try to find $g(t)$. It can be found by solving $\xi_P(d(t)) = X_H(d(t)) - d'(t)$ and then solving for $\xi(t) \in \mathfrak{g}$ in $g'(t) = TL_{g(t)} \xi(t)$.
+
+\begin{defn}
+
+Under the conditions of theorem \ref{thm:1} and theorem \ref{thm:2}, a point is called a \textbf{relative equilibrium} if $\pi_{\mu} \in P_{\mu}$ is a fixed point for the reduced Hamiltonian system over $\mu \in \mathfrak{g}^*$. A point is relatively periodic if it is a periodic point of the reduced action.
+\end{defn}
+
+\begin{prop}
+
+Under the conditions of theorems \ref{thm:1} and \ref{thm:2}, let $p \in J^{-1}(\mu)$. Let $\Phi$ be a symplectic group action on $P$ and let $F^{X_H}_t$ be a Hamiltonian flow of $X_H$. 
+\begin{enumerate}
+    \item TFAE:
+    \begin{enumerate}
+        \item $p\in P$ is a relative equilibrium
+        \item There is a one-parameter subgroup $g(t)$ of $G$ such that $\forall t \in \mathbb{R}, \hspace{4pt} F^{X_H}_t (p) = \Phi(g(t),p)$
+    \end{enumerate}
+    \item TFAE: 
+    \begin{enumerate}
+        \item $p \in P$ is a relative periodic point
+        \item There exists $g \in G$ and $\tau > 0$ such that $F^{X_H}_{t+\tau} (p) = \Phi(g,F^{X_H}_t (p))$ for all $t \in \mathbb{R}$
+    \end{enumerate}
+\end{enumerate}
+
+\end{prop}
+
+\begin{prop}[Souriau-Smale-Robbin]
+Let the conditions of theorems \ref{thm:2} and \ref{thm:1} hold. Then $p \in J^{-1}(\mu)$ is a relative equilibrium $\iff$ $p$ is a relative equilibrium of $H \times J : P \times \mathfrak{g}^* \to \mathbb{R} \times \mathfrak{g}^*$.
+\end{prop}
+
+\begin{lem}[Lagrange Multiplier Theorem]
+
+Let $T: \textbf{E} \to \mathbb{R}$ and $A: \textbf{E} \to \textbf{F}$ be linear maps, $A$ is surjective and $\textbf{E}, \textbf{F}$ are finite-dimensional vector spaces. Then $T$ is surjective on $\mathrm{ker}A \iff T \times A: \textbf{E} \to \mathbb{R} \times \textbf{F}$ is surjective.
+\end{lem}
+
+\begin{defn}
+Let $(P, \omega)$ be a symplectic manifold and $G$ a Lie group acting symplectically on $P$ and leaving a Hamiltonian $H$ invariant. Assume that the hypotheses of theorems \ref{thm:2} and \ref{thm:1} hold. A relative equilibrium $p \in P$ is \textbf{relatively stable} is $\pi_{\mu}$ is stable for the induced dynamical system $X_{H_{\mu}}$ on $P_{\mu}$ where $\pi_{\mu}(p)$.
+\end{defn}
+
+\begin{thm}
+Let the conditions of theorems \ref{thm:1} and \ref{thm:2} hold. Suppose that the Hessian $(\mathrm{Hess}H_{\mu})(\pi_{\mu}(p))$ is postive (or negative) definite. Then $p$ is relatively stable.
+\end{thm}
+
+\begin{defn}
+Let $(P,\omega)$ be a sympletic manifold. A map is \textbf{antisymplectic} if $\mu^* \omega = - \omega$. A Hamiltonian system is called \textbf{reversible} if there is an antisymplectic involution such that $H \circ \mu = H$.
+\end{defn}
+
+\begin{prop}
+Let $H$ be reversible and let $c(t)$ be an integral curve of $X_H$. Then $\mu \circ c(-t)$ is also an integral curve of $X_H$. So $F^{X_H}_{-t}(x) = \mu F^{X_H}_t(\mu(x)) $.
+\end{prop}
+
+\subsection{Hamiltonian Systems on Lie Groups and the Rigid Body}
+
+Let $G$ be a (finite-dimensional) Lie group. Then the tangent bundle is trivial. There are two isomorphisms on the tangent bundle:
+$\lambda(v) = (g, TL^{-1}_g (v)); \hspace{4pt} \rho(v) = (g, TR^{-1}_g(v))$\\
+\indent $\lambda$ is sometimes called the \textbf{body coordinates} and $\rho$ the \textbf{space coordinates}. The transition is given by:
+\begin{equation}(\rho \circ \lambda^{-1})(g,\xi) = (g, \mathrm{Ad}_g \xi)\end{equation}
+\indent Now we will establish the relationship between time derivatives in space and body coordinates. Let $x(t)$ be a curve in $G$ and let $v_0(t)$ be a curve such that $v_0(t) \in T_{x(t)}G$. Let $\xi(t)$ be $x(t)$ in body coordinates, i.e. $\xi(t) = \lambda(x(t)) = TL_{x(t)^{-1}} v_0(t)$, so that $\tilde{\xi}(t) = \mathrm{Ad}_{x(t)}(\xi(t))$. Then
+\begin{equation}\dot{\tilde{\xi}}(t) = \mathrm{Ad}_{x(t)} \dot{\xi}(t) + [\rho(\dot{x}), \tilde{\xi}(t)] = \tilde{\dot{\xi}}(t) + [v_s(t), \tilde{\xi}(t)] \end{equation}
+Where $v_s(t)$ is the velocity in space coordinates. \\
+\indent Now we look at the analogous situation on the cotangent bundle. Here we have two isomorphism, $\overline{\lambda}$ and $\overline{\rho}$. They are defined adjointly:
+\begin{equation}\overline{\lambda}(\alpha) = (g, \alpha \circ TL_g)\end{equation}
+\begin{equation}\overline{\rho}(\alpha) = (g, \alpha \circ TR_g)\end{equation}
+And the conversion between them:
+\begin{equation} (\overline{\rho} \circ \overline{\lambda}^{-1})(g,\mu) = (g, \mathrm{Ad}^*_{g^{-1}}(\mu)) \end{equation}
+And the time derivatives are related by:
+\begin{equation}\dot{\tilde{\mu}} = \tilde{\dot{\mu}} - \langle \mathrm{ad}^*(v_b(t)), \tilde{\mu} \rangle\end{equation}
+
+Now onto Hamiltonian systems on $T^*G$ and $TG$, but with the canonical forms in body coordinates, i.e. $\theta_B = \overline{\lambda}_* \theta_0$ and $ \omega_B = \overline{\lambda}_* \omega_0$.
+
+\begin{prop}
+
+Let $(g,\mu) \in G \times \mathfrak{g}^*$ and $(v,\rho),(w,\sigma) \in T_{(g,\mu)}(G \times \mathfrak{g}^*)$. Then
+\begin{enumerate}
+    \item $\langle \theta_B(g,\mu), (v,\rho) \rangle = \mu(TL_{g^{-1}} v)$
+    \item $\omega_B(g,\mu)((v,\rho),(w, \sigma)) = \sigma(TL_{g^{-1}}v) - \rho(TL_{g^{-1}} w) + \mu( [TL_{g^{-1}} v, TL_{g^{-1}} w])$
+\end{enumerate}
+\end{prop}
+
+Now a Riemannian metric pulls the natural canonical structure on the cotangent bundle to one on the tangent bundle. This one-form $\Theta$ has the action $ \langle \Theta(v), w_v \rangle = \langle T\pi(w), v \rangle$, which induces a symplectic form $\Omega = - d\Theta$. Now we look for $\Theta$ and $\Omega$ in body coordinates: $\Theta = \lambda_*\Theta; \hspace{4pt} \Omega_B = \lambda_*\Omega$.
+
+\begin{prop}
+
+Let $(g,\xi) \in G \times \mathfrak{g}^*$ and $(v,\zeta),(w,\eta) \in T_{(g,\xi)}(G \times \mathfrak{g})$. Then 
+\begin{enumerate}
+    \item $\langle \Theta(g,\xi), (v,\zeta) \rangle = \langle TL_{g^{-1}}(v), \xi \rangle$
+    \item $\Omega(g,\xi)((v,\zeta),(w,\eta)) = \langle \eta, TL_{g^{-1}}(v) \rangle - \langle \zeta, TL_{g^{-1}}(w) \rangle + \langle \xi, [TL_{g^{-1}}(v), TL_{g^{-1}}w] \rangle $
+\end{enumerate}
+
+\end{prop}
+
+Let $\Lambda: G \times G \to G$ be the action of $G$ on itself by left translations.
+
+\begin{thm}[Euler Conservation Laws]\label{thm:3}
+
+    \begin{enumerate}
+        \item The $\mathrm{Ad}^*$-equivariant momentum mapping $\overline{J}$ of the action $\Lambda^{T^*}$ on $T^*G$ is given by $\overline{J}: T^*G \to \mathfrak{g}^*; \hspace{4pt} \overline{J}(\alpha_g)(\xi) = \alpha_g(TR_g(\xi))$. This is a momentum mapping for left-invariant $H$.
+        \item If $G$ has a left-invariant metric $\langle, \rangle$, then the $\mathrm{Ad}^*$-equivariant momentum mapping $J$ of the action $\Lambda^T$ on $TG$ is given by $J: TG \to \mathfrak{g}^*; \hspace{4pt} J(v_g)(\xi) = \langle v_g, TR_g(\xi) \rangle$. This is a momentum mapping for left-invariant Lagrangians, in particular, the kinetic energy $K = \frac{1}{2}\langle v, v \rangle$.
+        \item The action $\Lambda^{T^*}$ in body coordinates is given by $\Lambda^{T^*}_B: G \times G \times \mathfrak{g}^* \to G \times \mathfrak{g}^*; \hspace{4pt} (g,(h,\mu)) \mapsto (gh,\mu)$. The momentum mapping of this action $\overline{J}_B: G \times \mathfrak{g}^* \to \mathfrak{g}^*$ is given by $\overline{J}_B(\xi) = \overline{J}(\xi) \circ \overline{\lambda}^{-1}$. If a Hamiltonian is left invariant, then this is a momentum mapping for it.
+        \item The action $\Lambda^T$ on a group $G$ with left-invariant metric $\langle , \rangle$. Then a left-invariant Lagrangian has an invariant momentum mapping $J_B(\xi) = J(\xi) \circ \lambda^{-1}$.
+        \item Let $\langle , \rangle$ be a left-invariant metric. The action $\Lambda^T$ in space coordinates is given by 
+        \begin{equation}\Lambda^T_S: G \times G \times \mathfrak{g} \to G \times \mathfrak{g}; \hspace{2pt} (g,(h,\xi)) \mapsto (gh, \mathrm{Ad}_g(\xi))\end{equation}
+        The $\mathrm{Ad}^*$-equivariant momentum mapping of this action is $J_S(\xi) = J(\xi) \circ \rho^{-1}$. Every left-invariant Lagrangian has this as a momentum mapping.
+    \end{enumerate}
+\end{thm}
+
+If $\langle x, y \rangle = \langle A(y), x \rangle$ for some $A:\mathfrak{g} \to \mathfrak{g}^*$, then $J_S(\xi) = (\mathrm{Ad}^*_{g^{-1}} \circ A \circ \mathrm{Ad}_{g^{-1}})(\xi)$. The Euler's conservation laws then becomes a conservation of a vector quantity 
+\begin{equation}L_{\xi,g} = (Ad^*_{g^{-1}}) \circ A \circ \mathrm{Ad}_{g^{-1}}) \xi\end{equation}
+The plane $\mathcal{I}_{\xi, g} = \{ \eta \in \mathfrak{g} \vert \mathcal{L}_{\xi} (\eta) = 0 \}$ is called the \textbf{invariable plane} for the initial condition $\xi \in \mathfrak{g}$.
+
+\begin{thm}
+
+In reference to theorem \ref{thm:3} part 5, let $E=L=K=\frac{1}{2}\langle TR_g \xi, TR_g \xi \rangle = \frac{1}{2}\langle \mathrm{Ad}_{g^{-1}} \xi, \mathrm{Ad}_{g^{-1}} \xi \rangle$. Let $w(t)$ be an integral curve of $X_L$ in space coordinates. Let $E_0 = \frac{1}{2}\langle w(0), w(0) \rangle$, and let $S(t)$ be the image of the inertial ellipsoid $\langle \xi, \xi \rangle = e E_0$ after $t$ seconds, and in space coordinates, that is 
+\begin{equation}S(t) = \{ \xi \in \mathfrak{g} \vert \langle Ad_{x(t)^{-1}} \xi, Ad_{x(t)^{-1}} \xi \rangle = 2 E_0 \}\end{equation}
+Then letting $\mathcal{I}_{w(t), x(t)}$ denote the invariable plane,
+\begin{enumerate}
+    \item $\mathcal{I}_{w(t),x(t)}$ is tangent to $S(t)$ at $w(t)$
+    \item $\mathcal{I}_{w(t),x(t)}$ is independent of $t$
+\end{enumerate}
+\end{thm}
+
+On $T^*G$, consider a left-invariant Hamiltonian and let $H_B = H \circ \overline{\lambda}^{-1}$ be its expression in body coordinates. Clearly $\overline{\lambda}_* X_H = X_{H_B}$ so that 
+\begin{equation}X_{H_B}: G \times \mathfrak{g}^* \to TG \times (\mathfrak{g}^* \times \mathfrak{g}^*); \end{equation}
+\begin{equation}X_{H_B}(g, \mu) = (\overline{X}(g,\mu), \mu, \overline{Y}(g,\mu)\end{equation}
+So that
+\begin{equation}\overline{X}:G \times \mathfrak{g}^* \to TG; \hspace{4pt} \overline{Y}: G \times \mathfrak{g}^* \to \mathfrak{g}^*\end{equation}
+So that for any $\mu$, $\overline{X}(\cdot, \mu)$ is a left-invariant vector field on $G$, and $\overline{Y}$ is independent of $g$. $\overline{Y}$ is called the \textbf{Euler Vector field} or the \textbf{Euler equations in cotangent formulation}. This, and the flow of $\overline{Y}$ is summarized in the following proposition.
+
+\begin{prop}
+
+\begin{enumerate}
+    \item Let $X \in \mathfrak{X}(T^*G)$ be left invariant and let $X_B = \overline{\lambda}_* X$ be its expression in body coordinates; then $X_B (g,\mu) = (\overline{X}(g,\mu), \mu, \overline{Y}(\mu))$ where $\overline{Y}: \mathfrak{g}^* \to \mathfrak{g}^*$ and $\overline{X}^{\mu}: g \mapsto \overline{X}(g,\mu)$ are a family of left-invariant vector fields on $G$ depending smoothly on $\mu \in \mathfrak{g}^*$. The flow of $\overline{Y}$, denoted by $\overline{H}_t$, is given by \begin{equation} \overline{H}_t(\nu) = F^X_t(\nu) \circ TL_{x(t)} \end{equation}
+    Where $x(t) = \pi(F_t(\nu))$. $\overline{Y}$ is called the \textbf{Cotangent Euler Vector Field}. In particular, this holds for $X_H$ and $X_{H_B}$.
+    
+    \item Assume $G$ has a left-invariant metric $\langle , \rangle$. Let $X \in \mathfrak{X}(TG)$ be left invariant, and let $X_B=\lambda_* X$ be its expression in body coordinates. Then $X_B(g,\xi) = (X^{\xi}(g), \xi, Y(\xi))$, where $Y:\mathfrak{g} \to \mathfrak{g}$ and $X^{\xi}$ are a family of left-invariant vector fields on $G$. The flow of $Y$, denoted by $H_t$, is given by $H_t(\xi) = TL_{x(t)^{-1}}(F^X_t(\xi))$. We call $Y$ the \textbf{Tangent Euler Vector Field}.\\
+    \indent This applies specifically when $X=X_L$ is left-invariant and $X_B = X_{L_B} = \lambda_* X_L$.
+    \end{enumerate}
+\end{prop}
+
+\begin{thm}
+
+\begin{enumerate}
+    \item Let $X \in \mathfrak{X}(T^*G)$ be a left-invariant vector field with flow $F^X_t$. Let $\overline{Y}: \mathfrak{g}^* \to \mathfrak{g}^*$ be the corresponding cotangent Euler vector field with flow $\overline{H}_t$. Then 
+    \begin{equation}    \langle \overline{Y}(\mu), \eta \rangle = ( \langle d \overline{J}(\eta), \mu \rangle ) (X(\mu)) + \langle \mu, [\dot{x}(0), \eta] \rangle\end{equation}
+    Where $x(t) = \pi (F_v(\mu))$. In particular, if $X=X_H$ is left-invariant, then the first term drops out.
+    
+    \item Let $G$ be a Lie group with left-invariant metric $\langle, \rangle$ and $X \in \mathfrak{X}(TG)$ a left-invariant vector field with flow $F^X_t$. Let $Y: G \to G$ be the correpsonding tangent Euler vector field with flow $H_t$. Then 
+    \begin{equation}\langle Y(\xi), \eta \rangle = \langle [\xi, \eta], \eta \rangle + (\langle d J(\eta), \xi \rangle )(X(\xi)).\end{equation}
+    In particular, if $X=X_L$, then the second term drops out.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+\begin{enumerate}
+    \item Let $H: T^*G \to \mathbb{R}$ be a left-invariant Hamiltonian, and let $G \cdot \mu = \{\mathrm{Ad}^*_{g^{-1}} \mu \vert g \in G \}$ be the image of a covector under the adjoint representation of the group. Then $(G \cdot \mu, \omega_{\mu}$ is a symplectic manifold with 
+    \begin{equation}\omega_{\mu}(\mathrm{Ad}^*_{g^{-1}} \mu)\left(\xi (\mathrm{Ad}^*_{g^{-1}}\mu), \eta (\mathrm{Ad}^*_{g^{-1}}\mu) \right) = - \left( \mathrm{Ad}^*_{g^{-1}}\mu \right) ([\xi, \eta])]\end{equation}
+    $\overline{Y}\restriction G \cdot \mu$ is a Hamiltonian vector field with Hamiltonian $H_{\mu}:G\cdot \mu \to \mathbb{R}$ given by 
+    \begin{equation}H_{\mu}\left( \mathrm{Ad}^*_{g^{-1}} \mu \right) = H \left( TR_{g^{-1}} (\mu) \right) = H \left( \mathrm{Ad}^*_{g^{-1}} \right)\end{equation}
+    \item Let $G$ have a bi-invariant metric $(,)$. Let $G \cdot \xi = \{ \mathrm{Ad}_g \xi \vert g \in G \}$. Then $(G \cdot \xi, \omega_{\xi})$ is a symplectic manifold with 
+    \begin{equation}\omega_{\xi} \left( \mathrm{Ad}_g \xi \right) \left( \eta (\mathrm{Ad}_g \xi ), \zeta (\mathrm{Ad}_g \xi) \right) = -\left( [\eta, \zeta], \mathrm{Ad}_g \xi \right)\end{equation}
+    And $Y \restriction G \cdot \xi$ is a Hamiltonian vector field with $H_{\xi}:G \cdot \xi \to \mathbb{R}$ given by
+    \begin{equation}H_{\xi} \left( \mathrm{Ad}_g \xi \right) = E \left( \mathrm{Ad}_g \xi \right)\end{equation}
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Arnold]
+
+Let $Y$ be the tangent Euler field and $Y(\xi)=0$. Let $Q$ be a bilinear form defined by 
+\begin{equation}Q(\eta, \zeta) = \langle A^{-1} (\mathrm{ad}\eta)^* A \xi, A^{-1}(\mathrm{ad}\zeta)^* A \xi \rangle + \langle \xi, A^{-1} (\mathrm{ad}\zeta)^* (\mathrm{ad}\eta)^* A \xi \rangle\end{equation}
+If $Q$ is positive or negative definite, then $\xi$ is a stable equilibrium point of $Y \restriction G \cdot \xi$
+\end{thm}
+
+Now we consider Hamiltonians and Lagrangians that are not left-invariant. Consider the energy function $E=K+V \circ \pi$, for $V$ not left-invariant. Let $F_t(\eta)$ be the flow of $H$. Define 
+\begin{equation}H_t(\eta) = TL_{x(t)^{-1}} F_t(\eta)\end{equation}
+This won't give a flow on $\mathfrak{g}$ because $F_t$ is not left-invariant. We will, however, have a time-dependent vector field by setting
+\begin{equation}Y_t(H_t(\xi)) = \frac{d}{dt}H_t(\xi)\end{equation}
+
+\begin{prop}
+\begin{equation}Y_t(H_t(\xi)) = Y(H_t(\xi))-TL_{x(t)^{-1}} \mathrm{grad} V(x(t))\end{equation}
+Where $Y$ is the Euler Vector field for $G$.
+\end{prop}
+
+\begin{prop}
+Let $\langle, \rangle$ be a left-invariant metric and $K(v)=\frac{1}{2}\langle v, v \rangle$. Let $V$ be smooth and bounded below. Then the flow of $E=K+V \circ \pi$ is complete.
+\end{prop}
+
+The Euler Equations become simpler if the Lie algebra $\mathfrak{g}$ carries a nondegenerate symmetric bilinear form $(,)$ that is invariant under the adjoint maps:
+\begin{equation}(\mathrm{Ad}(g) \xi, \mathrm{Ad}(g) \eta) = (\xi, \eta)\end{equation}
+Then this is a pseudo-Riemannian metric that is both right- and left-invariant. \\
+\indent Suppose that $(,)$ is a nondegenerate symmetric bilinear form on $\mathfrak{g}$. Then $\langle \xi, \eta \rangle = (I\xi,\eta)$, where $I:\mathfrak{g} \to \mathfrak{g}$ is linear and symmetric with respect to $(,)$. The Euler equations then read:
+\begin{equation}(IY(\xi),\eta)=(I\xi, [\xi,\eta])=(I\xi, \mathrm{ad}(\xi)\eta)\end{equation}
+
+\begin{lem}
+Suppose that $(,)$ is invariant under $\mathrm{Ad}(g)$ for all $g$. Then for each $\xi \in \mathfrak{g}$, $\mathfrak{ad}(\xi)$ is skew-symmetric with respect to $(,)$.
+\end{lem}
+So that if $(,)$ is invariant, we have that $Y(\xi) = I^{-1}[I\xi,\xi]$.
+
+\begin{prop}
+
+Suppose that $\langle , \rangle$ is invariant under all the actions $\mathrm{Ad}(\mathrm{exp}(t\eta)) \hspace{4pt} \forall t \in \mathbb{R}$. Then the function $\mu_{\eta}$ defined by:
+\begin{equation}
+\mu_{\eta}(\xi) = \langle \eta, \xi \rangle
+\end{equation}
+is a constant for the motion for $H_t$. In fact, $\mu_{\eta}(Y(\xi))=0 \hspace{4pt} \forall \xi \in \mathfrak{g}$.
+\end{prop}
+
+\begin{cor}
+Suppose that $\langle, \rangle$ is invariant under adjoint actions of $G$. Then the corresponding Euler vector field vanishes identically, and the geodesic flow is given by the exponential map:
+\begin{equation}\lambda \circ F_t \circ \lambda^{-1} (g, \xi) = ((\mathrm{exp}(t\xi)g,\xi)\end{equation}
+\end{cor}
+
+\subsection{The Topology of Simple Mechanical Systems}
+
+Stephen Smale set out a topological program for studying Hamiltonian systems with symmetry, which goes as follows. Let $H$ be a Hamiltonian on a symplectic manifold $(P,\omega)$ and let $G$ be a Lie group acting on $P$, leaving $H$ invariant and having a momentum mapping $J:P \to \mathfrak{g}^*$. Then we can form the \textbf{Energy Momentum Mapping}:
+\begin{equation}H \times J: P \to \mathbb{R} \times \mathfrak{g}^*, \hspace{4pt} (H \times J)(p) = (H(p),J(p))\end{equation}
+So that the sets 
+\begin{equation}I_c = (H \times J)^{-1}(c)\end{equation}
+Are invariant under the flow of $X_H$. To understand the topological features of $X_H$ we should figure out:
+\begin{enumerate}
+    \item the topology of $I_c$ for all $c$
+    \item the bifurcation set $\Sigma_{H \times J}$ of $H \times J$
+    \item the flow of $X_H$ on each $I_c$
+    \item How the set $I_c$ 'fit together' as $\mu$ is varied to understand the level set $H^{-1}(e)$
+\end{enumerate}
+
+Now we will define the \textbf{Bifurcation Set}. A smooth map $f:M \to N$ is locally trivial at a point $y_0$ in its range if there is a neighborhood $U$ of $y_0$ such that $\forall y \in U$ $f^{-1}(y)$ is a smooth submanifold of $M$ and there is a smooth map $h:f^{-1}(U) \to f^{-1}(y_0)$ such that $f \times h$ is a diffeomorphism from $f^{-1}(U)$ to $U \times f^{-1}(y_0)$. The bifurcation set of $f$ is 
+\begin{equation}\Sigma_f = \{ y_0 \in N \vert f \text{ fails to be locally trivial at } y_0 \}\end{equation}
+Now let $\sigma(f)$ be the set of critical points of $f$, and $\Sigma^{\prime}_f$ be the set of critical values of $f$. Then we have the following result:
+
+\begin{prop}
+\begin{equation}\Sigma^{\prime}_f \subset \Sigma_f\end{equation}
+\end{prop}
+
+If $f$ is proper (takes compact sets to compact sets), then $\Sigma^{\prime}_f = \Sigma_f$. Most of the time, $f$ does not have compact level sets. However, these are the `interesting' ones, because other systems arise by breaking the symmetry of symmetric systems. Now we'll get into the real meat of Smale's program.
+
+\begin{defn}
+
+A \textbf{Simple Mechanical System with Symmetry} is $(M,K,V,G)$, where:
+\begin{enumerate}
+    \item $M$ is a Riemannian manifold with metric $\gamma = \langle, \rangle$; $M$ is called the \textbf{configuration space} and $T^*M$ with its canonical symplectic structure is called the \textbf{phase space} of the system
+    \item $K:T^*M \to \mathbb{R}$ is the kinetic energy of the system defined by $K(\alpha) = \frac{1}{2}\langle \alpha, \alpha \rangle$, with the usual lift of the metric to the cotangent bundle
+    \item $V:M \to \mathbb{R}$ is the \textbf{potential energy} of the system;
+    \item $G$ is a connected Lie Group acting on $M$ which preserves the metric and the function $V$. $G$ is called the \textbf{symmetry group} of the system.
+    \item $H:T^*M \to \mathbb{R}$ is defined by $H=K + V \circ \pi$ is the \textbf{Hamiltonian} of the system.
+\end{enumerate}
+\end{defn}
+
+For most values $(h,\mu)$, the sets $I_{h,\mu} = (H \times J)^{-1}(h,\mu)$ are, for non-bifurcation values, manifolds; we will call them \textbf{invariant manifolds}, even if they are not truly manifolds. The isotropy group $G_{\mu}$ acts on $J^{-1}(\mu)$, but since $H$ is invariant as well, $G_{\mu}$ acts on $H^{1-}(h)$ invariantly. So $G_{\mu}$ acts on $I_{h,\mu}=H^{-1}(h) \cap J^{-1}(\mu)$. Then we can symplectically reduce $I_{h,\mu}$ by the group action to $\widehat{I}_{h,\mu}$, which is a submanifold of $J^{-1}(\mu)/G_{\mu}$. Here the Hamiltonian vector field reduces $(\pi_{\mu})_*(X_H \restriction_{J^{-1}(\mu)} =  X_{H_{\mu}}$ and can be projected down by $\pi_{h,\mu}:I_{h,\mu} \to \widehat{I}_{h\mu}$. So then it is clear that $\widehat{I}_{h,\mu}$ is the energy surface of the reduced Hamiltonian $H_{\mu}^{-1}(h)$. We will put in some legwork with bifurcation points first before examining the topology of the sets $\widehat{I}_{h,\mu}$.
+
+\begin{prop}
+
+\begin{equation}
+    \sigma(H \times J) = \sigma(J) \cup \left( \bigcup_{\mu \in \mathfrak{g}^*\backslash J(\sigma(J))} \sigma(H \restriction_{J^{-1}(\mu)}) \right)
+\end{equation}
+\indent In words, $\alpha \in T^*M$ is a critical point of $H \times J$ iff $T_{\alpha}J$ is not surjective or if $\alpha$ is a critical point of $H \restriction_{J^{-1}(\mu)}$ for some $\mu$.
+\end{prop}
+
+\begin{lem}
+\begin{enumerate}
+    \item Let $\Lambda = \{ x \in M \vert J_x = J \restriction_{T_x M} \text{ is not surjective} \}$. Then $\Lambda = \{ x \in M: \Xi_x: \mathfrak{g} \to T_x M, \hspace{4pt} \xi \mapsto \xi_M(x) \text{ is not injective} \} = \{ x \in M \vert \mathrm{dim}G_x \geq 1 \}$ where $G_x = \{g \in G \vert \Phi(g,x)=x \}$
+    \item $\Lambda$ is closed and $G$-invariant.
+\end{enumerate}
+\end{lem}
+
+This proposition tells us that $\Lambda \supset \pi_M (\sigma(J))$, so that $J$ has only regular values if $\Lambda$ is excluded. This means we can deal with $M \backslash \Lambda$ and $\Lambda$ separately since $\Lambda$ can be figured out nicely. \\
+\indent From before, we can reduce a phase space if we can find a one-form $\alpha_{\mu} \in T^*M$ with values in $J^{-1}(\mu)$. We can do this explicitly, then examine the Hamiltonian induced on $T^M_{\mu}$.\\
+\indent For $\mu \in \mathfrak{g}^*$ let $\alpha_{\mu} \in \Omega^1(M \Lambda)$ satisfy the following conditions:
+\begin{enumerate}
+    \item $\alpha_{\mu}(x) \in J_x^{-1}(\mu) = J^{-1}(\mu) \cap T_x^*M$
+    \item $K(\alpha_{\mu}(x)) \inf_{\alpha \in J^{-1}_x(\mu)}$ where $K$ is the kinetic energy.
+\end{enumerate}
+\indent The existence and uniqueness follows from existence and uniqueness of elements of minimal norm in certain sets of Hilbert spaces.
+
+\begin{prop}
+
+\begin{enumerate}
+    \item $\alpha_{\mu} \in Omega^1(M \backslash \Lambda)$, that is, a smooth one-form that is the unique critical point of $K$.
+    \item $\alpha_{\mu} \perp \mathrm{ker}J_{x} = J_x(0)$ with respect to the kinetic energy.
+    \item $\alpha_{\mu}$ is $G_{\mu}$-equivariant.
+\end{enumerate}
+\end{prop}
+
+We have a symplectic embedding $\phi_{\mu}: P_{\mu} \to T^*M_{\mu}$ given by \ref{thm:4}. We know that $H$ induces $H_{\mu}$ on $P_{\mu}$ where $H = H_{\mu} \circ \pi_{\mu}$ and $X_H$ induces $X_{H_{\mu}}$ on $P_{\mu}$. In $T^*M_{\mu}$ we have $\widehat{H}_{\mu} = H_{\mu} \circ \phi^{-1}_{\mu}$ induced on $\phi_{\mu}(P_{\mu})$. Points in $T^*M_{\mu}$ are $G_{\mu}$ orbits of covectors $\alpha_x$ vanishing on $T_x(G_{\mu} \cdot x)$ (cf. lemma \ref{lem:1}), so we can suggestively write them as $G_{\mu} \cdot \alpha_x$. Then we have that 
+\begin{align*}
+    \widehat{H}_{\mu}(G_{\mu}\cdot \alpha_x) & = H(\alpha_x + \alpha_{\mu}(x)) = K(\alpha_x + \alpha_{\mu}(x)) + V(x) \\
+    & = K(\alpha_x)+2 \langle \alpha_x, \alpha_{\mu}(x) \rangle + K(\alpha_{\mu}(x)) + V(x) \\
+    & = K(\alpha_x) + K(\alpha_{\mu}(x)) + V(x)
+\end{align*}
+
+\indent So if we set $V_{\mu}(x) = K(\alpha_{\mu}(x)) + V(x)$ then the projection of $\widehat{H}_{\mu}$ is the projection of $K+V_{\mu}$. Then we can form a simple mechanical system on $\phi_{\mu}(P_{\mu})$ by restricting $K+V_{\mu} \circ \pi_{\mu}$.
+
+\begin{thm}
+The reduction of a simple mechanical system on $T^*M$ with $\Lambda = \emptyset$ is a simple mechanical system on $T^*M_{\mu}$, where $M_{\mu} = M / G_{\mu}$. The kinetic energy of the reduced system is $\widehat{K}$ induced from the $G_{\mu}$-invariant kinetic energy $K$ on $T^*M$ and the potential $\widehat{V}_{\mu}$ induced from the function defined by 
+\begin{equation}
+    V_{\mu}(x) = V(x) + K(\alpha_{\mu}(x)) = H(\alpha_{\mu}(x))
+\end{equation}
+Called the \textbf{effective} or \textbf{amended potential}. Note that the symplectic structure on $T^*M$ may not be the canonical structure.
+\end{thm}
+
+Since $\Lambda = \emptyset$ we are assuming $\mu$ is a regular value of $J$ and the actions of $G_{\mu}$ are free and proper, or else we work with local statements. If $\Lambda \neq \emptyset$, then we work with $M \backslash \Lambda$ and determine the behavior of $\Lambda$ separately. \\
+\indent In $T^*M_{\mu}$ the subbundle $\phi(M_{\mu})$ over $M_{\mu}$, equilibrium points are points in the zero section that are critical points of $\widehat{V}_{\mu}$. These critical points are one-to-one with critical orbits of $V_{\mu}$. It's also worth knowing that a critical point of $\widehat{V}_{\mu}$ is nondegenerate, then the indices of $\widehat{V}_{\mu}$ and $V_{\mu}$ along the corresponding nondegenerate critical manifold are equal. \\
+\indent Critical points of $V_{\mu}$ are one-to-one with relative equilibria, which are critical points of $H \times J$ on $J^{-1}(\mu)$, or equivalently to critical points of $H \restriction_{J^{-1}(\mu)}$. In summary:
+
+\begin{cor}\label{cor:1}
+\begin{enumerate}
+    \item $V_{\mu} \circ \Phi_g = V_{\mu}$ and $\sigma(V_{\mu})$ is $G_{\mu}$ invariant.
+    \item $\sigma (H \restriction{J^{-1}(\mu)}) = \alpha_{\mu}(\sigma(V_{\mu}))$ and is $G_{\mu}$ and $X_H$ invariant.
+\end{enumerate}
+\end{cor}
+
+\begin{thm}
+
+Let $\mu$ be a regular value of $J$. Then
+\begin{equation}
+    \Sigma^{\prime}_{H \times J \restriction_{T^*(M \backslash \Lambda)}}= \{ (h,\mu) \vert h \in V_{\mu}(\sigma(V_{\mu})) \}
+\end{equation}
+\end{thm}
+
+To continue we will introduce some definitions related to vector bundles.
+
+\begin{defn}
+
+The \textbf{Unit Disk Bundle} of a vector bundle $E$ with an inner product $\langle, \rangle_{E}$ is the set
+\begin{equation}
+    D_1(E) = \{ v \in E \vert \Vert v \Vert \leq 1 \}
+\end{equation}
+and the \textbf{Unit Sphere Bundle} is the set
+\begin{equation}
+    S_1(E) = \{ v \in E \vert \Vert v \Vert = 1 \}
+\end{equation}
+And if the base space has no boundary, then $\partial D_1(E) = S_1(E)$. If not, then for each $x$  in the boundary, identify $\pi^{-1}(x) \cap D_1(E)$ with the point $x$, forming the space $\alpha(E)$, the \textbf{Reduced Disk Bundle} of $E$. Doing the same with $S_1(E)$ we get the \textbf{Reduced Sphere Bundle} $\beta(E)$ of $E$. These can be given smooth manifold structures and $\partial \alpha(E) = \beta(E)$.
+\end{defn}
+
+For trivial bundles of $M$ the sphere and disk bundles have explicit forms.
+\begin{enumerate}
+    \item If the base space is boundaryless, then $\alpha_k(M) \approx M \times D^k; \hspace{4pt} \beta_k(M) \approx M \times S^{k-1}$, where $\alpha_k$ and $\beta_k$ are the disk and sphere bundles of the trivial real bundles of rank $k$.
+    \item If the base space is boundaryless, then $\beta_1(M)$ is the 'double' of $M$. The double of $M$ is the gluing of a second copy of $M$ with reverse orientation to its boundary, so the result is oriented and boundaryless.
+    \item $\beta_k(D^m) \approx S^{k+m-1}$
+    \item For boundaryless manifolds, $ \alpha_k(M_1 \times M_2) \approx M_1 \times \alpha_k(M_2)$, $\beta_k(M_1 \times M_2) \approx M_1 \times \beta_k(M_2)$.
+\end{enumerate}
+
+\indent For a simple mechanical system with symmetry $(M,K,V,G)$ with $\Lambda = \emptyset$, let
+\begin{equation}
+    M_{h,\mu} = V^{-1}_{\mu} \left( (-\infty, h] \right)
+\end{equation}
+\indent If $h$ is a regular value for $V_{\mu}$, then $M_{h,\mu}$ is a smooth manifold with boundary and $\partial M_{h,\mu} = V^{-1}_{\mu}(h)$. Let
+\begin{equation}
+    E_{h,\mu}= \{ \alpha \in T^*M \vert J(\alpha)=\mu, H(\alpha) \leq h \} = (H \restriction_{J^{-1}(\mu)})^{-1}((-\infty, h])
+\end{equation}
+
+If $h$ is a regular value of $V_{\mu}=H \circ \alpha_{\mu}$, then it is also a regular value of $H \restriction_{J^{-1}(\mu)}$ by the second part of corollary \ref{cor:1}. So then $E_{h,\mu}$ is a submanifold (with boundary) of $T^*M$. We have that
+\begin{equation}
+    \partial E_{h,\mu} = I_{h,\mu}
+\end{equation}
+
+\begin{thm}
+Given a mechanical system with symmetry $(M,K,V,G)$ with $\Lambda = \emptyset$ and $h$ a regular value of $V_{\mu}$, the following are true:
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item $E_{h,\mu}= \{ \alpha_x \in J^{-1}(\mu) \vert K(\alpha_x)-K(\alpha_{\mu}(x)) \leq h - V_{\mu}(x) \}$
+        \item $\partial E_{h,\mu} = I_{h,\mu}$
+        \item $\pi_M(E_{h,\mu}) \subset M_{h,\mu}$
+    \end{enumerate}
+    \item If $F=J^{-1}(0)$, then $\pi_M \restriction_{F}: F \to M$ is a vector subbundle of $T^*M$. Let $F\restriction_{M_{h,\mu}}$ its restriction to $M_{h,\mu} \subset M$. Then if $(h,\mu) \notin \Sigma^{\prime}_{H \times J}$, $E_{h,\mu}$ is diffeomorphic to $\alpha(F \restriction_{M_{h,\mu}})$.\\
+    \indent More precisely, there is a $G_{\mu}$-invariant diffeomorphism of manifolds with boundary $\phi_{h,\mu}:\alpha(F \restriction_{M_{h,\mu}}) \to E_{h,\mu}$.
+    \item The induced diffeomorphism on the boundaries
+    \begin{equation}
+        \partial \phi_{h,\mu} : \beta(F \restriction_{M_{h,\mu}}) \to I_{h,\mu}
+    \end{equation}
+    is $G_{\mu}$ equivariant.
+    \item If $C$ is a nondegnerate critical submanifold of $V_{\mu} \restriction_{M_{h,\mu}}$ of index $\lambda$, then $\alpha_{\mu}(C)$ is a nondegenerate critical submanifold of $H \restriction_{E_{h,\mu}}$ of the same index.
+\end{enumerate}
+\end{thm}
+
+\indent All the objects defined so far have been $G_{\mu}$-equivariant, so that symplectic reduction is possible. Since we can reduce dimension, it would be beneficial to have a "topological" theorem similar to the above for the reduced manifolds $\widehat{M}_{h,\mu}=M_{h,\mu}/G_{\mu}$, and so on. \\
+\indent We will denote the passing of object to quotients by a hat: $\widehat{H}: \widehat{E}_{h,\mu} \to \mathbb{R}, \hspace{4pt} \widehat{\alpha_{\mu}}:\widehat{M} \to \widehat{T^*M}$, and $\widehat{V}_{\mu}= \widehat{H}\circ \widehat{\alpha}_{\mu}$. The relation $\partial \widehat{E}_{h,\mu}=\widehat{I}_{h,\mu}$ still holds.
+
+\begin{thm}[Reduced Invariant Manifold Theorem of Smale]
+Assume $G_{\mu}$ acts freely and properly on $M_{h,\mu}$ and $E_{h,\mu}$. Then $\widehat{M}_{h,\mu}$ and $\widehat{E}_{h,\mu}$ are manifolds. Further assume that $\widehat{V}_{\mu}:\widehat{M}_{h,\mu}\to \mathbb{R}$ has nondegenerate critical points.
+\begin{enumerate}
+    \item If $\widehat{x} \in \widehat{M}_{h,\mu}$ in a nondegenrate critical point of $\widehat{V}_{\mu}$, then $\widehat{\alpha}_{\mu}(\widehat{x})$ will be a nondegenerate critical point of $\widehat{H} \restriction_{\widehat{E}_{h,\mu}}$ of the same index. This index is the same index of $V_{\mu}$ on the nondegenerate critical manifold $\pi_{\mu}^{-1}(\widehat{x}) \subset M_{h,\mu}$ where $\pi_{\mu}:M_{h,\mu} \to \widehat{M}_{h,\mu}$ is the projection. 
+    \item If the vector bundle $J^{-1}(0) \restriction_{M_{h,\mu}}$ is trivial, then
+    \begin{equation}
+        I_{h,\mu} = \beta_S(M_{h,\mu}); \hspace{4pt} \widehat{I}_{h,\mu}=\beta_S (\widehat{M}_{h,\mu})
+    \end{equation}
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+
+Let $(M,K,V,G)$ be a simple mechanical system with symmetry and assume that $\alpha_{x_0} \in J^{-1}(\mu)$ for a regular value of $J$. Denote by the $H=K+V \circ \pi_M$ the Hamiltonian, by $E=K+V \circ \pi_M$ the energy function, and by $L=K-V \circ \pi_M$ the Legendre transformation of $H$, with $\gamma^{\flat}$ the Legendre transform. Then TFAE:
+
+\begin{enumerate}
+    \item $\alpha_{x_0}$ is a relative equilibrium
+    \item $\exists \xi \in \mathfrak{g}$ satisfying $(J \circ \gamma^{\flat} \circ \xi_M)(x_0) = \mu$ satisfying $X_L(\xi_M(x_0))=\xi_TM(\xi_M(x_0))$
+    \item $\exists \xi \in \mathfrak{g}$ satisfying $(J \circ \gamma^{\flat} \circ \xi_M)(x_0)=\mu$ such that $x_0$ is critical point of $L \circ \xi_M$
+    \item $\exists \xi \in \mathfrak{g}$ such that $(J \circ \gamma^{\flat} \circ \xi_M)$ such that $x_0$ is a critical point of $V-K \circ \gamma^{\flat} \circ \xi_M$
+    \item $x_0$ is a critical point of the amended potential $V_{\mu}$ and $\alpha_{x_0}=\alpha_{\mu}(x_0)$
+\end{enumerate}
+\end{thm}
+
+Here are some remarks about the $\alpha$, $\beta$ constructions.
+
+\begin{prop} \label{prop:1}
+
+Let $M$ be a manifold without boundary and $\pi:E \to M$ a vector bundle with metric $\langle, \rangle_E$. Let $f:M \to \mathbb{R}$ and $c$ a regular value for $f$. Define $g: E \to \mathbb{R}$ by $g(v)=\langle v,v \rangle_E + (f \circ \pi)(v)$. Then:
+\begin{enumerate}
+    \item $c$ is a regular value for $g$ $\iff$ $c$ is a regular value for $f$; $g^{-1}((-\infty,c])$ is a smooth manifold with boundary $g^{-1}(c)$
+    \item $g^{-1}((-\infty,c])$ is homeomorphic to $\alpha(E\restriction_{f^{-1}((-\infty,c])})$, which is in fact a diffeomorphism
+    \item If $\pi_1:E_1 \to M$ is another Riemannian vector bundle over $M$ and $f_1:M \to \mathbb{R}$ is another smooth map such that $c$ is a regular value for both $f$ and $f_1$, $f^{-1}_1((-\infty,c])=f^{-1}((-\infty,c])$, and $E_1 \restriction_{f^{-1}_1((-\infty,c])} $ is vector bundle isomorphic to $E \restriction_{f^{-1}((-\infty,c])}$, then $\alpha(E_1 \restriction_{f^{-1}_1((-\infty,c])})$ is diffeomorphic to $\alpha(E \restriction_{f^{-1}((-\infty,c])})$.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+
+Let $M, \pi:E \to M, f, c$ be as in Proposition \ref{lem:1}. Assume there is a map $h:E \to \mathbb{R}$ satisfying:
+\begin{enumerate}
+    \item For each $x \in M$, $h \restriction_{E_x}: E_x \to \mathbb{R}$ and has a unique nondegenerate minimum at the origin of the fiber
+    \item $f(x) = h(0_x)$
+\end{enumerate}
+\indent Then $c$ is a regular value for $h$ and $\alpha( E \restriction_{f^{-1}((-\infty,c])})$ is diffeomorphic to $h^{-1}((-\infty,c])$.
+\end{prop}
+\end{document}

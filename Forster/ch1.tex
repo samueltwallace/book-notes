@@ -1,0 +1,216 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+
+
+
+\begin{document}
+\section{Covering Spaces}
+\subsection{The Definition of Riemann Surfaces}
+
+\begin{defn}
+
+Let $X$ be 2-d manifold. A \textit{complex chart} on $X$ is a homeomorphism $\phi:U \to V$ of an open subset $U$ of $X$ onto an open subset $V \subset \mathbb{C}$. Two chart $\phi_1, \phi_2$ are said to be \textit{holomorphically compatible} if the overlap map 
+\[
+\phi_2 \circ \phi_1 ^{-1} : \phi(U_1 \cap U_2) \to \phi(U_1 \circ U_2)
+\]
+is biholomorphic. A \textit{complex atlas} is a collection of mutually holomorphically compatible charts whose domains cover $X$.
+\end{defn}
+
+\begin{rmk}
+
+Open subdomains of complex charts naturally induce a  holomorphically compatible chart by restriction. Additionally, holomorphic compatibility is an equivalence relation.
+
+\end{rmk}
+
+\begin{defn}
+A \textit{complex structure} on a two-dimensional manifold is an equivalence class of holomorphically compatible atlases. 
+\smallskip
+A \textit{Riemann Surface} is a pair of a connected 2-d manifold and a complex structure on the manifold.
+\end{defn}
+
+\begin{defn}
+
+Let $X$ be a Riemann surface and $Y \subset X$ an open subset. A function $f: Y \to \mathbb{C}$ is called \textit{holomorphic} is for every chart $\psi$, the composition $f \circ \psi^{-1}: U \cap V \to \mathbb{C}$ is holomorphic. The set of holomorphic functions on $Y$ will be denoted by $\mathcal{O}(Y)$.
+
+\end{defn}
+
+\begin{rmk}
+
+\begin{enumerate}
+    \item The sum and product of holomorphic functions are again holomorphic, and constant functions are holomorphic. Thus $\mathcal{O}(Y)$ is a $\mathbb{C}$-algebra.
+    \item One only needs check the holomorphicity of a covering set of charts for $Y$, not every single chart.
+    \item The 'coordinate charts' $\psi$ is trivially holomorphic. One usually uses the letter $z$ instead of $\psi$.
+\end{enumerate}
+
+\end{rmk}
+
+\begin{thm}[Riemann's Removable Singularities Theorem]
+
+Let $U$ be an open subset of a Riemann surface and $a \subset U$. Suppose $f \in \mathcal{O}(U \backslash \{a\})$ is bounded in some neighborhood of $a$. Then $f$ can be uniquely extended to a function $\overline{f} \in \mathcal{O}(U)$
+
+\end{thm}
+
+\begin{defn}
+
+Suppose $X$ and $Y$ are Riemann surfaces. A cotninuous mapping $f:X \to Y$ is called \textit{holomorphic} if every coordinate representation of the function is holomorphic as a map from $\mathbb{C}$ to $\mathbb{C}$. \smallskip
+
+A mapping is \textit{biholomorphic} if it is bijctive, holomorphic, and its inverse is holomorphic. Two surfaces are isomorphic if  there is a biholomorphic mapping between them.
+
+\end{defn}
+
+\begin{rmk}
+
+\begin{enumerate}
+    \item When the target space is the complex plane, holomorphic mappings are clearly the same as holomorphic functions.
+    \item Composition of holomorphic mappings are again holomorphic.
+    \item A holomorphic mapping induces a ring homomorphism:
+    \[f^*: \mathcal{O}(V) \to \mathcal{O}(f^{-1}(V)); \hspace{4pt} f^*(\psi) = \psi \circ f\]
+\end{enumerate}
+
+\end{rmk}
+
+\begin{thm}[Identity Theorem]
+
+Suppose $X$ and $Y$ are Riemann surfaces and $f_1, f_2: X \to Y$ are two holomorphic mappings which coincide on a set $A \subset X$ with limit point $a \in X$. Then $f_1, f_2$ are identically equal.
+\end{thm}
+
+\begin{thm}
+
+Let $Y \subset_{op} X$ be an open subset of a Riemann surface $X$. A \textit{meromorphic function} on $Y$ is a holomorphic function $f: Y' \to \mathbb{C}$, $Y'$ an open subset with the following:
+
+\begin{enumerate}
+    \item $Y\backslash Y'$ consists of only isolated points.
+    \item For every point $p \in Y\backslash Y'$, 
+    \[\lim_{x \to p} \vert f(x) \vert = \infty    \]
+\end{enumerate}
+
+The points of $Y \backslash Y'$ are called the \textit{poles} of $f$. The set of all meromorphic functions on $Y$ is denoted by $\mathcal{M}(Y)$. 
+\end{thm}
+
+\begin{thm}
+
+Suppose $X$ is a Riemann surface and $f \in \mathcal{M}(X)$. For each pole $p$ of $f$, define $f(p)= \infty$. Then $f: X \to \mathbb{P}^1$ is a holomorphic mapping. Conversely, if $f: X \to \mathbb{P}^1$ is a holomorphic mapping, then $f$ is either identically equal to $\infty$, or $f^{-1}(\infty)$ is a set of isolated points and thus $f: X \backslash f^{-1}(\infty) \to \mathbb{C}$ is a meromorphic function on $X$.
+\end{thm}
+
+\subsection{Elementary Properties of Holomorphic Mappings}
+
+\begin{thm}[Local Behavior of Holomorphic Mappings]
+\label{thm:local-holomorph}
+Suppose $X$ and $Y$ are Riemann surfaces and $f: X \to Y$ a holomorphic mapping. Suppose $a \in X$ and $b = f(a)$. Then there exists an integer $k \geq 1$ and charts $\phi:U \to V$ on $X$ and $\psi: U' \to V'$ on $Y$ with the following properties:
+
+\begin{enumerate}
+    \item $a \in U; \phi(a)=0; \hspace{6pt} b \in U'; \psi(b)=0$
+    \item $f(U) \subset U'$
+    \item The map $F = \psi \circ f \circ \phi^{-1}: V \to V'$ is given by $F(z) = z^k$
+\end{enumerate}
+
+
+\end{thm}
+
+\begin{rmk}
+
+The number $k$ is theorem \ref{thm:local-holomorph} can be characterized in the following way. For every neighborhood $U_0$ of $a$ there exist neighborhoods $U \subset U_0$ of $a$ and $W$ of $b=f(a)$ such that the set $f^{-1}(y) \cap U$ contains $k$ elements for every points $y \in W, y \neq b$. One calls $k$ the \textit{multiplicity} of $f$ as $a$.
+
+\end{rmk}
+
+\begin{cor}
+
+Let $X$ and $Y$ be Riemann surfaces and let $f: X \to Y$ be a non-constant holomorphic mapping. Then $f$ is open; taking open sets to open sets.
+
+\end{cor}
+
+\begin{cor}
+
+Let $X$ and $Y$ be Riemann surfaces, and let $f: X \to Y$ be an injective holomorphic mapping. Then $f$ is a biholomorphic mapping of $X$ onto $f(X)$.
+
+\end{cor}
+
+\begin{cor}[Maximum Principle]
+Suppose $X$ is a Riemann surface and $f:X \to \mathbb{C}$ is a non-constant holomorphic function. Then the absolute value of $f$ does not attain its maximum.
+\end{cor}
+
+\begin{thm}
+
+Suppose $X$ and $Y$ are Riemann surfaces. Suppose $X$ is compact and $f:X \to Y$ is a non-constant holomorphic mapping. Then $Y$ is compact and $f$ is surjective.
+ 
+\end{thm}
+
+\begin{cor}
+
+Every holomorphic function on a compact Riemann surface is constant.
+
+\end{cor}
+
+\begin{cor}
+
+Every meromorphic function $f$ on $\mathbb{P}^1$ is a rational function.
+
+\end{cor}
+
+\begin{thm}[Liouville's Theorem]
+
+Every bounded holomorphic function $f: \mathbb{C} \to \mathbb{C}$ is constant.
+
+\end{thm}
+
+\subsection{Branched and Unbranched Coverings}
+
+\begin{defn}
+
+Suppose $X$ and $Y$ are topological spaces and $p:Y \to X$ is a continous map. For $x \in X$, the set $p^{-1}(x)$ is called the \textit{fiber} of $p$ over $x$. If $y \in p^{-1}(x)$, we say $y$ \textit{lies over} $x$. If $p: Y \to X$ and $q:Z \to X$ are continuous maps, then a map $f:Y \to Z$ is called \textit{fiber-preserving} if $p=q \circ f$. This means that ny points $Y \in Y$ lying over the point $x \in X$ is mapped to a point which also lies over $x$. 
+\smallskip \\
+\indent A subset $A$ of a topological space is called discrete if the subspace topology on $A$ is discrete. A mapping $p:Y \to X$ between topological spaces $X$ and $Y$ is said to be discrete if every fiber is a discrete subset of $Y$.
+\end{defn}
+
+\begin{thm}
+
+Suppose $X$ and $Y$ are Riemann surfaces and $p:Y \to X$ is a non-constant holomorphic map. Then $p$ is open and discrete.
+
+\end{thm}
+
+If $p:Y to X$ is a non-constant holomorphic map, then we will say $Y$ is a domain over $X$.\\
+\indent A holomorphic (meromorphic) function $f$ may also be considered as a multivalued holomorphic function on $X$ (??? this doesn't make sense).
+
+\begin{defn}
+
+Suppose $X$ and $Y$ are Riemann surfaces and $p: Y \to X$ is a non-constant holomorphic map. A point $y \in Y$ is called a \textit{branch point} or \textit{ramification point} of $p$, if there is no neighborhood $V$ of $y$ such that $p \restriction_V$ is injective. The map $p$ is called an \textit{unbranched holomorphic map} if it has no branch points.
+\end{defn}
+
+\begin{thm}
+
+Suppose $X$ and $Y$ are Riemann surfaces. A non-constant holomorphic map $p: Y \to X$ has no branch points iff $p$ is a local homeomorphism, i.e. every point $y \in Y$ has an open neighborhood $V$ which is mapped homeomorphically by $p$ onto an open set $U$ in $X$.
+
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

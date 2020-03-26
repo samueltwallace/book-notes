@@ -1,0 +1,435 @@
+\documentclass{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+\newtheorem*{pf}{Proof}
+
+
+
+\title{Hyperbolic Dynamics}
+\author{Samuel Wallace}
+
+\begin{document}
+
+\maketitle
+
+\section{Hyperbolic Sets}
+
+\indent Throughout, $M$ is a $C^1$ Riemannian manifold, $U \subset M$ a non-empty open subset, and $f:U \to M$ a $C^1$ diffeomorphism. 
+
+\begin{defn}
+
+\indent A compact, $f-$invariant subset $\Lambda \subset U$ is called \textit{hyperbolic} if there are $\lambda \in (0,1)$, $C>0$, and regular distributions $E^s_x, E^u_x \subset T_x M; \hspace{4pt} x \in \Lambda$ such that for all $x$:
+\begin{enumerate}
+    \item $T_x M = E^s_x \oplus E^u_x$
+    \item $\Vert T_x f^n v^s \Vert \leq C \lambda^n \Vert v^s \Vert$ for all $v^s \in E^s_x$
+    \item $\Vert T_x f^{-n} v^u \Vert \leq C \lambda^n \Vert v^u \Vert $ for all $v^u \in E^u_x$
+    \item $(T_x f) (E^s_x) = E^s_{f(x)}$ and $(T_xf)(E^u_x) = E^u_{f(x)}$
+\end{enumerate}
+\end{defn}
+
+\indent The distributions $E^s$ and $E^u$ are called the stable and unstable distribution of $f \restriction_{\Lambda}$. If $\Lambda = M$, then $f$ is called an \textit{Anosov diffeomorphism}.
+
+\begin{prop}
+
+Let $\Lambda$ be a hyperbolic set of $f$. Then the stable and unstable distributions are smooth and regular.
+
+\end{prop}
+
+
+\begin{prop}
+Let $\Lambda$ be a hyperbolic set of $f$ with constants $C$ and $\lambda$. Then for $\varepsilon > 0$ there is a $C^1$ Riemannian metric $\langle \cdot, \cdot \rangle^{\prime}$ in a neighborhood of $\Lambda$ called the \textit{Lyapunov} or \textit{adapted} metric, for which $f$ is hyperbolic with new constants $C^{\prime} = 1$ and $\lambda^{\prime}=\lambda + \varepsilon$, and the unstable and unstable distributions are $\varepsilon-$orthogonal ($\langle v^s, v^u \rangle^{\prime} < \varepsilon$ for unit vectors in the respective distributions).
+\end{prop}
+
+\indent A fixed point of a differentiable map $f$ is \textit{hyperbolic} if no eigenvalue of $T_xf$ lies on the unit circle. A periodic point of period $k$ is called \textit{hyperbolic} if no eigenvalue of $T_x f^k$ lies on the unit circle.
+
+\section{$\varepsilon$-Orbits}
+
+\indent An $\varepsilon$-orbit is a finite or infinite sequence $(x_n) \subset U$ satisfying $d(f(x_n),x_{n+1}) \hspace{2pt} \forall n$. These are also called \textit{pseudo-orbits}.
+
+\begin{thm}\label{thm:???}
+Let $\Lambda$ be a hyperbolic set of $f:U \to M$. Then there is an open $O \subset U$ containing $\Lambda$ and there are positive $\varepsilon_0,\delta_0$ satisfying: $\forall \varepsilon > 0 \hspace{2pt} \exists \delta \hspace{2pt}\forall g: O \to M$ with $\mathrm{dist}_1(g,f)< \varepsilon_0$, any homeomorphism $h: X \to X$ and any continuous map $\phi: X \to O$ with $\mathrm{dist}_0(\phi \circ h, g \circ \phi) < \delta $, then there is a continuous map $\psi: X \to O$ with $\psi \circ h = g \circ \psi$ and $\mathrm{dist}_0(\phi,\psi)< \varepsilon$. Additionally, $\psi$ is unique in the sense that $\psi^{\prime} \circ h = g \circ \psi^{\prime}$ \& $\mathrm{dist}_0(\phi,\psi) < \delta_0$, then $\psi=\psi^{\prime}$.
+\end{thm}
+
+\begin{cor}
+
+Let $\Lambda$ be a hyperbolic set of $f:U \to M$. Then for every $\epsilon>0$ there is $\delta>0$ such that if $(x_k)$ is a (in)finite $\delta-$orbit of $f$ and $\mathrm{dist}(x_k,\Lambda) < \delta$ then there is $x \in \Lambda_{\varepsilon}$ with $\mathrm{dist}((f^k(x),x_k) < \varepsilon$.
+
+\end{cor}
+
+\begin{pf}
+
+Choose $O$ satisfying the conditions in \ref{thm:???} and $\delta$ such that $\Lambda_{\delta} \subset O$. If $(x_k)$ is (semi-in)finite, add to $(x_k)$ the preimages of some $y_0 \in \Lambda$ whose distnace to the first point in the sequence is $< \delta$, and/or the images of some $y_m \in \Lambda$ whose distance to the last point of the sequence is $< \delta$ to obtain a $\delta-$orbit lying in the $\delta-$ neighborhood of $\Lambda$. Let $X = (x_k)$ with the discrete topology, $g=f$, $h:X \to X$ the shift $x_k \mapsto x_{k+1}$ and $\phi: X \to U$ be the inclusion into the manifold. Since $(x_k)$ is a $\delta-$orbit, $\mathrm{dist}(\phi(h(x_k)),f(\phi(x_k))) < \leq$, then theorem \ref{thm:???} applies and the corollary follows.
+
+\end{pf}
+
+Recall the set of nonwandering points $\mathrm{NW}(f)$ is the set of points where the iterate of any neighborhood intersects the neighborhood, and the Periodic points of $f$, $\mathrm{Per}(f)$. If $\Lambda$ is $f-$invariant, we can speak of $\mathrm{NW}(f \restriction_{\Lambda})$. In general, $\mathrm{NW}(f \restriction_{\Lambda}) \neq \mathrm{NW}(f) \cap \Lambda$.
+
+\begin{prop}
+
+If $\Lambda$ is a hyperbolic set of $f:U \to M$, then $\overline{\mathrm{Per}(f\restriction_{\Lambda})} = \mathrm{NW}(f \restriction_{\Lambda})$.
+
+\end{prop}
+
+\begin{cor}
+If $f:M \to M$ is Anosov, then $\overline{\mathrm{Per}(f)}=\mathrm{NW}(f)$.
+\end{cor}
+
+\section{Invariant Cones}
+
+\indent Let $\Lambda$ be a hyperbolic set of $f:U \to M$. Since the distributions $E^s$ and $E^u$ are continuous, we can extend them to continuous distributions in a neighborhood $U(\Lambda) \supset \Lambda$. If $x \in \Lambda$ and $v \in T_xM$, then $v=v^s+v^u$. Now assume the metric is adapted with constant $\lambda$. For $\alpha >0$, define the (un)stable cones of size $\alpha$ by 
+\[K^s_{\alpha}(x)=\{ v \in T_xM|\ : \Vert v^u \Vert \leq \alpha \Vert v^s \Vert \}\]
+\[K^u_{\alpha}(x) = \{ v \in T_xM : \Vert v^s \Vert \leq \alpha \Vert v^u \Vert \}\]
+
+\indent For a cone $K$, let $\mathring{K}=\mathrm{int}(K) \cup \{0\}$. Let $\Lambda_{\varepsilon}= d_{\Lambda}^{-1}([0,\varepsilon))$.
+
+\begin{prop}
+
+For every $\alpha>0$ there is $\varepsilon=\varepsilon(\alpha)$ such that $f^i(\Lambda_{\varepsilon}) \subset U(\Lambda)$, $i=-1,0,1$ and for every $x \in \Lambda_{\varepsilon}$:
+
+\[T_xf(K^u_{\alpha}(x)) \subset \mathring{K}^u_{\alpha}(f(x)); \hspace{4pt} (T_{f(x)}f^{-1})(K^s_{\alpha}(f(x))) \subset \mathring{K}^{s}_{\alpha}(x)\]
+
+\end{prop}
+
+\begin{prop}
+
+For every $\delta > 0$, there are $\alpha > 0$ and $\varepsilon > 0$ such that $f^i(\Lambda_{\varepsilon} \subset U(\Lambda)$, $i=-1,0,1$ and for every $x \in \Lambda_{\varepsilon}$:
+
+\[\Vert T_xf^{-1}(v) \Vert \leq (\lambda + \delta) \Vert v \Vert,\hspace{4pt} v \in K^u_{\alpha}(x)\]
+\[\Vert T_x f (v) \Vert \leq (\lambda + \delta) \Vert v \Vert, \hspace{4pt} v \in K^s_{\alpha}(x)\]
+\end{prop}
+
+\begin{prop}
+Let $\Lambda$ be a compact invariant set of $f:U \to M$. Suppose that there is a $\alpha > 0$ and for every $x \in \Lambda$ there are continuous subspaces $E^s_x$, $E^u_x$ such that $E^s_x \oplus E^u_x = T_xM$ and the $\alpha-$cones $K^s_{\alpha}(x)$ and $K^U_{\alpha}(x)$ determined by the subspaces satisfy
+
+\begin{enumerate}
+    \item $(T_xf)(K^u_{\alpha}(x)) \subset K^u_{\alpha}(x) $ and $ (T_{f(x)}f^{-1})(K^u_{\alpha}(x)) \subset K^s_{\alpha}(x) $
+    \item $\Vert T_xf(v) \Vert < \Vert v \Vert$ for non-zero $v \in K^s_{\alpha}(x)$, and $\Vert T_xf^{-1} v \Vert < \Vert v \Vert$ for non-zero $v \in K^u_{\alpha}(x)$.
+\end{enumerate}
+
+Then $\Lambda$ is a hyperbolic set of $f$. 
+
+\end{prop}
+
+Let 
+\[\Lambda^s_{\varepsilon}=\{ x \in U: d_{\Lambda}(f^n(x)) < \varepsilon \hspace{4pt} \forall n \}\]
+
+\[\Lambda^u_{\varepsilon} = \{ x \in U: d_{\Lambda}(f^{-n}(x)) \hspace{4pt} \hspace{4pt} \forall n \}\]
+
+\indent Note that both sets are contained in $\Lambda_{\varepsilon}$ and $f(\Lambda^s_{\varepsilon}) \subset \Lambda^s_{\varepsilon}$, and $f^{-1}(\Lambda^u_{\varepsilon}) \subset \Lambda^u_{\varepsilon}$.
+
+\begin{prop}
+
+Let $\Lambda$ be a hyperbolic set of $f$ with adapted metric. Then for every $\delta > 0$ there is $\varepsilon > 0$ such that the distributions $E^s$ and $E^u$ can be extended to $\Lambda_{\varepsilon}$ so that 
+\begin{enumerate}
+    \item $E^s$ is continuous on $\Lambda^s_{\varepsilon}$, $E^u$ is continuous on $\Lambda^u_{\varepsilon}$.
+    \item $x \in \Lambda_{\varepsilon} \cap f(\Lambda_{\varepsilon}) \Rightarrow (T_xf)(E^s_x)=E^s_{f(x)}$ and $(T_xf)(E^u_x) = E^u_{f(x)}$
+    \item $\Vert (T_xf)(v) \Vert < (\lambda + \delta) \Vert v \Vert $ for every $x \in \Lambda_{\varepsilon}$ and $v \in E^s_x$.
+    \item $\Vert (T_xf^{-1})(v) \Vert < (\lambda + \delta) \Vert v \Vert$ for every $x \in \Lambda_{\varepsilon}$ and $v \in E^u_x$.
+\end{enumerate}
+
+\end{prop}
+
+\section{Stability of Hyperbolic Sets}
+
+\begin{prop}
+
+Let $\Lambda$ be a hyperbolic set of $f: U \to M$. There is an open set $U(\Lambda) \supset \Lambda$ and $\varepsilon_0 > 0$ such that if $K \subset U(\Lambda)$ is a compact invariant subset of a diffeomorphism $g:U \to M$ with $\mathrm{dist}_1(g,f) < \varepsilon_0$, then $K$ is a hyperbolic set of $g$.
+
+\end{prop}
+
+Let $\mathrm{Diff}^1(M)$ be the space of $C^1$ diffeomorphisms of $M$ with the $C^1$ topology.
+
+\begin{cor}
+
+The set of Anosov diffeomorphisms of a given compact manifold is open in $\mathrm{Diff}^1(M)$.
+
+\end{cor}
+
+\begin{prop}
+
+Let $\Lambda$ be a hyperbolic set of $f:U \to M$. For every open set $V \subset U$ containing $\Lambda$ and every $\varepsilon > 0$, there is $\delta > 0$ such that $\forall g: V \to M$ with $\mathrm{dist}_1(g,f) < \delta$, there is a hyperbolic set $K \subset V$ of $g$ and a homeomorphism $\chi: K \to \Lambda$ such that $\chi$ cojugates $f$ to $g$ and $\mathrm{dist}_0(\chi, \mathrm{Id}) < \varepsilon$.
+\end{prop}
+
+A $C^1$ diffeomorphism $f$ of a $C^1$ manifold is called \textit{structurally stable} if for every $\varepsilon > 0$ there is $\delta > 0$ such that if $g \in \mathrm{Diff}^1(M)$ and $\mathrm{dist}_1(g,f) < \delta$, then there is a homeomorphsim $h: M \to M$ conjugated $f$ and $g$ and $\mathrm{dist}_0(h, \mathrm{Id}) < \varepsilon$. \\
+
+\begin{cor}
+Anosov diffeomorphisms are structurally stable.
+\end{cor}
+
+\section{Stable and Unstable Manifolds}
+
+For $\delta > 0$, let $B_{\delta}$ be the ball of radius $\delta$ at $0$.
+
+\begin{prop}[Hadamard-Perron]
+
+Let $f_n: B_{\delta} to \mathbb{R}^m$ be a sequence of $C^1$ diffeomorphisms onto their images such that $\forall n \hspace{4pt} f_n(0)=0$. Suppose that for each $n$ there is a splitting $\mathbb{R}^m=E^s_n \oplus E^u_n$ and $\lambda \in (0,1)$ such that
+
+\begin{enumerate}
+    \item $T_0f_n (E^s_n) = E^s_{n+1}$ and $T_0f_n(E^u_n)=E^u_{n+1}$
+    \item $\Vert T_0f_n v^s \Vert < \lambda \Vert v^s \Vert$ for all $v^s \in E^s_n$
+    \item $\Vert T_0f_n v^u \Vert > \lambda \Vert v^u \Vert $ for all $v^u \in E^u_n$
+    \item The angles between $E^u_n$ and $E^s_n$ are uniformly bounded away from 0
+    \item $(Tf_n)$ are an equicontinuous family of fuctions $Tf_n: B_{\delta} \to \mathrm{GL}_m(\mathbb{R})$.
+\end{enumerate}
+THEN there are $\varepsilon > 0$ and a sequence $\phi = (\phi_n)$ of uniformly Lipschitz continuous maps $\phi_n:B^s_{\varepsilon} = E^s_n \cap B_{\varepsilon} \to E^u_n$ such that
+
+\begin{enumerate}
+    \item $\mathrm{graph}(\phi_n) \cap B_{\varepsilon} = W^s_{\varepsilon}(n)$, where the latter set is defined as $\{ x \in B_{\varepsilon}: \Vert f_{n+k-1} \circ ... \circ f_{n+1} \circ f_n(x) \Vert \to 0 \text{ as } k \to \infty \}$
+    \item $f_n(\mathrm{graph}(\phi_n)) \subset \mathrm{graph}(\phi_{n+1})$
+    \item $x \in \mathrm{graph}(\phi_n) \Rightarrow \Vert f_n(x) \Vert \leq \lambda \Vert x \Vert \Rightarrow f^k_n(x) \to 0$ exponentially as $k \to \infty$
+    \item for $x \in B_{\varepsilon} \backslash \mathrm{graph}(\phi_n),$
+    \[
+    \Vert P^u_{n+1} f_n(x) - \phi_{n+1} \left( P^s_{n+1} f_n(x) \right) \Vert > \lambda^{-1} \Vert P^u_nx - \phi_n \left( P^s_nx \right) \Vert
+    \]
+    Where $P^s_n$ ($P^u_n$) denotes the projection onto $E^s_n$ ($E^u_n$) parallel to the other subspace
+    \item $\phi_n$ is differentiable at 0, $T_0\phi_n 0 = 0 \Rightarrow$ the tangent plane to $\mathrm{graph}(\phi_n)$ is $E^s_n$.
+    \item $\phi$ depends continuously on $f$ in the topologies by the following distance functions:
+    \[d_0(\phi,\psi) = \sup_{x,n} 2^{-n} \vert \phi_n(x) - \phi_n(x) \vert\]
+    \[d(f,g) = \sup_{n} \mathrm{dist}_1(f_n, g_n)\]
+    
+\end{enumerate}
+\end{prop}
+
+Let $\Phi(L, \varepsilon)$ be the space of sequences $\phi = (\phi_n)$ where $\phi_n:B^s_{\varepsilon} \to E^u_n$ is Lipschitz-continuous map with Lipschitz constant $L$ and $\phi_n(0) = 0$, with a metric $d(\phi,\psi)=\sup_{n,x} \vert \phi_n(x) - \psi_n(x) \vert$, which is complete. \\
+\indent We now define an operator $F: \Phi(L,\varepsilon) \to \Phi(L, \varepsilon)$ called the \textit{graph transform}. Let $\phi \in \Phi(L,\varepsilon)$. The next lemma will show that $f^{-1}_n (\mathrm{graph}(\phi_{n+1}))$ projected onto $E^s_n$ covers $E^s_{\varepsilon}(n)$ and $f^{-1}_n(\mathrm{graph}(\phi_{n+1}))$ contains the graph of a continuous function $\psi_n: B^s_{\varepsilon} \to E^u_{\varepsilon}(n)$ with Lipschitz constant $L$. Take $F(\phi)_n = \psi_n$.
+
+\begin{lem}
+For any $L>0$, there exists $\varepsilon > 0$ such that the graph transform $F$ is a well-defined operator on $\Phi(L,\varepsilon)$.
+\end{lem}
+
+\begin{lem}
+There are $\varepsilon >0$ and $L > 0$ such that $F$ is a contracting operator.
+\end{lem}
+
+\begin{thm}
+
+Let $f:M \to M$ be a $C^1$ diffeomorphism of a differentiable manifold and $\Lambda$ a hyperbolic set of $f$ with constant $\lambda$ and adapted metric.\\
+\indent Then there are $\varepsilon >0$, $\delta > 0$ such that for every $x^s \in \Lambda^s_{\delta}$ and every $x^u \in \Lambda^u_{\delta}$:
+
+\begin{enumerate}
+    \item the sets
+    \[W^s_{\varepsilon}(x^s) = \{ y \in M : \mathrm{dist}(f^n(x^s), f^n(y)) < \varepsilon \hspace{4pt} \forall n \}\]
+    \[
+    W^u_{\varepsilon}(x^u) = \{ y \in M: \mathrm{dist}(f^{-n}(x^u), f^{-n}(y)) < \varepsilon \hspace{4pt} \forall n\}
+    \]
+    called the local stabale manifold of $x^s$ and the local unstable manifold of $x^u$, are $C^1$ embedded disks,
+    \item $T_{y^s}W^s_{\varepsilon}(x^s) = E^s_{y^s}$ for all $y^s \in W^s_{\varepsilon}(x^s)$ and similarly for the unstable manifolds and subspaces,
+    \item $f(W^s_{\varepsilon}(x^s)) \subset W^s_{\varepsilon}(f(x^s))$ and $f^{-1}(W^u_{\varepsilon}(f(x^u))) \subset W^u_{\varepsilon}(x^u)$
+    \item if $y^s, z^s \in W^s_{\varepsilon}(x^s)$, then $d^s(f(y^s),f(z^s)) < \lambda d^s(y^s, z^s)$, where $d^s$ is the distance along $W^s_{\varepsilon}(x^s)$, and a similar result for the local unstable manifold using the inverse map
+    \item if $0 < \mathrm{dist}(x^s,y) < \varepsilon$ and $\mathrm{exp}^{-1}_{x^s}(y)$ lies in the $\delta-$cone $K^u_{\delta}(x^s)$, then $\mathrm{dist}(f(x^s),f(y)) >\ lambda^{-1} \mathrm{dist}(x^s,y)$ and if $0 < \mathrm{dist}(x^u,y) < \varepsilon $ and $\mathrm{exp}^{-1}_{x^u}(y)$ lies in the $\delta-$cone $K^s_{\delta}(x^u)$, then $\mathrm{dist}(f(x^u),f(y)) < \lambda \mathrm{dist}(x^s,y)$
+    \item if $y^s \in W^s_{\varepsilon}(x^s)$, then $W^s_{\alpha}(y^s) \subset W^s_{\varepsilon}(x^s)$ for some $\alpha > 0$, and if $y^u \in W^u_{\varepsilon}(x^u)$, then $W^u_{\beta}(y^u) \subset W^s_{\varepsilon}(x^u)$ for some $\beta > 0$.
+\end{enumerate}
+\end{thm}
+
+Let $\Lambda$ be a hyerbolic set of $f:U \to M$ and $x \in \Lambda$. The \textit{(global) stable and unstable manifolds} of $x$ are defined by 
+\[
+W^s(x) = \{ y \in M: d(f^n(x), f^n(y)) \to 0, n \to \infty \}
+\]
+\[
+W^u(x) = \{ y \in M: d(f^{-n}(x), f^{-n}(y)) \to 0, n \to \infty \}
+\]
+
+\begin{prop}
+
+There is $\varepsilon_0 > 0$ such that for all $\varepsilon \in (0, \varepsilon_0)$ and every $x \in \Lambda$,
+
+\[W^s(x) = \bigcup_{n > 0} f^{-n}(W^s_{\varepsilon}(f^n(x)))\]
+\[W^u(x) = \bigcup_{n > 0}f^n(W^u_{\varepsilon}(f^{-n}(x)))\]
+
+\end{prop}
+
+\begin{cor}
+
+The global stable and unstable manifolds are embedded $C^1$ submanifolds of $M$ homeomorphic to unit balls in corresponding dimensions.
+
+\end{cor}
+
+
+\section{Inclination Lemma}
+
+\indent Recall the definition of two submanifolds to intersect transversely. \\
+\indent Denote by $B^i_{\varepsilon}$ the open ball of radius $\varepsilon$ centered at 0 in $\mathbb{R}^i$. For $v \in \mathbb{R}^m=\mathbb{R}^k \times \mathbb{R}^l$ denote by $v^u \in \mathbb{R}^k$ and $v^s \in \mathbb{R}^l$ the components of $v = v^u + v^s$, and $\pi^u: \mathbb{R}^m \to \mathbb{R}^k$ the projection. For $\delta > 0$ let $K^u_{\delta} = \{ v \in \mathbb{R}^m: \Vert v^s \Vert \leq \delta \Vert v^u \Vert \}$ and the stable cone $K^s_{\delta} = \{ v \in \mathbb{R}^m: \Vert v^s \Vert \leq \delta \Vert v^u \Vert \} $
+
+\begin{lem}
+
+Let $\lambda \in (0,1), \varepsilon >0, \delta \in (0,0.1)$. Suppose $f: B^k_{\varepsilon} \times B^l_{\varepsilon} \to \mathbb{R}^m$ and $\phi: B^k_{\varepsilon} \to B^l_{\varepsilon}$ are $C^1$ amps such that:
+
+\begin{enumerate}
+    \item 0 is a hyperbolic fixed point of $f$
+    \item $W^u_{\varepsilon}(0) = B^k_{\varepsilon} \times \{0\}$ and $W^s_{\varepsilon} = \{0 \} \times B^l_{\varepsilon}$
+    \item $\Vert T_xf(v) \Vert \geq \lambda^{-1} \Vert v \Vert$ for every $v \in K^u_{\delta}$ whenever both $x, f(x) \in B^k_{\varepsilon} \times B^l_{\varepsilon}$
+    \item $\Vert T_xf (V) \Vert \leq \lambda \Vert v \Vert$ for every $v \in K^s_{\delta}$ whenever both $x, f(x) \in B^k_{\varepsilon} \times B^l_{\varepsilon}$
+    \item $T_xf(K^u_{\delta}) \subset K^u_{\delta}$ whenever $x, f(x) \in B^k_{\varepsilon} \times B^l_{\varepsilon}$
+    \item $T_xf^{-1} (K^s_{\delta}) \subset K^s_{\delta}$ whenever $x, f^{-1}(x) \in B^k_{\varepsilon} \times B^l_{\varepsilon}$
+    \item $T_{(y,\phi(y)}\mathrm{graph}(\phi) \subset K^u_{\delta}$ for every $y \in B^k_{\varepsilon}$
+\end{enumerate}
+
+Then for every $n$ there is a subset $D_n \subset B^k_{\varepsilon}$ diffeomorphic to $B^k$ such that the image $I_n$ under $f^n$ of the graph of the restriction $\phi \restriction_{D_n}$ has the following properties: $\pi^u(I_n) \supset B^k_{\varepsilon /2}$ and $T_xI_n \subset K^u_{\delta \lambda^{2n}}$ for each $x \in I_n$.
+\end{lem}
+
+The meaning of the lemma is that the tangent planes to the image of the grap of $\phi$ under $f^n$ are exponentially (in $n$) close to the "horizontal" space $\mathbb{R}^k$, and the image spreads over $B^k_{\varepsilon}$ in the horizontal direction. \\
+\indent The next theorem, sometimes called the Lambda Lemma, implies that if $f$ is $C^r$ with $r \geq 1$, and $D$ is any $C^1-$disk that intersects transversely the stable manifold $W^s(x)$ of a hyperbolic fixed point of $x$, then the forwards images of $D$ converge in the $C^r$ topology to the unstable manifold $W^u(x)$. The proof only covers $C^1$ convergence. Let $B^u_R$ be the ball of radius $R$ centered at $x$ in $W^u(x)$ in the induced metric. \\
+
+\begin{thm}[Inclination Lemma]
+Let $x$ be a hyperbolic fixed point of a diffeomorphism $f:U \to M$, $\mathrm{dim}(W^u(x))=k$ and $\mathrm{dim}(W^s(x))=l$. Let $y \in W^s(x)$ and suppose that $D \ni y$ is a $C^1$ submanifold of dimension $k$ intersecting $W^s(x)$ transversely at $y$. \\
+\indent Then for every $R > 0$ and $\beta > 0$ there are $n_0$ and for each $n \geq n_0$, a subset $\Tilde{D}=\Tilde{D}(R,\beta,n)$, $y \in \Tilde{D} \subset D$, diffeomorphic to an open $k-$disk and such that the $C^1$ distance between $f^n(\Tilde{D})$ and $B^u_R$ is less than $\beta$.
+
+\end{thm}
+
+\section{Horseshoes and Transverse Homoclinic Points}
+
+Let $\mathbb{R^m}= \mathbb{R}^k \times \mathbb{R}^l$. We will refer to $\mathbb{R}^k$ and $\mathbb{R}^l$ as the unstable and stable subspaces, respectively, and denote by $\pi^u$ and $\pi^s$ the projections to these spaces. For $v \in \mathbb{R}^m$ denoted by $v^u = \pi^u(v) \in \mathbb{R}^k$ and $v^s = \pi^s(v) \in \mathbb{R}^l$. For $\alpha \in (0,1)$, call the sets $K^u_{\alpha} = \{ v \in \mathbb{R}^m: \vert v^s \vert \leq \alpha \vert v^u \vert \}$ and $K^s_{\alpha} = \{ v \in \mathbb{R}^m: \vert v^u \vert \leq \alpha \vert v^s \vert \}$ the unstable and stable cones, respectively. Let $R^u = \{ x \in \mathbb{R}^k: \vert x \vert \leq 1 \}$, $R^s = \{ x \in \mathbb{R}^l : \vert x \vert \leq 1 \} $, and $R = R^u \times R^s$. For $z = (x,y) \in \mathbb{R}^k \times \mathbb{R}^l$, the sets $F^s(z) = \{x \} \times R^s$ and $F^u(z) = R^u \times \{y\}$ will be called the stable and unstable fibers, respectively. We say that a $C^1$ map $f:R \to \mathbb{R}^m$ has a \textit{horseshoe} if there are $\lambda, \alpha \in (0,1)$ such that:
+
+\begin{enumerate}
+    \item $f$ is one-to-one on $R$
+    \item $f(R) \cap R$ has at least two components $\Delta_0, \ldots, \Delta_{q-1}$
+    \item if $z \in R$ and $f(z) \in \Delta_i, \hspace{2pt} 0 \leq i < q$, then the sets $G^u_i(z) = f(F^u(z)) \cap \Delta_i$ and $G^s_i(z) = f^{-1}(F^s(f(z)) \cap \Delta_i)$ are connected, and the restriction of $\pi^u$ to $G^u_i(z)$ and of $\pi^s$ to $G^s_i(z)$ are bijective
+    \item if $z, f(z) \in R$, then the derivative $T_zf$ preserves the unstable cones $K^u_{\alpha}$ and $\lambda \vert T_zf (v) \vert \geq \vert v \vert$ for every $v \in K^u_{\alpha}$, and the inverse $T_{f(z)}f^{-1}$ preserves the stable cones $K^s_{\alpha}$ and $\lambda \vert T_{f(z)}f^{-1}(v) \vert \geq \vert v \vert$.
+\end{enumerate}
+The intersection $\Lambda=\bigcap_{n>0}f^n(R)$ is called a \textit{horseshoe}.
+
+\begin{thm}
+
+The horseshoe $\Lambda=\bigcap_{n > 0}f^n(R)$ is a hyperbolic set of $f$. If $f(R)\cap R$ has $q$ components, then the restriction of $f$ to $\Lambda$ is topologically conjugate tot he full two-sided shift $\sigma$ in the space of $\Sigma_q$ of bi-infinite sequences in the alphabet $\{ 0,1,\ldots, q-1\}$
+
+\end{thm}
+
+\begin{cor}
+
+If a diffeomorphism has a horseshoe, then the topological entropy of $f$ is positive.
+
+\end{cor}
+
+\indent Let $p$ be a hyperbolic fixed periodic point of a diffeomorphism $f:U \to M$. A point $q$ is called \textit{homoclinic} (for $p$) if $q \neq p$ and $q \in W^s(p) \cap W^u(p)$; it is called \textit{transverse homoclinic} (for $p$) if in addition $W^s(p)$ and $W^u(p)$ intersect transversely at $q$.
+
+\begin{thm}
+
+Let $p$ be a hyperbolic periodic point of a diffeomorphism $f:U \to M$, and let $q$ be a transverse homoclinic point of $p$. Then for every $\varepsilon >0 $ the union of $\varepsilon-$neighborhoods of the orbits of $p$ and $q$ contains a horseshoe of $f$.
+
+\end{thm}
+
+\section{Local Product Structure and Locally Maximal Hyperbolic Sets}
+
+A hyperbolic set $\Lambda$ of $f: U \to M$ is called \textit{locally maximal} if there is an open set $V$ such that $\Lambda \subset V \subset U$ and $\Lambda=\bigcap_{n>0} f^n(V)$. Since every closed invariant subset of a hyperbolic set is also a hyperbolic set, the geometric structure of a hyperbolic set may be very complicated and difficult to describe. However, due to their special properties, locally maximal hyperbolic sets allow a geometric characterization. \\
+\indent Since $E^s_x \cap E^u_x = \{0\}$, the local stable and unstable manifolds of $x$ intersect at $x$ transversely. By continuity, this transversality extends to a neighborhood of the diagonal in $\Lambda \times \Lambda$.
+
+\begin{prop}
+
+Let $\Lambda$ be a hyperbolic set of $f$. For every samll enough $\varepsilon >0$ there is $\delta >0$ such that if $x,y \in \Lambda$ and $d(x,y)< \delta$, then the intersection $W^s_{\varepsilon}(x) \cap W^u_{\varepsilon}(y)$ is transverse and consists of exactly one point $[x,y]$, which depends continuously on $x$ and $y$. Furthermore, there is $C_p = C_p(\delta)>0$ such that if $x,y \in \Lambda$ and $d(x,y) < \delta$, then $d^s(x,[x,y]) \leq C_p d(x,y)$ and $d^u(x,[x,y]) \leq C_p d(x,y)$, where $d^s$ and $d^u$ are distances along the stable and unstable manifolds, respectively.
+
+\end{prop}
+
+Let $\varepsilon > 0, k,l \in \mathbb{N}$, let $B^k_{\varepsilon} \subset \mathbb{R}^k$, and $B^l_{\varepsilon} \subset \mathbb{R}^l$ be $\varepsilon-$balls.
+
+\begin{lem}
+
+For every $\varepsilon > 0$ there is a $\delta > 0$ such that if $\phi: B^k_{\varepsilon} \to \mathbb{R}^l$ and $\psi: B^l_{\varepsilon} \to \mathbb{R}^k$ are differentiable maps and $\vert \phi (x) \vert, \Vert T\phi(x) \Vert, \vert \psi (y) \vert, \Vert T\phi(y) \Vert < \delta$ for all $x \in B^k_{\varepsilon}$ and $y \in B^l_{\varepsilon}$, then the intersection $\mathrm{graph}(phi) \cap \mathrm{graph}(psi) \subset \mathbb{R}^{k+l}$ is transverse and consists of exactly one point, which depend continuously on $\phi$ and $\psi$ in the $C^1$ topology.
+
+\end{lem}
+
+\indent The following property of hyperbolic sets plays a major role in their geometric description and is equivalent to local maximality. A hyperbolic set $\Lambda$ has a \textit{local product structure} if there area (small enough) $\varepsilon > 0$ and $\delta > 0$ such that 
+\begin{enumerate}
+    \item $\forall x,y \in \Lambda$, the intersection $W^s_{\varepsilon}(x) \cap W^u_{\varepsilon}(y)$ consists of at most one point, belonging to $\Lambda$
+    \item $\forall x,y \in \Lambda$ with $d(x,y)< \delta$, the intersection consists of exactly one point of $\Lambda$, denoted by $[x,y]=W^s_{\varepsilon}(x) \cap W^u_{\varepsilon}(y)$, and the intersection is transverse. 
+\end{enumerate}
+
+\indent If a hyperbolic set $\Lambda$ has a local product structure, then for every $x \in \Lambda$ there is a neighborhood $U(x)$ such that 
+\[
+U(x) \cap \Lambda = \{ [y,z] : y  \in U(x) \cap W^s_{\varepsilon}(x), z \in U(x) \cap W^u_{\varepsilon}(x) \}
+\]
+
+\begin{prop}
+
+A hyperbolic set $\Lambda$ is locally maximal iff it has a local product structure.
+
+\end{prop}
+
+\section{Anosov Diffeomorphisms}
+
+Recall that a $C^1$ diffeomorphism $f$ of a connected differentaible manifold $M$ is called \textit{Anosov} if $M$ is a hyperbolic set for $f$; it follows then that $M$ is a locally maximal and compact. \\
+\indent An important class of Anosov diffeomorphisms is as follows: Let $N$ be a simply connected nilpotent Lie group, and $\Gamma$ a uniform discrete subgroup of $N$. The quotient $M = N/\Gamma$ is a compact \textit{nilmanifold}. Let $\overline{f}$ be an automorphism of $N$ that preserves $\Gamma$ and whose derivative at the identity is hyperbolic. The induced diffeomorphism $f$ of $M$ is Anosov. Up to finite coverings, all known Anosov diffeomorphisms are topologically conjugate to automorphisms of nilmanifolds.\\
+\indent The families of stable and unstable manifolds of an Anosov diffeomorphism for two foliations called the \textit{stable foliation} $W^s$ and unstable foliation $W^u$ These foliations are in general not $C^1$, or even Lipschitz, but they are H\"older continuous. In spite of lack of Lipschitz continuity, the stable and unstable foliations possess a uniqueness property similar to the uniqueness theorem for ordinary differential equations. \\
+\begin{prop}
+
+LEt $f:M \to M$ be an Anosov diffeomorphism. Then there are $\lambda \in (0,1)$, $C_p > 0$, $\varepsilon > 0$, $\delta > 0$ and for each $x \in M$, a splitting $T_xM = E^s_x \oplus E^u_x$ such that:
+
+\begin{enumerate}
+    \item $T_x f (E^s_x) = E^s_{f(x)}$ and $T_xf (E^u_x) = E^u_{f(x)}$
+    \item $\Vert T_xf (v^s) \Vert \leq \lambda \Vert v^s \Vert $ and $T_xf^{-1}(v^u) \leq \lambda \Vert v^u \Vert$ for $v^s \in E^s_x, v^u \in E^u_x$.
+    \item $W^s(x) = \{ y \in M: d(f^n(x), f^n(y)) \to 0 \text{ as } n \to \infty \}$ and $d^s(f(x),f(y)) \leq \lambda d^s(x,y)$ for every $y \in W^s(x)$
+    \item $W^u(x) = \{ y \in M: d(f^{-n}(x), f^{-n}(y)) \to 0 \text{ as } n \to \infty \}$ and $d^u(f^{-1}(x), f^{-1}(y)) \leq \lambda d^u(x,y)$ for every $y \in W^u(x)$
+    \item $f(W^s(x)) = W^s(f(x))$ and $f(W^u(x)) = W^u(f(x))$
+    \item $T_xW^s(x) = E^s_x$ and $T_x W^u(x)=E^u_x$
+    \item if $d(x,y) < \delta$, then the intersection $W^s_{\varepsilon}(x) \cap W^u_{\varepsilon}(y)$ is exactly one point $[x,y]$, which depends continuously on $x$ and $y$, and $d^s([x,y],x) \leq C_p d(x,y)$; $d^u([x,y],y) \leq C_p d(x,y)$.
+\end{enumerate}
+\end{prop}
+
+\indent A diffeomorphism is structurally stable if $\forall \varepsilon > 0$ there is a neighborhood $\mathcal{U}\subset \mathrm{Diff}^1(M)$ of $f$ such that $\forall g \in \mathcal{U}$ there is a homeomorphism $h$ conjugating $f$ and $g$ and $\mathrm{dist}_0(h,\mathrm{Id}) < \varepsilon$.
+
+\begin{prop}
+\begin{enumerate}
+    \item Anosov diffemorphisms forma n open (possibly empty) subset in the $C^1$ topology.
+    \item Anosov diffeomorphisms are structurally stable.
+    \item The set of periodic points of an Anosov diffeomorphism is dense in the set of non-wandering points.
+\end{enumerate}
+\end{prop}
+
+\begin{thm}
+
+Let $f: M \to M$ be an Anosov diffeomorphism. Then TFAE:
+
+\begin{enumerate}
+    \item $\mathrm{NW}(f) = M$
+    \item Every unstable manifold is dense in $M$
+    \item every stable manifold is dense in $M$
+    \item $f$ is topologically transitive
+    \item $f$ is topologically mixing
+\end{enumerate}
+\end{thm}
+
+
+\section{Axiom A and Structural Stability}
+
+A diffeomorphism satisfies Smale's \textit{Axiom A} if the set $\mathrm{NW}(f)$ is hyperbolic and $\overline{\mathrm{Per}(f)} = \mathrm{NW}(f)$. \\
+\indent For a hyperbolic periodic point $p$ of $f$, denote by $W^s(O(p))$ and $W^u(O(p))$ the unions of the stable and unstable manifolds of $p$ and its images, respectively. If $p$ and $q$ are hyperbolic periodic points, we write $p \leq q$ when $W^s(O(p))$ and $W^u(O(p))$ have a point of transverse intersection. $\leq$ is reflexive and transitive. If $p \leq q$ and $q \leq p$, we write $p ~ q$ and say that $p$ and $q$ are \textit{heteroclinically related}. This is an equivalence relation. \\
+
+\begin{thm}[Smale's Spectral Decomposition Theorem]
+
+If $f$ satisfies Axiom A, then there is a unique representation of $\mathrm{NW}(f)$,
+
+\[\mathrm{NW}(f) = \Lambda_1 \cup \cdots cup \Lambda_k\]
+
+as a partition of closed $f-$invariant subsets (called basic sets) such that: 
+
+\begin{enumerate}
+    \item each $\Lambda_i$ is a locally maximal hyperbolic set of $f$
+    \item $f$ is topologically transitive on each $\lambda_i$
+    \item each $\Lambda_i$ is a disjoint union of closed sets $\Lambda^j_i, i \leq j \leq m_i$, with $f$ cycically permuting the set $\Lambda^j_i$ and $f^{m_i}$ is topologically mixing on each $\Lambda^j_i$.
+\end{enumerate}
+\end{thm}
+
+The basic sets are precisely the closures of the equivalence classes of $~$. For two basic sets, we write $\Lambda_i \leq \Lambda_j$ if there are periodic points $q \in \Lambda_j$ and $p \in \Lambda_i$ such that $p \leq q$. \\
+\indent Let $f$ satisfy Axiom A. $f$ satisfies the \textit{strong transversality condition} if $W^s(x)$ intersects $W^u(y)$ transversely (at all point of intersection) for all $x,y \in \mathrm{NW}(f)$. \\
+
+\begin{thm}
+
+A $C^1$ diffeomorphism is structurally stable iff it satisfies Axiom A and the strong transversality condition. 
+
+\end{thm}
+
+
+
+
+
+
+\end{document}

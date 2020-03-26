@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+\title{Summary of Curvatures of Left Invariant Metrics on Lie Groups}
+\author{Samuel Wallace}
+
+\begin{document}
+
+\maketitle
+
+\indent This is a summary of the paper "Curvatures of Left Invariant metrics on Lie Groups" by John Milnor available \href{https://core.ac.uk/download/pdf/82428733.pdf}{here}.
+
+
+\section{Sectional Curvature}
+
+\indent Let $G$ be an $n$-dimensional Lie group, and $\mathfrak{g}$ its associated Lie algebra. Choosing some basis $e_1, \ldots, e_n$ for $\mathfrak{g}$, there is obviously only one metric making this basis orthonormal. In fact, we can choose exactly one metric making the inner product $\langle e_i, e_j \rangle$ is the $i-j$-th component of a specific matrix. So there are a $\frac{1}{2}n(n+1)$ dimensional manifold of left-invariant metrics on $G$.
+\indent The sectional curvature of a metric is defined to be 
+\begin{equation}\label{eq:1}
+    \kappa(x,y) = \langle R_{xy}(x),y \rangle
+\end{equation}
+\indent For orthonormal vectors $x,y$. This is Gaussian curvature of the surface swept out by the vectors $x,y$. \\
+\indent The structure constant of a Lie group are the numbers $\alpha_{ijk}$ such that
+\begin{equation}\label{eq:2}
+    [e_i,e_j]=\sum_k \alpha_{ijk}e_k
+\end{equation}
+The next fact is not practically useful, but theoretically interesting.
+\begin{lem}
+
+The sectional curvature is given in terms of structure constants by 
+\begin{align*}\label{eq:3}
+    \kappa(e_i,e_j) = \sum_k  &\frac{1}{2}\alpha_{ijk}(-\alpha_{ijk}+\alpha_{jki} + \alpha_{kij}) - \\ &\quad \frac{1}{4}(\alpha_{ijk}-\alpha_{jki}+\alpha_{kij})(\alpha_{ijk}+\alpha_{jki}+\alpha_{kij}) - \alpha_{kii}\alpha_{kjj} 
+\end{align*}
+\end{lem}
+\indent The next fact is slightly more useful.
+
+\begin{lem}\label{lem:1}
+If $\mathrm{ad}(u)$ is skew-adjoint, then $\kappa(u,v) \geq 0$ when $u \perp [v,\mathfrak{g}]$
+\end{lem}
+
+
+There is an important corollary:
+
+\begin{cor}
+If $u$ belongs to the center of $\mathfrak{g}$ (i.e. $[v,\mathfrak{g}]=0$), then for any left-invariant metric and any vector $v$, $\kappa(u,v) \geq 0$.
+\end{cor}
+
+\begin{lem}
+A left-invariant metric on a connected Lie group is also right-invariant iff $\mathrm{ad}(x)$ is skew-adjoint for all $x \in \mathfrak{g}$. A Lie group admits a bi-invariant metric iff it is isomorphic to a Cartesian product of a compact group and a commutative group.
+\end{lem}
+
+\begin{cor}
+Every compact Lie group admits a left-invariant and a bi-invariant metric so that $K \geq 0$ for all sectional curvatures.
+\end{cor}
+
+\begin{thm}
+A Lie Group with left-invariant metric is flat iff the associated Lie algebra splits as an orthogonal direct sum $\mathfrak{b}\oplus \mathfrak{u}$ where $\mathfrak{b}$ is a commutative subalgebra, $\mathfrak{u}$ is a commutative ideal, and if $\mathrm{ad}(b)$ is skew-adjoint for every $b\in \mathfrak{b}$.
+\end{thm}
+
+\indent The necessary and sufficient conditions for a left-invariant metric to have negative sectional curvature is that $\mathfrak{g}=[\mathfrak{g},\mathfrak{g}]+\mathbb{R}x$ and that $\mathrm{ad}(x)\restriction_{[\mathfrak{g},\mathfrak{g}]}$ has eigenvalues with positive real part. $K \leq 0$ groups have been classified in the following statements.
+
+\begin{thm}
+If a connected Lie group $G$ has a left-invariant metric with $K \leq 0$, then it is solvable. If a left-invariant Haar measure is also right-invariant (unimodular), then the $K=0$.
+\end{thm}
+
+\section{Ricci Curvature}
+\indent Another curvature is given by the Ricci curvature, defined by 
+\begin{equation}
+    r(x)=\sum_i \kappa(x,e_i) = \sum_i \langle R_{x e_i}(x),e_i \rangle
+\end{equation}
+\indent For a unit vector $u$, $r(u)$ is the Ricci curvature of the direction. It is equal to $(n-1)$ times the average of the sectional curvature of all tangent planes containing $u$. It will become more convenient to work with the \textit{Ricci transformation}, defined by
+\begin{equation}
+    \widehat{r}(x)=\sum_i R_{e_i x}(e_i)
+\end{equation}
+\indent Which gives the relation
+\begin{equation}
+    r(x)=\langle \widehat{r}(x),x \rangle
+\end{equation}
+
+The eigenvalues of $\widehat{r}$ are called the principal Ricci curvatures. Now back to left-invariant metrics. 
+\begin{lem}
+If $\mathrm{ad}(u)$ is skew-ajoint, then $r(u) \geq 0$, where there is only equality if $u \perp [\mathfrak{g},\mathfrak{g}]$. 
+\end{lem}
+
+\begin{thm}
+A connected Lie group admits a left-invariant metric with all Ricci curvatures strictly positive iff it is compact with finite funamental group.
+\end{thm}
+
+\begin{lem}
+If $u \perp [\mathfrak{g},\mathfrak{g}]$, then $r(u) \leq 0$ with equality iff $\mathrm{ad}(u)$ is skew-adjoint.
+\end{lem}
+
+\begin{defn}
+
+A Lie algebra is \textbf{nilpotent} if some term in the series
+\begin{equation}
+    \mathfrak{g} \supset [\mathfrak{g}, \mathfrak{g}] \supset [\mathfrak{g},[\mathfrak{g},\mathfrak{g}]] \supset \ldots
+\end{equation}
+is zero.
+\end{defn}
+
+\begin{thm}
+Suppose $\mathfrak{g}$ is nilpotent but not commutative. Then for any left-invariant metric there is a direction of strictly negative Ricci curvature and one of strictly positive Ricci curvature.
+\end{thm}
+
+\begin{thm}
+
+If the Lie algebra of $G$ contains linearly independent vectors $x,y,z$ so that $[x,y]=z$, then there is a left-invariant metric so that $r(x) < 0$ and $r(z) > 0$.
+\end{thm}
+
+\section{Scalar Curvature}
+
+\begin{defn}
+
+Choose an orthonormal basis $e_i$ for the tangent space, then 
+\begin{equation}
+    \rho = \sum_i r(e_i)
+\end{equation} is the scalar curvature. It is $n(n-1)$ times the average of all sectional curvatures at a point.
+\end{defn}
+
+\begin{thm}
+If $G$ is solvable, then every left-invariant metric on $G$ is either flat, or has strictly negative curvature.
+\end{thm}
+
+\begin{cor}
+If $G$ is solvable and unimodular, then every left-invariant metric on $G$ is either flat, or has both positive and negative sectional curvatures.
+\end{cor}
+
+\begin{thm}
+If $\mathfrak{g}$ is noncommutative, then $G$ has a left-invariant metric of strictly negative curvature.
+\end{thm}
+
+\begin{thm}[Wallach]
+If the universal covering of $G$ is not homeomorphic to Euclidean space, then $G$ admits a left-invariant metric of strictly positive scalar curvature.
+\end{thm}
+
+\end{document}

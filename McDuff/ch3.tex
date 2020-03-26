@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+
+
+
+\begin{document}
+
+\section{Symplectic Manifolds}
+\subsection{Basic Concepts}
+\indent Throughout we will assume $M$ to be a smooth manifold without boundary. Most of the time $M$ will be compact. \\
+\begin{defn}
+A \textbf{Symplectic Structure} is a nondegenerate closed 2-form $\omega \in \Omega^2(M)$. The manifold is necessarily even-dimensional and orientable.
+\end{defn}
+
+\begin{defn}
+A \textbf{Symplectomorphsim} is a diffeomorphism that preserves the symplectic form. The set of Symplectomorphisms is denoted by $\mathrm{Symp}(M,\omega)$ or $\mathrm{Symp}(M)$.
+\end{defn}
+
+\begin{defn}
+A vector field $X\in \mathfrak{X}(M)$ is called \textbf{symplectic} or \textbf{Locally Hamiltonian} is $i_X\omega$ is closed. The set of locally Hamiltonian vector fields is denoted by $\mathfrak{X}(M,\omega)$.
+\end{defn}
+
+\begin{prop}
+Let $M$ be a closed manifold. If $t \mapsto \psi_t \in \mathrm{Diff}(M)$ a smooth homotopy, generating smooth vector fields $X_t \circ \phi_t = \frac{d}{dt}\psi_t$, then 
+\begin{equation}
+    \psi_t \in \mathrm{Symp}(M,\omega) \iff X_t \in \mathfrak{X}(M,\omega)
+\end{equation}
+
+In addition, if $X,Y \in \mathfrak{X}(M,\omega)$ then $[X,Y] \in \mathfrak{X}(M,\omega)$ and 
+\begin{equation}
+    i_{[X,Y]}\omega = dH; \hspace{6pt} H=\omega(X,Y)
+\end{equation}
+\end{prop}
+
+\subsection{Hamiltonian Flows}
+
+\begin{defn}
+For any smooth function $H:M \to \mathbb{R}$ the vector field $X_H:M \to TM$ determined by $i_{X_H}\omega=dH$ is called the \textbf{Hamiltonian Vector Field} associated to the \textbf{Hamiltonian Function} $H$. The flow associated with this vector field is called the \textbf{Hamiltonian Flow} associated to $H$.
+\end{defn}
+
+\begin{defn}
+The \textbf{Poisson Bracket} of two functions $F,G$ is the new function
+\begin{equation}
+    \{F,H\} = \omega(X_F, X_H) = dF(X_H)
+\end{equation}
+\end{defn}
+
+
+\begin{prop}
+Let $(M,\omega)$ be a symplectic manifold.
+\begin{enumerate}
+    \item Hamiltonian flows are symplectomorphisms, and are tangent to the level surfaces of their Hamiltonian function.
+    \item For every Hamiltonian function $H$ and every symplectomorphism $\psi$, $X_{H \circ \psi}=\phi^* X_H$
+    \item $[X_F,X_G]=X_{\{F,G\}}$
+\end{enumerate}
+\end{prop}
+
+\indent Thus Hamiltonian vector fields form a Lie subalgebra of the symplectic vector fields. The map $H \mapsto X_H$ is a surjective Lie Algebra homomorphism from the Lie algebra of smooth functions to Hamiltonian vector fields. The kernel of this homomorphism is constant functions.\\
+\indent Since $\mathcal{L}_{X_H}H=0$, every level set of $H$ is an invariant submanifold of the Hamiltonian vector field. Conversely, let $S \subset M$ be a compact orientable hypersurface (codimension 1) of a symplectic manifold. An exercise (not in these notes) showed that this is a coisotropic submanifold. Hence the vector space
+\begin{equation}
+    L_q = T_q S^{\omega} = \{ v \in T_qM \vert \omega (v,w) = 0 \hspace{4pt} \forall w \in T_q S\}
+\end{equation}
+is a 1-dimensional subspace of $T_qS$ for every $q \in S$ and hence defines a real line bundle $L$ over $S$. It integrates to give the \textbf{Characteristic Foliation}. The leaves of this foliation are the integral curves of any Hamiltonian vector field which for which $S$ is a regular level surface of the associated Hamiltonian function.
+\subsection{Hamiltonian Isotopies}
+\indent Consider a smooth map $t \mapsto \psi_t \in \mathrm{Symp}(M,\omega)$ with $\psi_0=\mathrm{id}_M$. This generates a smooth vector field
+\begin{equation}
+    \frac{d}{dt}\psi_t = X_t \circ \psi_t
+\end{equation}
+\indent Because $\psi_t$ is symplectic, the $X_t$ are locally Hamiltonian. If they are all globally Hamiltonian, then we have that
+\begin{equation}
+    X_t = X_{H_t}
+\end{equation}
+\indent $H_t$ are \textbf{time-dependent Hamiltonians} and $\psi_t$ is a \textbf{Hamiltonian Isotopy}. If there is a Hamiltonian Isotopy ending with $\psi \in \mathrm{Symp}(M,\omega)$, then $\psi$ is called \textbf{Hamiltonian}. The space of Hamiltonian symplectomorphisms is denoted by $\mathrm{Ham}(M,\omega)$.\\
+\indent $\mathrm{Ham}(M,\omega)$ is a normal subgroup of $\mathrm{Symp}(M,\omega)$, and it Lie algebra is the space of all Hamiltonian vector fields. This makes it an infinite dimensional Lie group, markedly different from the Riemannian case.\\
+\subsection{Isotopies and Darboux's Theorem}
+
+\begin{lem}
+Let $M$ be a $2n$-dimensional manifold and $Q \subset M$ a compact submanifold. Suppose $\omega_0, \omega_1$ are closed degenerate 2-forms such that at each $q \in Q$, $(\omega_0)_q = (\omega_1)_q$. Then there are open neighborhoods $\mathcal{N}_0, \mathcal{N}_1$ of $Q$ and a diffeomorphism $\psi: \mathcal{N}_0 \to \mathcal{N}_1$ such that
+\begin{equation}
+    \psi \restriction_Q = \mathrm{id}; \hspace{4pt} \psi^* \omega_1 = \omega_0
+\end{equation}
+\end{lem}
+
+\begin{thm}
+Every symplectic form $\omega$ on $M$ is locally diffeomorphic to the standard form $\omega_0$ on $\mathbb{R}^{2n}$.
+\end{thm}
+
+\begin{thm}[Moser Stability Theorem for Symplectic Structures]
+Let $M$ be a closed manifold and suppose $\omega_t$ is a smooth family of cohomologous (i.e. all lying in the same cohomology class) symplectic forms on $M$. Then there is a family of diffeomorphisms $\psi_t$ satisfying
+\begin{equation}
+    \psi_0 = \mathrm{id}; \hspace{6pt} \psi_t^*\omega_t = \omega_0
+\end{equation}
+\end{thm}
+
+\begin{defn}
+\begin{enumerate}
+    \item An isotopy preserving a symplectic structure is called a \textbf{Symplectic Isotopy}.
+    \item Two symplectic forms $\omega_0$, $\omega_1$ on $M$ are \textbf{isotopic} if they can be joined by a smooth family $\omega_t$ of cohomologous symplectic forms on $M$.
+    \item Two isotopic symplectic forms are \textbf{strongly isotopic} is there is an isotopy $\psi_t$ of $M$ such that $\psi_1^* \omega_1 =\omega_0$
+\end{enumerate}
+\end{defn}
+
+\begin{thm}[Symplectic Isotopy Extension Theorem]
+Let $(M,\omega)$ be a compact symplectic manifold and let $Q \subset M$ be a compact subset. Let $\phi_t: U \to M$ be a symplectic isotopy of an open neighborhood $U$ of $Q$ and assume $H^2(M,Q,\mathbb{R})=0$. \\
+\indent Then there exists a neighborhood $\mathcal{N} \subset U$ of $Q$ and a symplectic isotopy $\psi_t$ such that
+\begin{equation}
+    \psi_t \restriction_{\mathcal{N}} = \phi_t \restriction_{\mathcal{N}}
+\end{equation}
+\end{thm}
+
+\subsection{Submanifolds of Symplectic Manifolds}
+
+\begin{defn}
+A submanifold $Q \subset M$ is called \textbf{symplectic} (resp. \textbf{isotropic, coisotropic, Lagrangian}) is for every $q \in Q$, the symplectic vector space $(T_qM, \omega_q)$ is symplectic (resp. isotropic, coisotropic, Lagrangian).
+\end{defn}
+
+\begin{prop}
+The graph $\Gamma_{\sigma} \subset T^*L$ of a 1-form $\sigma$ on $L$ is Lagrangian $\iff$ $\sigma$ is closed.
+\end{prop}
+
+\begin{prop}
+Let $\psi$ be a diffeomorphism of a symplectic manifold $(M,\omega)$. Then $\psi$ is a symplectomorphism $\iff$ its graph
+\begin{equation}
+    \mathrm{graph}(\psi)=\{(q,\psi(q))\} \subset M \times M
+\end{equation}
+is a Lagrangian submanifold of $(M \times M, (-\omega) \times \omega)$
+\end{prop}
+
+\begin{thm}[Symplectic Neighborhood Theorem]
+For $j=0,1$, let $(M_j,\omega_j)$ be symplectic manifolds with compact symplectic submanifolds $Q_j$. Suppose there is an isomorphism $\Phi: \nu_{Q_0} \to \nu_{Q_1}$ of the symplectic normal bundles which covers a symplectomorphism $\psi:(\mathcal{N}(Q_0),\omega_0) \to (\mathcal{N}(Q_1),\omega_1)$ such that $d\psi$ induces the map $\Phi$ on $\nu_{Q_0}=(TQ_0)^{\omega}$.
+\end{thm}
+
+\begin{thm}
+Let $(M,\omega)$  be a symplectic manifold
+\end{thm}
+
+
+
+
+
+
+
+\end{document}

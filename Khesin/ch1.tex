@@ -1,0 +1,584 @@
+\documentclass{article}
+
+\usepackage{amsmath}                                                               
+\usepackage{amssymb}                                                               
+\usepackage{mathrsfs}                                                              
+\usepackage{mathtools}                                                             
+\newtheorem{thm}{Theorem}                                                          
+\newtheorem{defn}{Definition}                                                      
+\newtheorem{prop}{Proposition}                                                     
+\newtheorem{rmk}{Remark}                                                           
+\newtheorem{cor}{Corollary}                                                        
+\newtheorem{lem}{Lemma}
+
+\begin{document}   
+
+
+
+
+\section{Preliminaries}
+\subsection{Lie Groups and Lie Algebras}
+\subsubsection{Lie Groups and an Infinite-Dimensional Setting}
+
+
+\begin{defn}
+
+	A nonempty collection $G$ of transformations of some set is called a \textit{group} if along with every two transformations $g,h \in G$ belonging to the collection, the composition $g \circ h$ and the inverse transformation $g^{-1}$ belong to the same collection $G$.
+
+\end{defn}
+
+
+\begin{defn}
+
+A \textit{Lie Group} is a smooth manifold $G$ with a group structure such that the multiplication $G \times G \to G$ and the inversion $G \to G$ are smooth maps.
+
+\end{defn}
+
+
+\begin{defn}
+
+Let $V,W$ be \textit{Fr\`echet spaces}, i.e. complete locally convex Hausdorff metrizable vector spaces, and let $U$ be an open subset of $V$. A map $f: U \subset V \to W$ is said to be \textit{differentiable} at a point $u \in U$ in a direction $v \in V$ if the limit
+
+
+\begin{equation}
+Df(u;v) = \lim_{t \to 0} \frac{f(u+tv)-f(u)}{t}
+\end{equation}
+
+exists. The function $f$ is said to be continuously differentiable on $U$ if the limit exists for all $u \in U$ and all $v \in V$, and if the function $Df:U \times V \to W$ is continuous as a function on $U \times V$. Similarly, we can build a function $D^2 f: U \times V \times V \to W$, and so on. A function $f$ is called \textit{smooth} or $C^{\infty}$ if all its derivatives exist and are continuous.
+\end{defn}
+
+
+\begin{defn}
+
+A \textit{Fr\`echet manifold} is a Hausdorff space with a coordinate atlas taking value in a Fr\`echet space such that all transition functions are smooth maps.
+
+\end{defn}
+
+
+
+\begin{rmk}
+
+	Now one can start defining vector fields, tangent sapces, differential forms, principal bundles, and the like on a Fre\`echet manifold exactly like finite-dimensional manifolds. \\
+	\indent For example, for a manifold $M$, a \textit{tangent vector} at some point $m \in M$ is defined as an equivalence class of smooth parametrized curves $ f: \mathbb{R} \to M$ such that $f(0)=m$. The set of all such equivalence classes is the \textit{tangent space} of $T_m M$ at $m$. The union of tangent spaces $T_m M$ for all $m \in M$ can be give the structure of a Fre\`echet manifold $TM$, the tangent bundle of $M$. Now a smooth vector field is smooth map $ v: M \to TM$, and one defines in a similar vien the directional derivative of a function and the Lie bracket of two vector fields.\\ 
+	\indent Sinc the dual of a Fr\`echet space need not be Fr\`echet, we define 1-forms directly, as smooth maps $ \alpha: TM \to \mathbb{R}$ such that the restriction for any $m \in M$, $\alpha \restriction_{T_m M}$ is a linear map. Higher rank tensor bundles follow similar constructions. The directional derivative of functions generalizes through an axiomatic description to the exterior derivative. 
+\end{rmk}
+
+\subsection{The Lie Algebra of A Lie Group}
+\begin{defn}
+
+	Let $G$ be a Lie Group with identity elements $e$. The tangent space to the group $G$ at $e$ is the vector space component to the \textit{Lie algebra} of $G$, $\mathfrak{g}$. The group multiplication on $G$ endows its Lie algebra $\mathfrak{g}$ with a bilinear operation $[\cdot, \cdot]: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$ to be descibed as follows. \\
+	\indent Notice that $\mathfrak{g}$ can be identifies with the space of left-invariant vector fields on $G$. Thus there is a map $X \in \mathfrak{g} \mapsto \Tilde{X} \in \mathfrak{X}(M)$. We define the Lie bracket on the Lie algebra as the usual Lie bracket on the corresponding left-invariant vector field (The 'usual Lie bracket' is the vector field $[X,Y]$ such that $\mathcal{L}_{[X,Y]}=\mathcal{L}_X \mathcal{L}_Y - \mathcal{L}_Y \mathcal{L}_X$). The combination of vector space and Lie bracket gives the whole \textit{Lie algebra}.
+
+\end{defn}
+
+
+
+\begin{rmk}
+
+The definition of Lie algebra given above imbues the Lie bracket with the following properties: 
+
+\begin{enumerate}
+	\item It is antisymmetric in its arguments, i.e. $[X,Y] = - [Y,X]$
+	\item It satisfies the Jacobi Identity
+		\[ [[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]	\]
+
+\end{enumerate}
+\end{rmk}
+
+
+\subsection{The Exponential Map}
+
+
+\begin{defn}
+
+	The \textit{exponential map} from a Lie algebra to the corresponding Lie group $ \mathrm{exp}: \mathfrak{g} \to G$ is defined as follows: $X \in \mathfrak{g}$ thought of as a left-invariant vector field, so there is an associated flow, $\phi_{X,t}:G \to G$. Then we define $\mathrm{exp}(X) = \phi_{X,1}(e)$.
+
+\end{defn}
+
+
+\begin{rmk}
+
+	The definition of the exponential map relies on the existence and uniqueness of first-order ordinary differential equations. In genral, solutions of differential equations in Fr\`echet spaces may not be unique. However, in the case of the exponential map, the particular differential equation has a unique solution.
+
+\end{rmk}
+
+
+\begin{rmk}
+
+	The exponential map exists for all finite-dimensional Lie groups and for Lie groups modeled on Banach spaces, but there may exist infinite-dimensional Lie groups that do nto admit and exponential map. Moreover, even when the exponential map does exist, it may not be as well-behaved as well as one would like.
+
+\end{rmk}
+
+\subsection{Abstract Lie Algebras}
+
+\indent The properties outlined about the Lie bracket can be taken as axioms for soe sort of 'abstract' Lie algebra.
+
+
+\begin{defn}
+
+	An \textit{(abstract) Lie algebra} is a real or complex vector space $\mathfrak{g}$ together with a bilinear map $ [\cdot,\cdot]: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$ (The Lie bracket) that is antisymmetric and satisfies the jacobi identity.
+
+\end{defn}
+
+
+\begin{defn}
+
+	A map $ \rho: \mathfrak{g} \to \mathfrak{h}$ between two Lie algebras is a Lie algebra homomorphsim if it satisfies $rho([X,Y]) = [\rho (X),\rho (Y)]$. A linear map $ \delta: \mathfrak{g} \to \mathfrak{g}$ is called a derivation if 
+	\[ \delta([X,Y]) = [ \delta(X),Y]+[X,\delta(Y)]	\]
+
+
+Notably, the map $\mathrm{ad}_X: \mathfrak{g} \to \mathfrak{g}; \hspace{4pt} Y \mapsto [X,Y]$ is a derivation by the Jacobi identity. A derivation that can be expressed as an adjoint action is called an \textit{inner derivation}; otherwise, it is an \textit{outer derivation}. 
+\end{defn}
+
+
+\begin{defn}
+
+	A \textit{subalgebra} of a Lie algebra $ \mathfrak{g}$ is a subspace $ \mathfrak{h}$ such that $X \in \mathfrak{g} \Rightarrow [X, \mathfrak{h}] \subset \mathfrak{h}$. The importance of ideals comes from the fact that the quotient $ \mathfrak{g}/ \mathfrak{h}$ is again a Lie algebra.
+
+\end{defn}
+
+
+
+\begin{defn}
+
+	A Lie algebra is \textit{simple} (respectively, \textit{semisimple}) if it does not contain any nontrivial ideals (nontrivial abelian ideals).
+
+\end{defn}
+
+\indent The group analogue of an ideal is a normal subgroup.
+
+
+\subsection{Adjoint and Coadjoint Orbits}
+\subsubsection{The Adjoint Representation}
+\indent A \textit{representation} of a Lie group $G$ on a vector space is a linear action $\phi$ of the group $G$ on $V$ that is smooth. If $V$ is real, $(V, \phi)$ is called a real representation, and if $V$ is complex, it is a complex representation. Often $V$ is a Fr\`echet space or a Hilbert space. If the action of $G$ on $V$ is contained in the group of unitary transformations on $V$, then the representation is said to be unitary. 
+\indent Every Lie group has two distinguished representations: the adjoint and coadjoint representations. \\
+
+
+\begin{defn}
+
+	The map $\mathrm{Ad}:G \to \mathrm{Aut}( \mathfrak{g})$ defines a representation of the group $G$ on the space $ \mathfrak{g}$ and is called the \textit{group adjoint representation} The orbits of the group action are called the \textit{adjoint orbits} of $G$. The differential of $ \mathrm{Ad}: G \to \mathrm{Aut}( \mathfrak{g})$ at $e$ defines a map $ \mathrm{ad}: \mathfrak{g} \to \mathrm{End}( \mathfrak{g})$, called the \textit{adjoint representation of the Lie algebra $ \mathfrak{g}$}.
+
+\end{defn}
+
+\subsection{The Coadjoint Representation}
+
+\indent The dual object to the adjoint representation representation of a Lie group $G$ on its Lie algebra $ \mathfrak{g}$ is called the coadjoint representation of $G$ on $ \mathfrak{g}^*$, the dual space to $ \mathfrak{g}$. 
+
+
+\begin{defn}
+
+	The \textit{coadjoint representation} $\mathrm{Ad}^*$ of the group $G$ on the space $ \mathfrak{g}^*$ is the dual of the adjoint representation. Let $ \langle \cdot, \cdot \rangle$ denote the pairing of elements from $ \mathfrak{g}$ and $ \mathfrak{g}^*$; i.e., $ \langle \xi, X \rangle = \xi (X)$. Then the \textit{coadjoint action of the group} $G$ on the dual space $ \mathfrak{g}^*$ is given by the operators $ \mathrm{Ad}^*_G: \mathfrak{g}^* \to \mathfrak{g}^*$ for any $g \in G$ that are defined the relation
+	\[\langle \mathrm{Ad}^*_g (\xi), X \rangle = \langle \xi, \mathrm{Ad}^*_{g^{-1}} (X) \rangle\]
+
+The orbits of the group action on $ \mathfrak{g}^*$ are called the \textit{coadjoint orbits} of $G$.
+\indent The differential $ \mathrm{ad}^*: \mathfrak{g} \to \mathrm{End}( \mathfrak{g}^* )$ of the group representation $ \mathrm{Ad}^*$ at the identity $e$ is called the \textit{coadjoint representation of the Lie algebra} $ \mathfrak{g}$. It is given by the relation
+\[ \langle \mathrm{ad}^*_Z (\xi), X \rangle = - \langle \xi, \mathrm{ad}_Z (X) \rangle  \]
+\end{defn}
+
+
+\begin{rmk}
+
+	The dual space of a Fr\`echet space is not necessarily again a Fr\`echet space. In this case, instaed of considering the full dual to an infinite-dimensional Lie algebra $ \mathfrak{g}$, we will usually confine ourselves to considering only "smooth duals," the functionals from certain $G$-invariant Fr\`echet subspace $ \mathfrak{g}^*_s \subset \mathfrak{g}^*$. Natural smooth duals will be different according to the type of the infinited dimensional groups considered, but they all have a (weak) nondegenerate pairing with the corresponding Lie algebra $ \mathfrak{g}$ in the following sense: for every nonzero $X \in \mathfrak{g}$, ther is a $\xi \in \mathfrak{g}^*_s$ such that $\langle \xi, g \rangle \neq 0$, and the other way around. This ensures that the coadjoint orbit is uniquely determined. The smooth dual space and the adjoint action is called the regular (or smooth) part of the coadjoint representation of $G$, and often we will omit the subscript $s$.
+
+\end{rmk}
+
+
+\subsection{Central Extension}
+
+In this section we collect several basic facts about central extensions of Lie groups and Lie algebras. A central extension of a Lie group as a new bigger Lie group $\Tilde{G}$ over the initial group $G$ in such a way that the fiber over the identity of $G$ lies in the center of $\Tilde{G}$. \\
+
+\subsubsection{Lie Algebra Central Extensions}
+
+
+
+\begin{defn}
+
+	A \textit{central extension of a Lie algebra} $ \mathfrak{g}$ by a vector space $ \mathfrak{n}$ is a Lie algebra $ \Tilde{ \mathfrak{g}}$ whose underlying vector space $Tilde{ \mathfrak{g}} = \mathfrak{g} \oplus \mathfrak{n}$ is equipped with the following Lie bracket:
+	\[	[ (X,u),(Y,v)]^{~} = ([X,Y], \omega(X,Y))	\]
+for some continuous map $ \omega: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{n}$. To make this a bonafide Lie algebra, we require $\omega$ satisfy the \textit{cocycle identity}
+\[	\omega([X,Y],Z) + \omega([Z,X],Y) + \omega([Y,Z],X) = 0 \in \mathfrak{n}\]
+A 2-cocycle $ \omega$ on $ \mathfrak{g}$ is called a \textit{2-coboundary} if there exists a linear map $ \alpha: \mathfrak{g} \to \mathfrak{n}$ such that $\omega(X,Y) = \alpha ([X,Y])$. The central extension defined by such a 2-coboundary becomes he trivial extension by the zero cocycle after a change of basis $ (X,u) \mapsto (X, u - \alpha(X))$.\\
+\indent Hence in describing different central extensions we are interested in the 2-cocyles modulo the 2-coboundaries; i.e. $\omega ~ \omega ' \iff \omega - \omega '$ is a 2-coboundary. The equivalence classes are called the \textit{second cohomology} $H^2( \mathfrak{g}; \mathfrak{n})$. 
+\end{defn}
+
+
+\begin{rmk}
+
+A central extension of a Lie algebra $ \mathfrak{g}$ by an abelian Lie algebra $ \mathfrak{n}$ can be defined by the exact sequence
+\[
+	\{0\} \to \mathfrak{n} \to \Tilde{ \mathfrak{g}} \to \mathfrak{g} \to \{0\}
+\]
+
+\end{rmk}
+
+
+\begin{prop}
+
+	There is a one-to-one correspondence between the equivalence classes of central extensions of $ \mathfrak{g}$ by $ \mathfrak{n}$ and the elements of $H^2( \mathfrak{g}; \mathfrak{n})$.
+
+\end{prop}
+
+
+\begin{defn}
+
+	A central extension $Tilde{ \mathfrak{g}}$ of $ \mathfrak{g}$ is called \textit{universal} if for any other central extension $ \Tilde{ \mathfrak{g}}'$, there is a unique morphism $\Tilde{ \mathfrak{g}} \to \Tilde{ \mathfrak{g}}'$ of the central extensions.
+
+\end{defn}
+
+
+\begin{rmk}
+
+	A sufficient condition for a Lie algebra $ \mathfrak{g}$ to have a universal central extension is that $ \mathfrak{g}$ be perfect; i.e. that it coincide with its own derrived algebra $ \mathfrak{g} = [ \mathfrak{g}, \mathfrak{g}]$. Any finite-dimensional semisimple Lie algebra is perfect. The universal central extension of a semisimple Lie algebra $ \mathfrak{g}$ coincide with itself: such algebras do not admit nontrivial central extensions. \\
+	\indent No abelian Lie algebra is perfect. Nevertheless, abelian Lie algebras can have universal central extensions.
+
+\end{rmk}
+
+\subsubsection{Central Extensions of Lie Groups}
+
+Central extensions of Lie groups can be defined similarly to those of Lie algebras. However, unlike the case of Lie algebras, not all group extensions can be described explicitly by cocycles. So we have the following alternative definition:
+
+
+
+\begin{defn}
+
+	A \textit{central extension} $ \Tilde{G}$ of a Lie group $G$ by an abelian Lie Group $H$ is an exact sequence of Lie groups
+	\[
+		\{ e \} \to H \to \Tilde{G} \to G to \{ e \} 
+	\]
+
+such that the image of $H$ lies in the center of $\Tilde{G}$. Morphisms are done how you would think.
+\end{defn}
+
+\indent If the central extension $ \Tilde{ G }$ is topologically a direct product of $G$ and $H$, $ \Tilde{ G }= G \times H$ (or equivalently, there is a smooth section in the principal $H$-bundle $ \Tilde{ G } \to G$), one can define the multiplication in $ \Tilde{ G }$ as follows:
+\[
+	(g_1, h_1) \cdot (g_2, h_2) = (g_1 g_2, \gamma (g_1, g_2) h_1 h_2)
+\]
+
+for a smooth map $ \gamma: G \times G \to H$ (note the similarity to the Lie algebra definition). The associativity of this multiplication corresponds to the \textit{group cocycle identity} on the map $ \gamma$.
+
+
+\begin{defn}
+
+Let $G$ and $H$ be Lie groups and suppose $H$ is abelian. A smooth map $ \gamma: G \times G \to H$ that satisfies
+\[
+	\gamma (g_1 g_2, g_3) \gamma (g_1, g_2) = \gamma (g_1, g_2 g_3) \gamma (g_2, g_3)
+\]
+is called a smooth \textit{group 2-cocycle} on $G$ with values in $H$.\\
+\indent A smooth 2-cocycle on $G$ with values in $H$ is called a \textit{2-coboundary} is there exists a smooth map $ \lambda: G \to H$ such that $\gamma (g_1, g_2) = \lambda(g_1) \lambda(g_2) \lambda (g_1 g_2)^{-1}$. We are also interested in the non-trivial extensions, which are those generated by 2-cocycles which are not 2-coboundaries.
+\end{defn}
+
+
+\begin{prop}
+
+	There is a one-to-one correspondence between the set of central extensions of $G$ by $H$ that admit a smooth section and the elements in the second cohomology group $H^2(G,H)$.
+
+\end{prop}
+
+It is important to note that there are central extension of Lie groups that do not admit a smooth section, and hence cannot be defined by smooth cocycles.\\
+\indent A central extension of a Lie group $G$ always defines a central extension of the corresponding Lie algebra. The converse need not be true: the existence of a Lie group for a given Lie algebra is not guaranteed in infinite dimensions. Instead, one says that a central extension $ \Tilde{ \mathfrak{g} }$ of a Lie algebra $ \mathfrak{g}$ lifts to the group level if there are corresponding group central extensions with the appropriate Lie algebras. If the group central extension $ \Tilde{ G }$ by $H$ is defined by a group 2-cocycle $\gamma$, one can recover the 2-cocycle defining the central extension of the group cocycle by differentiation.
+
+
+\begin{prop}
+
+Let $H$ be an abelian Lie group with Lie algebra $ \mathfrak{h}$, and let $\gamma$ be an $H$ valued 2-cocycle on $G$ defining a central extension $ \Tilde{ G }$. Then the $ \mathfrak{h}$-valued cocycle $\omega$ defining the corresponding central extension $ \Tilde{ \mathfrak{g} }$ of the Lie algebra $ \mathfrak{g}$ is given by 
+\[
+	\omega(X,Y) = \frac{d^2}{dtds}\restriction_{(s,t)=(0,0)} \gamma(g_t, h_s)  \frac{d^2}{dtds}\restriction_{(s,t)=(0,0)} \gamma (h_s, g_t)
+\]
+
+Where $g'_0 = X, \hspace{4pt} h'_0 = Y$.
+\end{prop}
+
+\subsection{The Euler Equations for Lie Groups}
+
+
+The Euler equations form a class of dynamical systems closely related to Lie groups and to the geometry of their coadjoint orbits. To describe them, we start with generalities on Poisson structures and Hamiltonian systems, before bridging them to Lie groups. Note that we will use $ \mathfrak{g}^*$ will be the \textit{smooth} dual of $ \mathfrak{g}$.
+
+\subsubsection{Poisson Structures on Manifolds}
+
+
+\begin{defn}
+
+A \textit{Poisson Structure} on a manifold $M$ is a bilinear operation on functions\[
+	\{ , \} : C^{\infty}(M) \to C^{\infty}(M)
+\]
+satisfying the following properties:
+\begin{enumerate}
+\item antisymmetry
+	\[ \{ f,g \} = - \{ g,f \} 	\]
+\item the Jacobi identity:
+	\[	\{ f, \{ g,h \}  \} + \{ g, \{ h,f \}  \} + \{ h, \{ f,g \}  \} =0\]
+\item the Leibniz rule:
+	\[ \{ f, gh \} = \{ f,g \} h + \{ f,h \} g	\]
+\end{enumerate}
+The first two properties make a Poisson structure a Lie algebra with $ \{ , \} $ as the bracket on the vector space $C^{\infty}(M)$. The third propety identifies functions with vector fields, since every derivation on a manifold is a vector field.
+\end{defn}
+
+
+\begin{defn}
+
+	Let $ H: M \to \mathbb{R}$ be any smooth function on a Poisson manifold $M$. Such a function defines a vector field $\xi_H$ on $M$ by $\mathcal{L}_{\xi_H} g = \{ H,g \} $ for any smooth function $g$. The vector field $\xi_H$ is called the \textit{Hamiltonian field} corresponding to the \textit{Hamiltonian function} $H$ wiht respect to the Poisson bracket.\\
+	\indent We call a function $ F: M \to \mathbb{R}$ a \textit{Casimir function} on a Poisson manifold $M$ if it generates a zero vector field; i.e., $\forall g \hspace{4pt} {F,g}=0$.
+
+\end{defn}
+
+
+\begin{rmk}
+
+	Let $M$ be a manifold with a Poisson structure $ \{ , \} $ and we fix some point $m \in M$. All Hamiltonian vector fields on $M$ evaluated at the point $m$ spans a subspace of the tangent space $T_m M$. Thus, the Poisson structure defines a distribution of suc subspaces on the manifold by varying the points $m$. This distribution is integrable, since the commutator of two Hamiltonian vector fields is again Hamiltonian. Therefore, we have a \textit{foliation} of the Poisson manifold $M$.\\
+\indent The leaves of this foliation are called \textit{symplectic leaves}. This means two points are on the same symplectic leaf if there is a Hamiltonian flow taking on to the other.
+
+\end{rmk}
+
+\begin{defn}
+
+	A pair $(N,\omega)$ consisting of a closed manifold $N$ and a 2-form $\omega$ on $N$ is called a \textit{symplectic manifold} if $\omega$ is closed and nondegenerate. (Weak nondegeneracy in infinite dimension if $\forall X \exists Y \hspace{4pt} \omega(X,Y) \neq 0$). The 2-form $\omega$ is called the \textit{symplectic form} on the manifold $N$.\\
+
+\end{defn}
+
+
+\begin{rmk}
+
+Locally, a Poisson manifold near any point $p$ splits into the product of a symplectic space and Poisson manifold whose rank at $p$ is zero. The symplectic space is aneighborhood of the symplectic leaf passing through $p$ while the Poisson manifold of zero rank represents the transverse Poisson structure at $p$.\\
+\indent Below we will see that this splitting works in many (but not all!) infinite-dimensional examples: Poisson structures can have infinite-dimensional symplectic leaves and finite-dimensional Poisson transversals.
+
+\end{rmk}
+
+\subsubsection{Hamiltonian Equations on the Dual of a Lie Algebra}
+
+Let $G$ be a Lie group (finite- or infinite-dimensional) with Lie algebra $ \mathfrak{g}$ and let $ \mathfrak{g}^*$ denote the (smooth part of) its dual.
+
+
+\begin{defn}
+
+	The natural \textit{Lie-Poisson} structure $ \{ , \}_{LP}$ on the dual Lie algebra $ \mathfrak{g}^*$,
+	\[\{ , \}_{LP} : C^{\infty}( \mathfrak{g}^*) \times C^{\infty}( \mathfrak{g}^*) \to C^{\infty}( \mathfrak{g}^*)\]
+is defined via
+\[
+	\{ f,g \}_{LP} (m) = \langle [df_m, dg_m], m \rangle
+\]
+\end{defn}
+
+
+\begin{prop}
+
+	The Hamiltonian equation corresponding to a function $H$ and the natural Lie-Poisson structure $ \{ , \}_{LP}$ on $ \mathfrak{g}^*$ is given by 
+\[
+	\frac{d}{dt}m(t) = - \mathrm{ad}^*_{dH_{m(t)}}m(t)
+\]
+This equation is called the Euler-Poisson Equation on $ \mathfrak{g}^*$.
+\end{prop}
+
+
+\begin{cor}
+
+	The symplectic leaves of $ \{ , \}_{LP}$ on $ \mathfrak{g}^*$ are the coadjoint orbits of $G$. In particular, all (finite-dimensional) coadjoint orbits have even dimension.
+
+\end{cor}
+
+
+
+\begin{cor}
+
+	Let $ A: \mathfrak{g} \to \mathfrak{g}^*$ be an invertible self-adjoint operator. For the quadratic Hamiltonian function $ H: \mathfrak{g}^* \to \mathbb{R}$ defined by $H(m) = \frac{1}{2} \langle m, A^{-1} m \rangle$ the corresponding Hamiltonian equation is 
+\[
+	\frac{d}{dt} m(t) = - \mathrm{ad}^*_{A^{-1}m(t)} m(t)
+\]
+
+\end{cor}
+
+
+
+
+\begin{defn}
+
+An invertible self-adjoint operator $ A: \mathfrak{g} \to \mathfrak{g}^*$ defining the quadratic Hamiltonian $H$ is called an \textit{inertia operator on} $ \mathfrak{g}$.
+
+\end{defn}
+
+\subsubsection{A Riemannian Approach to the Euler Equations}
+
+
+\indent Let $ (,)$ be some left-invariant metric on the group $G$. The geodesic flow with respect to this metric is a dynamical system on the tangent bundle $TG$ of the group $G$. We can pull back this system to the Lie algebra $ \mathfrak{g}$ by left translation. Hence we get a dynamical system
+\[
+	\frac{d}{dt}v(t) = B(v(t))
+\]
+on the Lie algebra $ \mathfrak{g}$, where $ B: \mathfrak{g} \to \mathfrak{g}$ is a (nonlinear) operator.
+
+
+\begin{defn}
+
+	The dynamical system on the Lie algebra $ \mathfrak{g}$ describing the evolution of the velocity vector of a geodesic in a left-invariant metric on the Lie group $G$ is called \textit{Euler (or Euler-Arnold) equation} corresponding to the metric on $G$.
+
+\end{defn}
+
+
+Observe that the metric $(,)_e$ at the identity defines a non-degenerate bilinear form on $ \mathfrak{g}$, and therefore an inertia operator $ A: \mathfrak{g} \to \mathfrak{g}^*$ by $A(v) = (v,\cdot)$. This identification allows us to write the Euler equations on the dual space $ \mathfrak{g}^*$. We can identify $m=A(v)$ and write a Hamiltonian function $H(m) = \frac{1}{2} \langle m, A^{-1}m \rangle $.
+
+
+
+\begin{thm}
+
+	For the left-invariant emtric on a group generated by an inertia operator $ A: \mathfrak{g} \to \mathfrak{g}^*$, the Euler (or geodesic) equation assumes the form 
+	\[
+		\frac{d}{dt}m(t) = - \mathrm{ad}^*_{A^{-1} m(t)} m(t)
+	\]
+	
+\end{thm}
+
+
+
+\begin{rmk}
+
+The underlying reason for the Riemannian reformulation is the fact taht an geodesic problem in \textit{Riemannian} geometry can be described in terms of \textit{symplectic} geometry. Geodesics on $M$ are extremals of a quadratic Lagrangian on $TM$. They can also be described by the Hamiltonian flow on $T^*M$ for the quadratic Hamiltonian function given by the Legendre Transform of the Lagrangian.\\
+ 
+\end{rmk}
+
+
+
+\subsubsection{Poisson Pairs and Bi-Hamiltonian Structures}
+
+\indent A \textit{first integral} (or a conservation law) for a vector field $\xi$ on a manifold $M$ is a function on $M$ invariant under the flow of this field. In this section we will show that if the vector field $\xi$ is a Hamiltonian vector field with respect to two different Poisson structures that are compatible in a certan sense, there is a way of constructing first integrals of such a field.
+
+
+\begin{defn}
+
+	Two Poisson structures $ \{ , \}_0$ and $ \{ , \}_1$ on a manifold $M$ are said to be \textit{compatible} or form a \textit{Poisson pair} if for every $\lambda \in \mathbb{R}$ the linear combination $ \{ , \}_0 + \lambda \{ , \}_1$ is again a Poisson bracket on $M$.\\
+	\indent A dynamical system $ \frac{d}{dt}m = \xi(m)$ on $M$ is called \textit{bi-Hamiltonian} if the vector field $\xi$ is Hamiltonian with respect to both $ \{ , \}_0$ and $ \{ , \}_1$.
+
+\end{defn}
+
+\indent The main example of a manifold admitting a Poisson pair is $ \mathfrak{g}^*$. One is the usual Lie-Poisson bracket $ \{ , \}_{LP}$ and the other is a 'frozen' Lie-Poisson bracket.
+
+
+\begin{defn}
+
+The constant Poisson bracket on $ \mathfrak{g}^*$ associated to a point $m_0 \in \mathfrak{g}^*$ is the bracket $ \{ , \}_0$ defined by 
+\[
+	\{ f,g \}_0 (m) = \langle [df_m, dg_m], m_0 \rangle 
+\]
+
+
+\end{defn}
+
+\indent The Poisson bracket $ \{ , \}_0$ depends on the \textit{freezing point} $m_0$. The two brackets $ \{ , \}_{LP}$ and $ \{ , \}_0$ coincide at $m_0$. The symplectic leaves of the constant bracket $ \{ , \}_0$ are given by translations of the stangent space $ T_{m_0} \mathcal{O}_{m_0}$ to the coadjoint orbit $ \mathcal{O}_{m_0}$ thorugh the point $m_0$.
+
+
+\begin{lem}
+
+	The Poisson brackets $ \{ , \}_{LP}$ and $ \{ , \}_0$ are compatible for every point $m_0 \in \mathfrak{g}^*$.
+
+\end{lem}
+
+
+\begin{rmk}
+
+Explicitly, the Hamiltonian equation on $ \mathfrak{g}^*$ with the Hamiltonian function $F$ and computed with respect to the frozen bracket is 
+\[
+	\frac{dm}{dt}=- \mathrm{ad}^*_{dF_m} m_0
+\]
+
+
+\end{rmk}
+
+\indent Going back to the general situation, let $ \{ , \}_0$ and $ \{ , \}_1$ be a Poisson pair on a manifold $M$. One can generate a bi-Hamiltonian dynamical systems by producing a sequence of Hamiltonians in involution, according to the follow \textit{Lenard-Magri scheme}. Consider $ \{ , \}_{\lambda} = \{ , \}_0 + \lambda \{ , \}_1$ for any $\lambda$. Let $h_{\lambda}$ be a \textit{Casimir function} on $M$ for this bracket (a Casimir function generates the zero vector field). Furthermore, suppose $h_{\lambda}$ can be expanded in a power series of $ \lambda$, so that we can write
+\[
+	h_{\lambda} = \sum_i \lambda^i h_i
+\]
+where each coefficient $h_i$ is a smooth function on $M$. We can generate Hamiltonian vector fields $\xi_i$ on $M$ by using the new Poisson bracket.
+
+
+
+\begin{thm}
+
+The function $h_i$ are Hamiltonians of a hierarchy of bi-Hamiltonian systems. In other words,
+\[
+	\{ h_i, f \}_1 = \mathcal{L}_{\xi_i} f = - \{ h_{i+1}, f \}_1
+\]
+And the other functions are constants of motion:
+\[
+\{ h_i, h_j \}_k = 0
+\]
+For $k=0,1$.
+
+\end{thm}
+
+
+\begin{rmk}
+
+	The fact that $ \{ h_i, h_j \}_k =0$ means the functions $h_j$ are first integrals of the vector fields $\xi_i$. So if the function $h_j$ are independent, the previous theorem gives an infinite list of first integrals of motion for $\xi_i$.
+
+\end{rmk}
+
+\subsubsection{Integrable Systems and the Liouville-Arnold Theorem}
+
+\begin{defn}
+
+	A Hamiltonian system on a symplectic $2n$-dimensional manifold $M$ is calle \textit{(completely) integrable} if it has $n$ integrals in involution that are functionally independent almost everywhere on on $M$. The Hamiltonian function is one of the first integrals.
+
+\end{defn}
+
+\begin{thm}
+
+	For a compact manifold $M$, connected components of noncritical common level set $M_c$ of the first $n$ integrals are $n$-dimensional tori, while the Hamiltonaian system defines a (quasi)-periodic motionon each of them. In a neighborhood of such a component in $M$ there are coordinates $ \left( \phi_1, \ldots, \phi_n, I_1, \ldots, I_n \right)$ where $ \phi_i$ are angular coordinates (cyclic) along the tori and $I_i$ are the first integrals, such that the dynamical system assume the form $ \dot{ \phi_i} = \Omega_i (I_1, \ldots, I_n)$, and the symplectic form is $ \omega = \sum_i dI_i \wedge d \phi_i$.
+
+\end{thm}
+
+\subsection{Symplectic Reduction}
+\subsubsection{Hamiltonian Group Actions}
+
+\begin{defn}
+
+	Consider a finite-dimensional symplectic manifold $ \left( M, \omega \right)$. Let $G$ be a connected Lie group with Lie algebra $ \mathfrak{g}$ and suppose that the exponential map exists. If the group $G$ acts smoothly on $M$, each element $X$ of the Lie algebra $ \mathfrak{g}$ defines a vector field $ \xi_X$ on the manifold $M$ as an infinitesimal action of the group:
+	\[
+		\xi_X(m) = \frac{d}{dt} \mathrm{exp}(tX)m \restriction_{t=0}
+	\]
+The \textit{action} of the group $G$ on the manifold $M$ is called \textit{symplectic} if it leaves the symplectic form $ \omega$ invariant.	
+
+\end{defn}
+
+\begin{defn}
+
+The \textit{action} of a Lie Group $G$ is called \textit{Hamiltonian} if for every $X \in \mathfrak{g}$ there exists a globally-defined Hamiltonian function $H_X$ that can be chosen in such a way that the map $ \mathfrak{g} \to C^{\infty}( M ) $, associating to $X$ the corresponding Hamiltonian $H_X$, is a Lie algbra homomorphism:
+\[
+	H_{ \left[ X,Y \right] } = \left\{ H_X, H_Y \right\}
+\]
+\end{defn}
+
+\begin{defn}
+
+Assume the action of $G$ on $M$ is Hamiltonian. Then the moment map is the map $ \Phi: M \to \mathfrak{g}^*$ defined by 
+\[
+	H_X(m) = \langle \Phi(m), X  \rangle
+\]
+where $ \langle , \rangle $ denotes the pairing between $ \mathfrak{g}$ and $ \mathfrak{g}^*$
+
+\end{defn}
+
+\subsubsection{Symplectic Quotients}
+
+\begin{thm}
+
+	Suppose $ \lambda$ is a regular value of the moment map and suppose that $ \Phi^{-1}( \lambda) / G_{ \lambda}$ is a manifold (satisfied if $G_{ \lambda}$ is compact and acts freely on  $ \Phi^{-1}( \lambda)$). Then there exists a unique symplectic struture $ \omega_{ \lambda}$ on the reduced space $ \Phi^{-1}( \lambda ) / G_{ \lambda }$ such that
+	\[
+	\iota^* \omega = \pi^* \omega_{ \lambda }
+	\]
+	Where $ \iota$ is the embedding $ \Phi^{-1}( \lambda) \to M$ and $ \pi$ is the projection $ \Phi^{-1}( \lambda ) \to \Phi^{-1}( \lambda) / G_{ \lambda }$. The resulting manifold is called one of the following \textit{symplectic reduction, Hamiltonian, Marsden-Weinstein reduction} or the \textit{sympectic quotient}.
+
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

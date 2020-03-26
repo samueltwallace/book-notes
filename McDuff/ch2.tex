@@ -1,0 +1,361 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+
+
+
+
+\begin{document}
+
+\section{Linear Sympletic Geometry}
+\subsection{Symplectic Vector Spaces}
+\begin{defn}
+
+A \textbf{Symplectic Vector Space} is a pair $(V,\omega)$ of a finite-dimensional vector space $V$ and a non-degenerate skew-symmetric bilinear form $\omega: V \times V \to \mathbb{R}$. A \textbf{Linear Symplectomorphism} is a linear map preserving the symplectic form. The set of linear symplectomorphisms is denoted by $\mathrm{Sp}(V,\omega)$.
+
+\end{defn}
+
+\begin{defn}
+
+The symplectic complement of a subspace $W$ is the subspace $W^{\omega} = \{v \in V \vert \omega(v,w)=0 \hspace{4pt} \forall w \in W\}$. Subspaces are called \\
+
+\begin{tabular}{l|l}
+     isotropic & $W \subset W^{\omega}$ \\
+     coisotropic & $W^{\omega} \subset W$ \\
+     symplectic & $W \cap W^{\omega} = \{0\}$ \\
+     Lagrangian & $W = W^{\omega}$
+\end{tabular}
+
+\end{defn}
+
+\begin{lem}
+
+$\mathrm{dim}W + \mathrm{dim}W^{\omega} = \mathrm{dim}V$; $W^{\omega \omega} = W$
+
+\end{lem}
+
+\begin{cor}
+
+$\omega$ is nondegenerate iff the associated volume element is nonzero: $\omega \wedge \ldots \wedge \omega = \omega^n$
+
+\end{cor}
+
+\begin{lem}
+
+Any isotropic subspace is contained in a Lagrangian subspace. Additionally, any basis of a Lagrangian subspace can be extendded to a sympletic basis of $(V,\omega)$.
+
+\end{lem}
+
+\begin{lem}
+
+Let $(V,\omega)$ be a symplectic vector space of $W \subset V$ a coisotropic subspace. Then: 
+\begin{enumerate}
+    \item $V'=W/W^{\omega}$ carries a natural symplectic structure $\omega '$ induced by $\omega$.
+    \item If $\Lambda \subset V$ is a Lagrangian subspace then $\Lambda ' = ((\Lambda \cap W) + W^{\omega})/W^{\omega}$ is a Lagrangian subspace of $V'$
+    
+\end{enumerate}
+
+\end{lem}
+
+\subsection{The Symplectic Linear Group}
+
+\begin{lem}
+
+$\mathrm{Sp}(2n) \cap O(2n) = \mathrm{Sp}(2n) \cap \mathrm{GL}(n,\mathbb{C}) = \mathrm{U}(n)$
+
+\end{lem}
+
+\begin{lem}
+
+$\lambda \in \sigma(\Psi) \iff \lambda^{-1} \in \sigma(\Psi)$, and their multiplicities are identical (Here $\Psi$ is a linear symplectomorphism, and $\sigma(\Psi)$ its spectrum). Moreover, distinct eigenvectors $z_1, z_2$ have the property that $\omega(z_1, z_2) = 0$. 
+
+\end{lem}
+
+\begin{lem}
+
+Every real symmetric positive-definite symplectic matrix, taken to any positive real power, is again a symplectic matrix
+
+\end{lem}
+
+\begin{prop}
+
+$\mathrm{U}(n)$ is a maximal compact subgroup of $\mathrm{Sp}(2n)$ and the quotient $\mathrm{Sp}(2n)/\mathrm{U}(n)$ is contractible. 
+
+\end{prop}
+
+\begin{prop}
+
+
+The fundamental group of $\mathrm{U}(n)$ is isomorphic to the integers. The determinant map $\mathrm{det}: \mathrm{U}(n) \to \mathrm{S}^1$ induces an isomorphism of fundamental groups.
+
+\end{prop}
+
+\subsection{The Maslov Index}
+
+\begin{thm}
+
+There is a unique function $\mu: \Omega \mathrm{Sp}(2n) \to \mathbb{Z}$ satisfying the following: 
+\begin{enumerate}
+    \item (homotopy) Two loops have the same Maslov index $\iff$ they are homotopic
+    \item (product) For any two loops $\Psi_t, \Phi_t: \mathbb{R/Z} \to \mathrm{Sp}(2n)$, $\mu(\Psi_t \Phi_t) = \mu(\Psi_t) + \mu(\Phi_t)$
+    \item (direct sum) Identifying $ \mathrm{Sp}(2a) \bigoplus \mathrm{Sp}(2b) \subset \mathrm{Sp}(2a+2b)$, then $\mu(\Psi \bigoplus \Phi) = \mu(\Psi) + \mu (\Phi) $
+    \item (normalization) The loop $\theta_t = e^{2 \pi i t} \in \mathrm{U}(1)$ has Maslov index 1.
+\end{enumerate}
+
+\end{thm}
+
+The Maslov index can also be considered the intersection number of a loop with a certain submanifold. Decompose a symplectic matrix into a 2x2 block matrix form, then take the upper right matrix and set its determinant equal to zero. This forms a codimension one submanifold. Then take the Maslov index to be the intersection number of the loop with this submanifold.
+
+\subsection{Lagrangian Subspaces}
+
+Let $\mathcal{L}(V,\omega)$ be the set of Lagrangian subspaces of $(V,\omega)$
+
+\begin{lem}
+
+Let $X$ and $Y$ be real $n \times n$ matrices and define $\Lambda \subset \mathbb{R}^{2n} $ by $\Lambda = \mathrm{range}(Z)$; $Z = (X Y)^{T}$. Then $\Lambda$ is a Lagrangian subspace $\iff$ $Z$ is of full rank and $X^T Y = Y^T X$
+
+\end{lem}
+
+The matrix that satisfies the above is a \textbf{Lagrangian Frame}. $\mathcal{L}(n)$ is a manifold of dimension $n(n+1)/2$.
+
+\begin{lem}
+
+\begin{enumerate}
+    \item Any symplectic transformation of a Lagrangian subspace is again Lagrangian
+    \item There is a symplectic transform between any two Lagrangian subspaces.
+    \item There is a natural isomorphism $\mathcal{L}(n) \approx \mathcal{U}(n)/\mathcal{O}(n)$.
+\end{enumerate}
+
+\end{lem}
+
+\begin{thm}
+
+There is a unique function $\mu: \Omega \mathcal{L}(n) \to \mathbb{Z}$ satisfying the following:
+
+\begin{enumerate}
+    \item (homotopy) Two loops have the same Maslov index $\iff$ they are homotopic
+    \item (product) For a loop $\Lambda_t \in \Omega \mathcal{L}(n)$ and a loop $\Psi_t \in \Omega \mathrm{Sp}(2n)$, then $\mu(\Psi_t \Lambda_t) = \mu(\Lambda_t) + 2 \mu(\Psi_t)$
+    \item (direct sum) Identifying $\mathcal{L}(a) \bigoplus \mathcal{L}(b) \subset \mathcal{L}(a+b)$, then the Maslov index of a direct sum of two loops is the sum of their Maslov indices.
+    \item (normalization)  The loop $\Lambda_t = e^{2 \pi i t} \mathbb{R} \subset \mathbb{C}$ has Maslov index 1.
+    
+\end{enumerate}
+
+\end{thm}
+
+Similarly to the Maslov indices of symplectomorphism loops, we can view the Maslov index of Lagrangian subspaces as the intersection number of the loop with a submanifold of $\mathcal{L}(n)$. The desired submanifold is the set of planes $\bigcup_{c \in \mathbb{R}} \{\mathrm{Re}(z) = c\}$ in complex symplectic basis.
+
+
+\subsection{The Affine Non-Squeezing Theorem}
+
+\begin{defn}
+
+An \textbf{Affine Symplectomorphism} is a map that is a symplectomorphism followed by a translation. A symplectic cylinder $Z^{2n}(R)$ is $B^2 (R) \times \mathbb{R}^{2n-2}$
+
+\end{defn}
+
+\begin{thm}
+
+Let $\psi$ be an affine symplectormophism, and that $\psi(B^{2n}(r)) \subset Z^{2n}(R)$. Then $r \leq R$.
+
+\end{thm}
+
+\begin{thm}
+
+Let $\Psi$ be a nonsingular matrix with the non-squeezing property. Then $\Psi$ is symplectic or anti-symplectic ($\Psi^*\omega = -\omega)$. 
+
+\end{thm}
+
+\begin{defn}
+
+The \textbf{Linear Symplectic Width} of a subset $A \subset \mathbb{R}^{2n}$ is the area of the largest symplectic ball that fits inside the subset: 
+\[
+w_L(A) = \sup \{\pi r^2 \vert \psi(B^{2n}(r)) \subset A\}
+\]
+For any affine symplectic transform $\psi$. It has the following properties:
+
+\begin{enumerate}
+    \item (monotonicity) if $\psi(A) \subset B$ then $w_L(A) \leq w_L(B)$.
+    \item (conformality) $w_L(\lambda A) = \lambda^2 w_L(A)$
+    \item (nontriviality) $w_L(B^{2n}(r)) = w_L(Z^{2n}(r)) = \pi r^2$
+\end{enumerate}
+\end{defn}
+
+\begin{thm}
+
+Let $\Psi: \mathbb{R}^{2n} \to \mathbb{R}^{2n}$ be a linear map. Then TFAE:
+
+\begin{enumerate}
+    \item $\Psi$ preserves the linear symplectic width of ellipsoids centered at $0$.
+    \item $\Psi$ is either symplectic or anti-symplectic, i.e. $\Psi^* \omega = \pm \omega$
+\end{enumerate}
+
+\end{thm}
+
+\begin{lem}
+
+Let $(V,\omega)$ be a symplectic vector space with an inner product $g$. Then there is a basis of $V$ which is $g$-orthogonal and $\omega$-standard, and can be chosen so that $g(u_j, u_j) = g(v_j, v_j)$
+
+\end{lem}
+
+\begin{lem}
+
+Given an ellipsoid
+\[E = \{W \in \mathbb{R}^{2n} \vert \sum_{i,j=1}^{2n} a_{ij} w_i w_j \leq 1 \}\]
+
+There is a symplectic linear tranformation $\Psi in \mathrm{Sp}(2n)$ such that $\Psi$ turns the matrix $a_{ij}$ diagonal.
+
+\end{lem}
+
+\begin{rmk}
+
+For $n=1$, the previous lemma tells us that every ellipse in $\mathbb{R}^2$ can be mapped into a circle by an area-preserving transformation. 
+
+\end{rmk}
+
+\begin{defn}
+
+The \textbf{Symplectic Spectrum} of an ellipsoid to be the increasing $n$-tuple $(r_1, \ldots, r_n)$ such that the ellipsoid is 'diagonalized' by a linear transformation into a ellipsoid with diagonal matrix $\mathrm{diag}(r_1, \ldots, r_n)$. Symplectic spectra have the following properties:
+
+\begin{enumerate}
+    \item Two ellipsoids are linearly symplectomorphic $\iff$ they have the same spectrum
+    \item An ellipsoid with its spectrum of the form $(r,\ldots,r)$ are symplectic balls
+    \item The volume of a symplectic ellipsoid is $\mathrm{Vol}(E) = \pi^n \Pi_i r_i^2$
+\end{enumerate}
+
+\end{defn}
+
+
+\begin{thm}
+
+Let $E \subset \mathbb{R}^{2n}$ be an ellipsoid centered at 0. Then $ w_L(E) = \sup_{B\subset E} w_L(B) = \inf_{E \subset Z} w_L(Z)$, where $B$ are symplectic balls and $Z$ are symplectic cylinders.
+
+\end{thm}
+
+\subsection{Complex Structures}
+
+\begin{defn}
+
+A \textbf{Complex Structure} is an automorphism $J: V \to V$ such that $-J^2$ is the identity. We can 'complexify' the vector space by ''complex' scalar multiplication: $\mathbb{C}\times V \to V: (s+i t, v) \mapsto sv + tJv$, which means $V$ has even dimension over the reals. The set of complex structures is denoted by $\mathcal{J}(V)$
+
+\end{defn}
+
+\begin{prop}
+
+Every almost complex structure is a linear transform away from the standard complex structure:
+
+\[
+J = \begin{bmatrix}
+     0 & -\mathrm{id} \\
+     \mathrm{id} & 0 \\
+\end{bmatrix}
+\]
+
+\end{prop}
+
+\begin{defn}
+
+If $(V,\omega)$ is symplectic vector space, a complex structure $J \in \mathcal{J}(V)$ is said to be compatible with $\omega$ if $\omega(Jv, Jw) = \omega(v,w)$ and $\omega(v,Jv) > 0$. This defines an inner product on $V$, defined by $g_J(v,w) = \omega(w,Jw)$. This inner product makes $J$ skew-adjoint, i.e. $g_J(v,Jw) = - g_J(Jv, w)$. The space of compatible complex structures is denotes $\mathcal{J}(V,\omega)$
+\end{defn}
+
+\begin{prop}
+
+\begin{enumerate}
+    \item $\mathcal{J}(V,\omega)$ is homeomorphic to the space $\mathcal{P}$ of symmetric positive definite symplectic matrices.
+    \item There is a continuous map $r:\text{met}(V) \to \mathcal{J}(V,\omega)$ such that $r(g_J) = J$ \& $r(\Phi^* g) = \Phi^* r(g)$, $\forall J \in \mathcal{J}(V,\omega), g \in \text{met}(V), \Phi \in \text{Sp}(V,\omega)$.
+    \item $\mathcal{J}(V,\omega)$ is contractible.
+    
+    
+\end{enumerate}
+
+\end{prop}
+
+\begin{defn}
+
+A complex structure $J \in \mathcal{J}(V,\omega)$ is called $\omega$-tame if $\omega(v,Jv) > 0$ for all nonzero $v$. The space of $\omega$-tame complex structures is denotes by $\mathcal{J}_T(V, \omega)$. There is an associated inner product for each $\omega$-tame complex structure given by $g_J(v,w) = \frac{1}{2}(w(v,Jw) + \omega(w,Jv))$.
+
+\end{defn}
+
+\begin{prop}
+
+The space $\mathcal{J}_T(V,\omega)$ is contractible.
+
+\end{prop}
+
+\subsection{Symplectic Vector Bundles}
+
+\begin{defn}
+
+A \textbf{Symplectic Vector Bundle} over a manifold is a real vector bundle $E \overset{\pi}{\to} M$ equipped with a smoothly symplectic form $\omega \in \Gamma(E \bigotimes E^*)$. 
+
+\end{defn}
+
+\begin{defn}
+
+Symplectic vector bundles are isomorphic $\iff$ their underlying complex vector bundles are isomorphic. Symplectic vector bundles with compatible almost complex structure and a metric are called a \textbf{Hermitian Structure}.
+
+\end{defn}
+
+\begin{prop}
+
+Let $E \to M$ be a $2n$-dimensional vector bundle.
+\begin{enumerate}
+    \item Every symplectic form has a compatible almost complex structure. The space $\mathcal{J}(E,\omega)$ is contractible.
+    \item The space of symplectic forms compatible with a given almost complex structure is contractible.
+\end{enumerate}
+
+\end{prop}
+
+\begin{defn}
+
+A \textbf{Unitary Trivialization} is a smooth map of a symplectic vector bundle, an almost complex structure, and a metric into Euclidean space, transforming each structure into its standard structure. A \textbf{Unitary Trivialization along a curve} is a trivialization of the pull-back bundle along a curve.
+\end{defn}
+
+\begin{lem}
+
+If a curve has unitary trivializations at its endpoints, then it can be extended to a unitary transformation along the entire curve
+
+\end{lem}
+
+\begin{prop}
+
+A Hermitian vector bundle $E \to \Sigma$ over a compact Riemann surface $\Sigma$ with non-empty boundary $\partial \Sigma$ admits a unitary trivialization.
+
+\end{prop}
+
+\subsection{First Chern Classes}
+
+\begin{thm}
+
+There is a unique function called the \textbf{First Chern Number}, that assigns an integer $c_1(E)$ to every symplectic vector bundle $E$ over a compact oriented Riemann surface $\Sigma$ without boundary and satisfies the following axioms:
+
+\begin{enumerate}
+    \item (naturality) Two isomorphic vector bundles have the same Chern number
+    \item (functoriality) Any smooth map $\phi: \Sigma' \to \Sigma$ of oriented Riemann surfaces and any symplectic vector bundle $E \to \Sigma$, then $c_1(\phi^*E) = \mathrm{deg}(\phi) c_1(E)$
+    \item (additivity) For any two symplectic vector bundles $E_1 \to \Sigma$ and $E_2 \to \Sigma$, $c_1(E_1 \bigoplus E_2) = c_1(E_1) + c_1(E_2)$.
+    \item (normalization) The Chern number of the tangent bundle is $c_1(T\Sigma) = 2 - 2g = \chi(\Sigma)$
+\end{enumerate}
+
+\end{thm}
+
+\begin{rmk} 
+
+\begin{enumerate}
+    \item The first Chern number vanishes $\iff$ the bundle is trivial; so the first Chern number is an indicator of if the bundle can be symplectically trivialized.
+    \item Usually the Chern number is defined for complex vector bundles, which is fine for our definition.
+\end{enumerate}
+\end{rmk}
+
+
+
+
+
+\end{document}
