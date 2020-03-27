@@ -1,28 +1,5 @@
-\documentclass{article}
-
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathrsfs}
-\usepackage{mathtools}
-\newtheorem{thm}{Theorem}
-\newtheorem{defn}{Definition}
-\newtheorem{prop}{Proposition}
-\newtheorem{rmk}{Remark}
-\newtheorem{cor}{Corollary}
-\newtheorem{lem}{Lemma}
-\newtheorem*{pf}{Proof}
-
-
-
-\title{Hyperbolic Dynamics}
-\author{Samuel Wallace}
-
-\begin{document}
-
-\maketitle
-
-\section{Hyperbolic Sets}
+\section{Hyperbolic Dynamics}
+\subsection{Hyperbolic Sets}
 
 \indent Throughout, $M$ is a $C^1$ Riemannian manifold, $U \subset M$ a non-empty open subset, and $f:U \to M$ a $C^1$ diffeomorphism. 
 
@@ -52,7 +29,7 @@ Let $\Lambda$ be a hyperbolic set of $f$ with constants $C$ and $\lambda$. Then 
 
 \indent A fixed point of a differentiable map $f$ is \textit{hyperbolic} if no eigenvalue of $T_xf$ lies on the unit circle. A periodic point of period $k$ is called \textit{hyperbolic} if no eigenvalue of $T_x f^k$ lies on the unit circle.
 
-\section{$\varepsilon$-Orbits}
+\subsection{$\varepsilon$-Orbits}
 
 \indent An $\varepsilon$-orbit is a finite or infinite sequence $(x_n) \subset U$ satisfying $d(f(x_n),x_{n+1}) \hspace{2pt} \forall n$. These are also called \textit{pseudo-orbits}.
 
@@ -84,7 +61,7 @@ If $\Lambda$ is a hyperbolic set of $f:U \to M$, then $\overline{\mathrm{Per}(f\
 If $f:M \to M$ is Anosov, then $\overline{\mathrm{Per}(f)}=\mathrm{NW}(f)$.
 \end{cor}
 
-\section{Invariant Cones}
+\subsection{Invariant Cones}
 
 \indent Let $\Lambda$ be a hyperbolic set of $f:U \to M$. Since the distributions $E^s$ and $E^u$ are continuous, we can extend them to continuous distributions in a neighborhood $U(\Lambda) \supset \Lambda$. If $x \in \Lambda$ and $v \in T_xM$, then $v=v^s+v^u$. Now assume the metric is adapted with constant $\lambda$. For $\alpha >0$, define the (un)stable cones of size $\alpha$ by 
 \[K^s_{\alpha}(x)=\{ v \in T_xM|\ : \Vert v^u \Vert \leq \alpha \Vert v^s \Vert \}\]
@@ -139,7 +116,7 @@ Let $\Lambda$ be a hyperbolic set of $f$ with adapted metric. Then for every $\d
 
 \end{prop}
 
-\section{Stability of Hyperbolic Sets}
+\subsection{Stability of Hyperbolic Sets}
 
 \begin{prop}
 
@@ -166,7 +143,8 @@ A $C^1$ diffeomorphism $f$ of a $C^1$ manifold is called \textit{structurally st
 Anosov diffeomorphisms are structurally stable.
 \end{cor}
 
-\section{Stable and Unstable Manifolds}
+
+\subsection{Stable and Unstable Manifolds}
 
 For $\delta > 0$, let $B_{\delta}$ be the ball of radius $\delta$ at $0$.
 
@@ -255,7 +233,7 @@ The global stable and unstable manifolds are embedded $C^1$ submanifolds of $M$ 
 \end{cor}
 
 
-\section{Inclination Lemma}
+\subsection{Inclination Lemma}
 
 \indent Recall the definition of two submanifolds to intersect transversely. \\
 \indent Denote by $B^i_{\varepsilon}$ the open ball of radius $\varepsilon$ centered at 0 in $\mathbb{R}^i$. For $v \in \mathbb{R}^m=\mathbb{R}^k \times \mathbb{R}^l$ denote by $v^u \in \mathbb{R}^k$ and $v^s \in \mathbb{R}^l$ the components of $v = v^u + v^s$, and $\pi^u: \mathbb{R}^m \to \mathbb{R}^k$ the projection. For $\delta > 0$ let $K^u_{\delta} = \{ v \in \mathbb{R}^m: \Vert v^s \Vert \leq \delta \Vert v^u \Vert \}$ and the stable cone $K^s_{\delta} = \{ v \in \mathbb{R}^m: \Vert v^s \Vert \leq \delta \Vert v^u \Vert \} $
@@ -286,7 +264,7 @@ Let $x$ be a hyperbolic fixed point of a diffeomorphism $f:U \to M$, $\mathrm{di
 
 \end{thm}
 
-\section{Horseshoes and Transverse Homoclinic Points}
+\subsection{Horseshoes and Transverse Homoclinic Points}
 
 Let $\mathbb{R^m}= \mathbb{R}^k \times \mathbb{R}^l$. We will refer to $\mathbb{R}^k$ and $\mathbb{R}^l$ as the unstable and stable subspaces, respectively, and denote by $\pi^u$ and $\pi^s$ the projections to these spaces. For $v \in \mathbb{R}^m$ denoted by $v^u = \pi^u(v) \in \mathbb{R}^k$ and $v^s = \pi^s(v) \in \mathbb{R}^l$. For $\alpha \in (0,1)$, call the sets $K^u_{\alpha} = \{ v \in \mathbb{R}^m: \vert v^s \vert \leq \alpha \vert v^u \vert \}$ and $K^s_{\alpha} = \{ v \in \mathbb{R}^m: \vert v^u \vert \leq \alpha \vert v^s \vert \}$ the unstable and stable cones, respectively. Let $R^u = \{ x \in \mathbb{R}^k: \vert x \vert \leq 1 \}$, $R^s = \{ x \in \mathbb{R}^l : \vert x \vert \leq 1 \} $, and $R = R^u \times R^s$. For $z = (x,y) \in \mathbb{R}^k \times \mathbb{R}^l$, the sets $F^s(z) = \{x \} \times R^s$ and $F^u(z) = R^u \times \{y\}$ will be called the stable and unstable fibers, respectively. We say that a $C^1$ map $f:R \to \mathbb{R}^m$ has a \textit{horseshoe} if there are $\lambda, \alpha \in (0,1)$ such that:
 
@@ -318,7 +296,7 @@ Let $p$ be a hyperbolic periodic point of a diffeomorphism $f:U \to M$, and let 
 
 \end{thm}
 
-\section{Local Product Structure and Locally Maximal Hyperbolic Sets}
+\subsection{Local Product Structure and Locally Maximal Hyperbolic Sets}
 
 A hyperbolic set $\Lambda$ of $f: U \to M$ is called \textit{locally maximal} if there is an open set $V$ such that $\Lambda \subset V \subset U$ and $\Lambda=\bigcap_{n>0} f^n(V)$. Since every closed invariant subset of a hyperbolic set is also a hyperbolic set, the geometric structure of a hyperbolic set may be very complicated and difficult to describe. However, due to their special properties, locally maximal hyperbolic sets allow a geometric characterization. \\
 \indent Since $E^s_x \cap E^u_x = \{0\}$, the local stable and unstable manifolds of $x$ intersect at $x$ transversely. By continuity, this transversality extends to a neighborhood of the diagonal in $\Lambda \times \Lambda$.
@@ -354,7 +332,7 @@ A hyperbolic set $\Lambda$ is locally maximal iff it has a local product structu
 
 \end{prop}
 
-\section{Anosov Diffeomorphisms}
+\subsection{Anosov Diffeomorphisms}
 
 Recall that a $C^1$ diffeomorphism $f$ of a connected differentaible manifold $M$ is called \textit{Anosov} if $M$ is a hyperbolic set for $f$; it follows then that $M$ is a locally maximal and compact. \\
 \indent An important class of Anosov diffeomorphisms is as follows: Let $N$ be a simply connected nilpotent Lie group, and $\Gamma$ a uniform discrete subgroup of $N$. The quotient $M = N/\Gamma$ is a compact \textit{nilmanifold}. Let $\overline{f}$ be an automorphism of $N$ that preserves $\Gamma$ and whose derivative at the identity is hyperbolic. The induced diffeomorphism $f$ of $M$ is Anosov. Up to finite coverings, all known Anosov diffeomorphisms are topologically conjugate to automorphisms of nilmanifolds.\\
@@ -398,7 +376,7 @@ Let $f: M \to M$ be an Anosov diffeomorphism. Then TFAE:
 \end{thm}
 
 
-\section{Axiom A and Structural Stability}
+\subsection{Axiom A and Structural Stability}
 
 A diffeomorphism satisfies Smale's \textit{Axiom A} if the set $\mathrm{NW}(f)$ is hyperbolic and $\overline{\mathrm{Per}(f)} = \mathrm{NW}(f)$. \\
 \indent For a hyperbolic periodic point $p$ of $f$, denote by $W^s(O(p))$ and $W^u(O(p))$ the unions of the stable and unstable manifolds of $p$ and its images, respectively. If $p$ and $q$ are hyperbolic periodic points, we write $p \leq q$ when $W^s(O(p))$ and $W^u(O(p))$ have a point of transverse intersection. $\leq$ is reflexive and transitive. If $p \leq q$ and $q \leq p$, we write $p ~ q$ and say that $p$ and $q$ are \textit{heteroclinically related}. This is an equivalence relation. \\
@@ -432,4 +410,3 @@ A $C^1$ diffeomorphism is structurally stable iff it satisfies Axiom A and the s
 
 
 
-\end{document}
