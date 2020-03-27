@@ -4,3 +4,4 @@
 *.synctez.gz
 *.out
 *.fdb_latexmk
+*.toc
