@@ -169,6 +169,75 @@ $L_{ \alpha }$ being linear makes it a cochain, and Stokes' theorem makes $L_{ \
 
 \subsection{De Rham Cohomology}
 
+\begin{thm}
+
+\[
+	D^p(M) \approx H^p(M)
+\]
+where $D^p(M)$ is the space of $p$-forms on $M$ and $H^p(M) = H^p(M, \mathbb{R})$.
+
+\end{thm}
+
+\begin{thm}
+
+	$b_p(M)$ is the number of linearly independdent closed differential forms modulo exact forms of degree $p$.
+
+\end{thm}
+
+\subsection{Periods}
+Skipped.
+
+\subsection{Decomposition theorem for compact Riemann surfaces}
+
+\begin{thm}
+
+For a compact Riemann surface $S$, 
+\[
+	D^1(S) \approx H^1(S)
+\]
+
+
+\end{thm}
+
+
+\begin{defn}
+
+The linear map
+\[
+	*:D^1(S) \to D^1(S); \hspace{4pt} *(p dx + q dy) = -q dx + p dy
+\]
+which has the following properties
+\begin{enumerate}
+	\item $ *^2 = -1$
+	\item $ \left( \alpha, \beta \right) = \alpha \wedge * \beta$ is an inner product.
+\end{enumerate}
+Define as well:
+\begin{enumerate}
+	\item $(*d)f = * (df)$ for a function $f$
+	\item $ (*d) \alpha = - d( * \alpha)$ for a 1-form $ \alpha$
+	\item $ \Delta = d*d$
+\end{enumerate}
+So that for a function $f$,
+\[
+	\Delta f = \left( \frac{ \partial^2 f}{\partial x^2 } + \frac{ \partial^2 f}{\partial y^2 }  \right) dx \wedge dy
+\]
+A function is called \textit{harmonic} if $ \Delta f$ vanishes on $S$. A 1-form $ \alpha$ is called a \textit{harmonic form} if it is locally the exterior derivative of a harmonic function.
+\end{defn}
+
+\begin{prop}
+
+$ \alpha$ is harmonic if and only if $d \alpha = 0$ and $ d * \alpha = 0$.
+
+\end{prop}
+
+\begin{thm}
+
+	The first betti number of a compact Riemann surface is equal to the number of linearly independent harmonic 1-forms on the surface.
+
+\end{thm}
+
+\subsection{The Star Isomorphism}
+
 
 
 
