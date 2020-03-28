@@ -145,6 +145,29 @@ and $ \partial s^0 = 0$. Cycles and boundaries are defined with respect to this 
 
 \subsection{Stokes' Theorem}
 
+\begin{defn}
+
+Let $ \phi$ be a singular $p$-simplex and $ \alpha$ a $p$-form on the differentiable manifold $M$. Since $ \phi$ is continuous, the intersection of the supports of $ \phi$ and $ \alpha$ is compact. Define the integral of $ \alpha$ over $s^p = \left[ \phi, S^p \right]$ by 
+\[
+	\int_{s^p} \alpha = \int_{ S^p } \phi^* \alpha
+\]
+For a chain $C_p = \sum_i g_i s^p_i$, extend the integral by linearity over the region of integration:
+\[
+\int_{ C_p } = \sum_i g_i \int_{ s^p_i } \alpha
+\]
+\end{defn}
+
+\begin{prop}
+
+Consider the functional $L_{ \alpha }$ defined by 
+\[
+	L_{ \alpha } \left( C_p \right) = \int_{ C_p } \alpha
+\]
+$L_{ \alpha }$ being linear makes it a cochain, and Stokes' theorem makes $L_{ \alpha }$ a cocycle if $ \alpha$ is closed and a coboundary if $ \alpha$ is exact.
+
+\end{prop}
+
+\subsection{De Rham Cohomology}
 
 
 
