@@ -5,6 +5,8 @@
 \newcommand*{\booktitle}[1]{\gdef\@booktitle{#1}}
 \newcommand*{\bookauthor}[1]{\gdef\@bookauthor{#1}}
 \newcommand*{\notesauthor}[1]{\gdef\@notesauthor{#1}}
+\newcommand*{\pubdescrip}[1]{\gdef\@pubdescrip{#1}}
+\newcommand*{\transcribernotes}[1]{\gdef\@transcribernotes{#1}}
 
 
 \RequirePackage{amsthm}
@@ -39,11 +41,11 @@
 \hspace{0pt}
 \vfill
 \begin{center}
-\Huge
+\Large
 Notes from \textit{\@booktitle}\\
 \bigskip
 \bigskip
-\Large
+\normalsize
 by \@bookauthor\\
 \medskip
 \medskip
@@ -55,8 +57,23 @@ taken by \@notesauthor
 \pagestyle{fancy}
 }
 
-\let\oldtoc\tableofcontents
-\renewcommand{\tableofcontents}{\oldtoc \newpage}
+\newcommand{\introduction}{%
+\Large
+\textbf{Publisher's Description}
+\smallskip
+\\
+\normalsize
+\@pubdescrip \\
+\bigskip
+
+\Large
+\textbf{Transcription Notes} 
+\smallskip \\
+\normalsize
+\@transcribernotes
+\\
+\tableofcontents 
+}
 
 
 
