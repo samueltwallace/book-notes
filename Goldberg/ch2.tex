@@ -13,7 +13,7 @@
 			\]
 			
 	\end{enumerate}
-	We associate with $K$ an integer $ \mathrm{dim}K$ called its dimension which is the mas dimension of its simplexes.
+	We associate with $K$ an integer $ \mathrm{dim}K$ called its dimension which is the max dimension of its simplexes.
 
 \end{defn}
 
@@ -105,7 +105,45 @@ It is a linear, square-free map.
 
 \end{defn}
 
+\subsection{Singular Homology}
 
+\begin{defn}
+
+A \textit{geometric realization} $K_E$ of an abstract complex $K$ we mean a complex whose simplexes are geometric simplexes; i.e., points, lines, triangles, tetrahedrons in Euclidean space $ \mathbb{R}^n$ of sufficiently high dimension, in such a way that distinct abstract simplexes correspond to disjoint geometric simplexes. The union of all the simplexes in $K_E$, written $ \vert K_E \vert$ is called a \textit{polyhedron} and the abstract complex is said to be a \textit{covering} of $ \vert K_E \vert$.
+
+\end{defn}
+
+\begin{defn}
+
+Two complexes are \textit{isomorphic} if there is a bijection between the two preserving incidences.
+
+\end{defn}
+
+\begin{prop}
+
+Isomorphic complexes induce a homeomorphism between their geometric realizations. The homology groups of isomorphic complexes are isomorphic.
+
+\end{prop}
+
+\begin{defn}
+
+	If the group of coefficient $G$ form a ring $F$, the homology groups become modules over $F$. The rank of $H_p(K,F)$ as a module over $F$ is called the \textit{$p$-th betti number} $b_p(K)$. If $F$ has characteristic zero, $H_p(K)$ is a vector space. The expression $\sum_p (-1)^p b_p(K)$ is called the \textit{Euler-Poincar\'e characteristic} of $K$.
+
+\end{defn}
+
+\begin{defn}
+
+A \textit{$p$-simplex} $ \left[ \phi: S^p \right]$ on a differentiable manifold $M$ is a geometric simplex and a differentiable map $ \phi: S^p \to M$. A \textit{singular $p$-chain} $s^p$ on $M$ is a formal sum of $p$-simplexes with coefficients in a group $G$. \\
+The support of $s^p$ is $ \phi \left( S^p \right)$, and a chain is \textit{locally finite} if each compact set in $M$ meets only a finite number of supports with $g_i \neq 0$. \\
+The \textit{faces} of a $p$-simplex $s^p = \left[ \phi,S^p \right]$ are the simplexes $ \phi \left( S^{ p-1 }_i \right)$. A boundary operator $ \partial$ is defined by putting
+\[
+	\partial s^p = \sum_i (-1)^i s^{ p-1 }_i
+\]
+and $ \partial s^0 = 0$. Cycles and boundaries are defined with respect to this boundary map, giving rise to the \textit{$p^{ th }$ singular homology space} of $M$, ddenoted $SH_p$.
+
+\end{defn}
+
+\subsection{Stokes' Theorem}
 
 
 
