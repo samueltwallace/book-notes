@@ -37,7 +37,7 @@ The total differential of a function $f$ on $ \mathbb{C}^n$ is defined as
 \[
 	df = \sum \left( \frac{ \partial f }{\partial z_i } dz_i + \frac{ \partial f }{\partial \overline{z}_i } d\overline{z}_i \right)  
 \]
-We call the first set of summands $ \partial f$ and the second set $\overline{\partial} f$. A function is holomorphic if $ \overline{\partial} f = 0$ (which is the same as being holomorphic in each variable separately).\\
+We call the first set of summands $ \partial f$ and the second set $\dbar f$. A function is holomorphic if $ \dbar f = 0$ (which is the same as being holomorphic in each variable separately).\\
 \indent Many results of one-variable complex analysis extend to multiple variable; for example, a function is analytic in each variable iff it is holomorphic, two functions holomorphic on a connected open set, equal on an open subset, are identical, and the absolute value of a holomorphic function has no maximum in an open subset.There are some differences, however.
 
 \end{defn}
@@ -286,27 +286,27 @@ And we have projection maps
 \]
 that correspond to the direct sum decomposition. We define the operators
 \[
-	\overline{\partial}: A^{p,q}(M) \to A^{p, q+1}(M)
+	\dbar: A^{p,q}(M) \to A^{p, q+1}(M)
 \]
 \[
 	\partial: A^{p,q}(M) \to A^{p+1,q}(M)
 \]
 by
 \[
-	\overline{\partial} = \pi^{(p,q+1)} \circ d, \partial = \pi^{(p+1,q)} \circ d
+	\dbar = \pi^{(p,q+1)} \circ d, \partial = \pi^{(p+1,q)} \circ d
 \]
-So that $d = \partial + \overline{\partial}$. A form $\phi$ is holomorphic if $\overline{\partial} \phi = 0$. Note that since the decomposition of holomorphic and antiholomorphic forms is preserved under holomorphic maps, $ \overline{\partial} \circ f^* = f^* \circ \overline{\partial}$. Note that $ \overline{\partial}^2 = 0$, we can analogously define
+So that $d = \partial + \dbar$. A form $\phi$ is holomorphic if $\dbar \phi = 0$. Note that since the decomposition of holomorphic and antiholomorphic forms is preserved under holomorphic maps, $ \dbar \circ f^* = f^* \circ \dbar$. Note that $ \dbar^2 = 0$, we can analogously define
 \[
-	H^{p,q}_{ \overline{\partial} } (M) =  \frac{Z^{p,q}_{ \overline{\partial} }(M)}{ \overline{\partial} A^{p, q-1} (M) }
+	H^{p,q}_{ \dbar } (M) =  \frac{Z^{p,q}_{ \dbar }(M)}{ \dbar A^{p, q-1} (M) }
 \]
-Note that holomorphic maps induce maps of $ \overline{\partial}$-cohomology groups, and the Poincar\`e lemma guarantees that de Rham groups are locally trivial.
+Note that holomorphic maps induce maps of $ \dbar$-cohomology groups, and the Poincar\`e lemma guarantees that de Rham groups are locally trivial.
 
 
 \begin{lem}
 
 	For $\Delta = \Delta(r)$ a polycylinder in $ \mathbb{C}^n$,
 	\[
-		H^{p,q}_{ \overline{\partial} } (\Delta) = 0
+		H^{p,q}_{ \dbar } (\Delta) = 0
 	\]
 	
 
@@ -420,13 +420,13 @@ The most commonly used sheaves we will use are listed below:
 	\item $ \mathbb{Z}(U), \mathbb{Q}(U), \mathbb{C}(U)$, the locally constant sheaves with value of the respective field
 	\end{enumerate}
 
-\item If $M$ is a complex manifold, $V \subset M$, an analytic subvariety of $M$, and $ E \to M$ a holomorphic vector bundle, we define the sheaves $ \mathcal{O}, \mathcal{O}^*, \Omega^*, \mathcal{A}^{p,q}, \mathcal{Z}^{p,q}_{ \overline{\partial} }, \mathcal{J}_V, \mathcal{O}(E), \mathcal{A}^{p,q}(E)$ by 
+\item If $M$ is a complex manifold, $V \subset M$, an analytic subvariety of $M$, and $ E \to M$ a holomorphic vector bundle, we define the sheaves $ \mathcal{O}, \mathcal{O}^*, \Omega^*, \mathcal{A}^{p,q}, \mathcal{Z}^{p,q}_{ \dbar }, \mathcal{J}_V, \mathcal{O}(E), \mathcal{A}^{p,q}(E)$ by 
 	\begin{enumerate}
 		\item $ \mathcal{O}(U)$, the holomorphic functions on $U$
 		\item $ \mathcal{O}^*(U)$, the multiplicative group of nonzero holomorphic functions on $U$
 		\item $\Omega^p(U)$, the holomorphic $p$ forms on $U$
 		\item $ \mathcal{A}^{p,q}(U)$, the closed forms of type $(p,q)$
-		\item $ \mathcal{Z}^{p,q}_{ \overline{\partial} } (U)$, $ \overline{\partial}$-closed forms on $U$,
+		\item $ \mathcal{Z}^{p,q}_{ \dbar } (U)$, $ \dbar$-closed forms on $U$,
 		\item $ \mathcal{J}_V(U)$, holomorphic functions vanishing on $V \cap U$
 
 		\item $ \mathcal{O}(E)(U)$, the holomorphic sections of $E$ over $U$,
@@ -574,7 +574,7 @@ Now Stokes' theorem says that the addition of a coboundary or an exact form will
 
 For $M$ a complex manifold,
 \[
-	H^q (M, \Omega^p) \approx H^{p,q}_{ \overline{\partial} } (M)
+	H^q (M, \Omega^p) \approx H^{p,q}_{ \dbar } (M)
 \]
 
 
@@ -584,9 +584,9 @@ Now for some computations:
 \begin{enumerate}
 \item If $M$ is any $n$-dimensional complex manifold, then
 	\[
-		H^q (M, \mathcal{O}) \approx H^{0,q}_{ \overline{\partial} }(M) = 0
+		H^q (M, \mathcal{O}) \approx H^{0,q}_{ \dbar }(M) = 0
 	\]
-\item By te $ \overline{\partial}$-Poincar\'e lemma,
+\item By te $ \dbar$-Poincar\'e lemma,
 	\[
 		H^q ( \mathbb{C}^n, \mathbb{O} ) = 0
 	\]
@@ -717,11 +717,11 @@ For each $ \epsilon $, the varieties $ \Tilde{V}$ and $ \Tilde{W}$ meet the fibe
 All of these constructions can be brought to the complex category by replacing smooth with holomorphic, and differentiable with complex.
 
 \begin{prop}
-	There is a natural exterior derivative $ \overline{\partial}: A^{p,q}(E) \to A^{p,q+1}(E)$ from $E$ valued $(p,q)$-forms to $E$-valued $(p, q+1)$ forms, given in coordinates by 
+	There is a natural exterior derivative $ \dbar: A^{p,q}(E) \to A^{p,q+1}(E)$ from $E$ valued $(p,q)$-forms to $E$-valued $(p, q+1)$ forms, given in coordinates by 
 	\[
-	\overline{\partial} \sigma = \sum \overline{\partial}\omega_i \otimes e_i
+	\dbar \sigma = \sum \dbar\omega_i \otimes e_i
 	\]
-	The holomorphicity of transition functions shows that $ \overline{\partial}\sigma$ does not depend on the frame chosen.	
+	The holomorphicity of transition functions shows that $ \dbar\sigma$ does not depend on the frame chosen.	
 \end{prop}
 
 \subsubsection{Metrics, Connections, and Curvature}
@@ -746,7 +746,93 @@ satisfying Leibnitz' rule
 
 \end{defn}
 
+\begin{defn}
 
+Let $D$ be a connection on $E$, and $ \left\{ e_1, \ldots, e_n \right\}$ be a local frame. We can decompose $D e_i$ as
+\[
+De_i = \sum_j \theta_{ ij } e_j
+\]
+where $ \theta_{ ij }$ is called the connection matrix of the connection, giving a general decomposition of section $ \sigma =\sum \sigma e_i$
+\[
+	D \sigma = \sum_j \left( d \sigma + \sum_i \_i \theta_{ ij } \right)e_j
+\]
+And the connection matrix transforms as:
+\[
+	\theta_{ e' } = dg \cdot g^{-1} + g \cdot \theta_e \cdot g^{-1}
+\]
+Where $\theta_e$ is the connection matrix in the original frame, $ \theta_{ e' }$ is the connection matrix an the new frame, and $g$ is the vector bundle cocycle transforming the original frame into the new frame.
+\end{defn}
+
+\begin{defn}
+
+	Writing $D = D' + D''$ with $D': \mathcal{A}^0 (E) \to \mathcal{A}^{ 1,0 }(E)$ and $D'': \mathcal{A}^0(E) \to \mathcal{A}^{ 0,1 }(E)$, then $D$ is \textit{compatible with the complex structure} if $D'' = \dbar$. \\
+	If $E$ is hermitian, $D$ is said to be \textit{compatible with the metric} if 
+	\[
+		d \left( \xi, \eta \right) = \left( D \xi, \eta \right) + \left( \xi, D \eta \right)
+	\]
+
+\end{defn}
+
+\begin{lem}
+
+If $E$ is a hermitian vector bundle, there is a unique connection $D$ on $E$ that is compatible with both the metric and complex structure.
+
+\end{lem}
+
+\begin{lem}
+
+Let $E \to M$ be a hermitian vector bundle and $F \subset E$ a holomorphic subbundle. Then $F$ is itself a hermitian bundle with metric connection $D_F$ induced by the metric connection of $E$.
+
+\end{lem}
+
+\begin{lem}
+
+\[
+D_{ E \otimes E' } = D_E \otimes 1 + 1 \otimes D_{ E' }
+\]
+
+
+\end{lem}
+
+\begin{defn}
+
+	For a connection $D$ on a complex vector bundle $E$, the operator $D^2$ is linear over $ \mathcal{A}^0$, which means it takes the form
+	\[
+	D^2 e_i = \sum \Theta_{ ij } \otimes e_j
+	\]
+$ \Theta_e$ is called the \textit{curvature matrix} of $D$ in the frame $e$. It transforms, when the frame transforms by the cocycle $g$, 
+\[
+	\Theta_{ e' } = g \cdot \Theta_e \cdot g^{-1}
+\]
+
+\end{defn}
+
+\begin{prop}
+
+\[
+\Theta_e = d \theta_e - \theta_e \wedge \theta_e
+\]
+
+
+\end{prop}
+
+
+\begin{prop}
+
+	If the connection $D$ is compatible with both the metric and complex structure, then the curvature matrix is a hermitian matrix of $(1,1)$-forms.
+
+\end{prop}
+
+\begin{lem}
+
+There exists a unique matrix $ \psi_{ ij }$ of 1-forms such that $ \psi + \overline{ \psi} = 0$ and 
+\[
+d \phi_i = \sum_j \psi_{ ij } \wedge \phi_j + \tau_i
+\]
+where $ \tau_i$ is of type $ (2,0)$.
+
+\end{lem}
+\subsection{Harmonic Theory on Compact Complex Manifolds}
 
 
 
