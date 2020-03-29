@@ -833,7 +833,127 @@ where $ \tau_i$ is of type $ (2,0)$.
 
 \end{lem}
 \subsection{Harmonic Theory on Compact Complex Manifolds}
+\subsubsection{The Hodge Theorem}
+Throughout, $M$ will be a connected, compact, complex manifold of complex dimension $n$. We will choose a hermitian metric $ds^2$ with associate (1,1) form 
+\[
+\omega = \frac{ \sqrt{-1}}{2} \sum_j \phi_j \wedge \overline{ \phi_j} 
+\]
+in terms of a unitary cofram $ \left\{ \phi_1, \ldots, \phi_n \right\}$. The metric $ds^2$ induces a hermitian metric on all tensor bundles $T^{ *(p,q) } \left( M \right)$; the inner product in $ T^{ *(p,q) } \left( M \right)$ is by taking the basis$ \left\{ \phi_I (z) \wedge \overline{ \phi_J}(z) \right\}_{ \#I = p, \#J = q }$ to be orthogonal and of length $2^{ p+q }$. Let $C_n = (-1)^{ n(n-1)/2 } \left(  \sqrt{-1}/2 \right)$ and 
+\[
+	\Phi = \frac{ \omega^n}{n!} = C_n \phi_1 \wedge \cdots \wedge \phi_n \wedge \overline{ \phi_1} \wedge \cdots \wedge \overline{ \phi_n}
+\]
+be the volume form on $M$ associated to the metric. The global inner product
+\[
+	\left( \psi, \eta \right) = \int_M \left( \psi (z), \eta (z) \right) \Phi (z)
+\]
+makes $ A^{ p,q }(M)$ into a pre-Hilbert space. We ask: \textit{Given a $\dbar$-closed form $ \psi \in Z^{ p,q }_{ \dbar }(M)$, among all the forms $ \left\{ \psi + \dbar \eta \right\}$ representing the Dolbeault cohomology class $ \left[ \psi \right] \in H^{ p,q }_{ \dbar }(M)$ of $ \phi$, can we fine one of smallest norm?} To answer, we pretend for a moment that $ A^{ p,q }(M)$ is complete and $\dbar$ is bounded and define the adjoint operator
+\[
+	\dbar^*: A^{ p,q }(M) \to A^{ p,q-1 }(M)
+\]
+by requiring that
+\[
+	\left( \dbar^* \psi, \eta \right) = \left( \psi, \dbar \eta \right)
+\]
+for all $ \eta \in A^{ p,q-1 }(M)$.
 
+\begin{lem}
+
+	A $\dbar$-closed form $ \psi \in Z^{ p,q }_{ \dbar }(M)$ is of minimal norm in $ \dbar A^{ p,q-1 }(M)$ if and only if $ \dbar^* \psi = 0$.
+
+\end{lem}
+
+So at least formally, the Dolbeault cohomology group $ H^{ p,q }_{ \dbar }(M)$ is represented by the solutions of two first-order equations
+\[
+\dbar \psi = 0 \hspace{4pt} \dbar^* \psi = 0
+\]
+These two may be replaced by the single second order equation
+\[
+	\Delta_{ \dbar } = \left( \dbar \dbar^* + \dbar^* \dbar \right) \psi = 0
+\]
+As a positive definite operator, the vanishing of $ \Delta_{ \dbar } \psi$ implies the vanishing of the two components. The operator
+\[
+	\Delta_{ \dbar } A^{ p,q }(M) \to A^{ p,q }(M)
+\]
+is called the \textit{$\dbar$-Laplacian}, or simple the \textit{Laplacian} (written $ \Delta$) if no ambiguity is likely. Differential forms satisfying the Laplace Equation
+\[
+\Delta \psi = 0
+\]
+are called \textit{Harmonic forms}; the space of harmonic forms of type $ \left( p,q \right)$ is denoted by $ \mathscr{H}^{ p,q }(M)$ and called the \textit{harmonic space}. What the previous argument suggests is an isomorphism
+\[
+	\mathscr{H}^{ p,q }(M) \approx H^{ p,q }_{ \dbar }(M)
+\]
+
+\begin{defn}
+
+The \textit{star} or \textit{duality operator} is the map
+\[
+	*: A^{ p,q }(M) \to A^{ n-p, n-q }(M)
+\]
+by requiring
+\[
+	\left( \psi(z), \eta(z) \right) \Phi(z) = \psi(z) \wedge * \eta(z)
+\]
+which satisfies the following:
+\begin{enumerate}
+	\item $ ** \eta = (-1)^{ p+q } \eta$
+	\item $ \dbar^* = - * \dbar *$
+\end{enumerate}
+
+
+\end{defn}
+
+\begin{thm}
+
+\begin{enumerate}
+	\item $ \mathrm{dim} \mathscr{H}^{ p,q }(M) < \infty$
+	\item The orthogonal projection
+		\[
+			\mathscr{H}: A^{ p,q }(M) \to \mathscr{H}^{ p,q }(M)
+		\]
+		is well-defined, and there exists a unique operator, the Green's operator,
+		\[
+			G: A^{ p,q }(M) \to A^{ p,q }(M)
+		\]
+		with $ G( \mathscr{H}^{ p,q }(M)) = 0$, $\dbar G = G \dbar$, $ \dbar^* G = G \dbar^*$ and
+		\[
+		I = \mathscr{H} + \Delta G
+		\]
+		
+\end{enumerate}
+
+This implies the orthogonal direct-sum relationship
+\[
+	A^{ p,q }(M) = \mathscr{H}^{ p,q }(M) \oplus \dbar A^{ p,q-1 }(M) \oplus \ddbar^* A^{ p,q+1 }(M)
+\]
+
+
+\end{thm}
+
+\subsubsection{Applications of the Hodge Theorem}
+
+\begin{thm}
+
+\[
+	\mathrm{dim} H^q (M, \Omega^p) < \infty
+\]
+
+
+\end{thm}
+
+\begin{thm}
+
+\begin{enumerate}
+	\item $ H^n \left( M, \Omega^n \right) \xrightarrow{~} \mathbb{C}$
+	\item the pairing
+		\[
+			H^q \left( M, \Omega^p \right) \otimes H^{ n-q } \left( M, \Omega^{ n-p } \to H^n \left( M, \Omega^n \right) \right)
+		\]
+		
+\end{enumerate}
+
+\end{thm}
+
+\subsection{K\"ahler Manifolds}
 
 
 
