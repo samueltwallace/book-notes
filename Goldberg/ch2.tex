@@ -237,6 +237,86 @@ $ \alpha$ is harmonic if and only if $d \alpha = 0$ and $ d * \alpha = 0$.
 \end{thm}
 
 \subsection{The Star Isomorphism}
+\begin{defn}
+
+We define the \textit{Laplacian} as an operator
+\[
+\Delta: C^{\infty}( M ) \to C^{\infty}( M ) 
+\]
+by 
+\[
+	- \Delta f = \frac{1}{ \sqrt{g}} \frac{ \partial }{\partial u^i } \left( \sqrt{g} g^{ ij } D_j f \right)
+\]
+And Laplace's equation is $ \Delta f = 0$.
+
+\end{defn}
+
+\begin{defn}
+
+	We define the isomorphism $*: \Lambda^{ p }(M) \to \Lambda^{ n-p }(M)$ by 
+	\[
+		\alpha = a_{ \left( i_1 \ldots i_p \right) } du^i \wedge \ldots \wedge du^{ i_p } \Rightarrow * \alpha = a^*_{ \left( j_1 \ldots j_{ n-p } \right) } du^{ j_i } \wedge \cdots \wedge du^{ j_{ n-p } }
+	\]
+where
+\[
+	a^*_{ j_1 \ldots j_{ n-p } } = \epsilon_{ \left( i_1 \ldots i_p \right) j_1 \ldots j_{ n-p } } a^{ \left( i_1 \ldots i_p \right) }
+\]
+where $ \epsilon_{ i_1 \ldots i_p j_1 \ldots j_{ n-p } }$ is the Levi-Civitas symbol, scaled to $ \sqrt{g}$. $* \alpha$ is called the \textit{adjoint} of $ \alpha$.
+
+\end{defn}
+
+\begin{prop}
+
+$*$ has the following properties:
+\begin{enumerate}
+	\item $ ** \alpha = (-1)^{ pn+p } \alpha$
+	\item $ \alpha \wedge * \beta$ is an inner product on $ \Lambda^p (M)$.
+\end{enumerate}
+
+\end{prop}
+
+\begin{defn}
+
+	We define (global) \textit{scalar product} of $ \alpha$ and $ \beta$ as the number
+	\[
+		\left(  \alpha, \beta \right) = \int_M \alpha \wedge * \beta
+	\]
+\end{defn}
+
+\begin{prop}
+
+	$*$ is an isometry on $ \Lambda^p(M)$ with the scalar product above.
+
+\end{prop}
+
+\subsection{Harmonic Forms}
+
+\begin{defn}
+
+The \textit{co-differential} of a form $ \alpha$ is defined as
+\[
+	\delta \alpha = (-1)^{ np+n+1 } * d* \alpha
+\]
+
+\end{defn}
+
+\begin{prop}
+
+The co-differential has the following properties
+\begin{enumerate}
+	\item $ \delta \delta \alpha = 0$
+	\item $ * \delta \alpha = (-1)^p d * \alpha$; $* d \alpha = (-1)^{ p+1 } \delta * \alpha$
+\end{enumerate}
+
+\end{prop}
+
+\begin{defn}
+
+A form is \textit{co-closed} if its co-differential is zero, and if $ \alpha = \delta \beta$ means that $ \alpha$ is co-closed. A form is \textit{closed} in the sense of Hodge if it is closed and co-closed, and closed in the sense of Kodaira if its Laplacian vanishes.
+
+\end{defn}
+
+\subsection{Orthogonality Relations}
 
 
 
