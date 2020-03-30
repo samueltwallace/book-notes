@@ -923,7 +923,7 @@ which satisfies the following:
 
 This implies the orthogonal direct-sum relationship
 \[
-	A^{ p,q }(M) = \mathscr{H}^{ p,q }(M) \oplus \dbar A^{ p,q-1 }(M) \oplus \ddbar^* A^{ p,q+1 }(M)
+	A^{ p,q }(M) = \mathscr{H}^{ p,q }(M) \oplus \dbar A^{ p,q-1 }(M) \oplus \dbar^* A^{ p,q+1 }(M)
 \]
 
 
@@ -948,12 +948,70 @@ This implies the orthogonal direct-sum relationship
 		\[
 			H^q \left( M, \Omega^p \right) \otimes H^{ n-q } \left( M, \Omega^{ n-p } \to H^n \left( M, \Omega^n \right) \right)
 		\]
+		is nondegenerate.
 		
 \end{enumerate}
 
 \end{thm}
 
 \subsection{K\"ahler Manifolds}
+\subsection{The K\"ahler Condition}
+We look for the condition and equivalent conditions for the $ \dbar$-Laplacian to be equal to the $d$-Laplacian,
+\[
+\dbar \dbar^* + \dbar^* \dbar  = \Delta_{ \dbar } = \frac{1}{2} \Delta_d = d \delta+ \delta d
+\]
+Where $ \delta$ is the codifferential of the associated metric of the hermitian metric on $M$.
+
+\begin{defn}
+
+	A metric $ ds^2$ on $M$ is \textit{K\"ahler} if its associated $(1,1)$-form
+	\[
+	\omega = \frac{ \sqrt{-1}}{2} \sum \phi \wedge \overline{ \phi_i}
+	\]
+	is $d$-closed (i.e. $ \omega$ is symplectic).
+
+\end{defn}
+
+\begin{defn}
+
+A metric $ds^2$ on $M$ \textit{osculates to order k} to the Euclidean metric on $ \mathbb{C}^n$ if the metric locally takes the form
+\[
+	ds^2 = \sum \left( \delta_{ ij } + g_{ ij } \right) dz_i \otimes d \overline{z_j}
+\]
+where $ g_{ ij }$ vanishes up to order $k$ at $z_0$; this is usually written as
+\[
+	ds^2 = \sum \left( \delta_{ ij } + \left[ k \right] \right) dz_i \otimes d \overline{z_j}
+\]
+
+
+\end{defn}
+
+
+\begin{lem}
+
+$ds^2$ is K\"ahler if and only if it osculates to order 2 to the Euclidean metric everywhere.
+
+\end{lem}
+
+\begin{defn}
+
+A manifold is called \textit{K\"ahler} if it admits a K\"ahler metric.
+
+\end{defn}
+
+\begin{prop}
+For $M$ a compact K\"ahler manifold,
+\begin{enumerate}
+	\item The even numbers $b_{ 2q }(M)$ are positive
+	\item There is an injection of holomorphic $q$-forms $H^0 \left( M, \Omega^q \right)$ into the cohomology $ H^q_{ DR } (M)$
+	\item The fundamental class $ \eta_V$ of any analytic subvariety $V \subset M$ is non-zero.
+\end{enumerate}
+
+\end{prop}
+
+\subsubsection{The Hodge Identities and the Hodge Decomposition}
+
+
 
 
 
