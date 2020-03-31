@@ -270,15 +270,15 @@ be the corresponding quotient; clearly
 \]
 \indent Now let $M$ be a complex manifold. By linear algebra, the decomposition
 \[
-	T^*_{ \mathbb{C},z}(M) = T^*_z (M) \oplus T^*_z (M)
+	T^*_{ \mathbb{C},z}(M) = T^*_z (M) \bigoplus T^*_z (M)
 \]
 of the cotangent space to $M$ at each point $z$ gives a decomposition
 \[
-	\wedge^n T^*_{ \mathbb{C},z} (M) = \oplus_{p+q = n} \left( \wedge^p T^*_z(M) \otimes \wedge^q T^*_z (M) \right) 
+	\wedge^n T^*_{ \mathbb{C},z} (M) = \bigoplus_{p+q = n} \left( \wedge^p T^*_z(M) \otimes \wedge^q T^*_z (M) \right) 
 \]
 Correspondingly, we can write
 \[
-	A^n(M) = \oplus_{p+q = n} A^{p,q}(M)
+	A^n(M) = \bigoplus_{p+q = n} A^{p,q}(M)
 \]
 And we have projection maps
 \[
@@ -923,7 +923,7 @@ which satisfies the following:
 
 This implies the orthogonal direct-sum relationship
 \[
-	A^{ p,q }(M) = \mathscr{H}^{ p,q }(M) \oplus \dbar A^{ p,q-1 }(M) \oplus \dbar^* A^{ p,q+1 }(M)
+	A^{ p,q }(M) = \mathscr{H}^{ p,q }(M) \bigoplus \dbar A^{ p,q-1 }(M) \bigoplus \dbar^* A^{ p,q+1 }(M)
 \]
 
 
@@ -1010,6 +1010,57 @@ For $M$ a compact K\"ahler manifold,
 \end{prop}
 
 \subsubsection{The Hodge Identities and the Hodge Decomposition}
+
+\begin{defn}
+The following are differential operator:
+\begin{enumerate}
+	\item $d: A^r (M) \to A^{r+1}(M)$
+	\item $ \partial: A^{p,q}(M) \to A^{p+1,q}(M)$
+	\item $ \dbar: A^{p,q}(M) \to A^{p,q+1}(M)$
+	\item $ d^c = \frac{ \sqrt{-1}}{4 \pi} ( \partial - \dbar): A^r(M) \to A^{r+1}(M)$
+\end{enumerate}
+Note that these satisfy the following:
+\begin{enumerate}
+	\item $d = \partial + \dbar$
+	\item $d^c = \partial - \dbar$
+	\item $ d d^c + d^c d = 0$
+	\item $ \partial \dbar + \dbar \partial = 0$
+	\item $ d d^c = \frac{ \sqrt{-1}}{2 \pi} \partial \dbar$
+\end{enumerate}
+We additionally define the following:
+\[
+	\Pi^{p,q}: A^*(M) \to A^{p,q}(M)
+\]
+\[
+\Pi^r = \bigoplus_{p+q=r} \Pi^{p,q}
+\]
+We also define
+\[
+	L: A^{p,q}(M) \to A^{p+1,q+1}(M); \hspace{4pt} L \eta = \eta \wedge \omega
+\]
+where $ \omega$ is the associated $(1,1)$-form of the Hermitian metric $ds^2$.
+\end{defn}
+
+\begin{thm}
+	The following are identities on K\"ahler manifolds:
+	\begin{enumerate}
+		\item $\left[ \Lambda, d \right] = - 4 \pi d^{c*}$
+		\item $ \left[ L, \Delta_d \right] = 0 $
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}[Hodge Decomposition]
+For a compact K\"ahler manifold $M$, the complex cohomology satisfies
+\begin{enumerate}
+	\item $H^r (M, \mathbb{C}) \approx \bigoplus_{p+q=r}H^{p,q}(M)$
+	\item $H^{p,q}(M) = \overline{H^{q,p}(M)}$
+\end{enumerate}
+In addition, the odd Betti numbers $b_{2q+1}(M)$ are even.
+\end{thm}
+
+\subsubsection{The Lefschetz Decomposition}
+
+
 
 
 
