@@ -11,3 +11,45 @@ If $ \Tilde{M}$ is a covering manifold of $M$ which is also compact, then
 
 \end{prop}
 
+\subsection{Curvature and Betti Numbers}
+
+\begin{lem}
+For a regular 1-form $ \alpha$ on a compact and orientable Riemannian manifold $M$
+\[
+\int_M \delta \alpha * 1 = \int_M \delta \alpha \wedge * 1 = 0
+\]
+
+\end{lem}
+
+\begin{defn}
+Define the operator $Q$ by 
+\[
+	(Q \alpha)_i = R^j_i \alpha_j
+\]
+where $ R^j_i$ is the Ricci curvature tensor.
+\end{defn}
+
+\begin{thm}
+	The first betti number of a compact and orientable Riemannian manifold of positive definite Ricci curvature is zero.
+\end{thm}
+
+\begin{defn}
+	A \textit{parallel vector field} is one for which 
+	\[
+		A(t) = \alpha^i (t) \frac{ \partial }{\partial u^i } 
+	\]
+	is parallel along any parametrized curve $u(t)$.	
+\end{defn}
+
+\begin{thm}
+	In a compact and orientable Riemannian manifold a harmonic vector field for which the quadratic form $ \langle Q \alpha, \alpha \rangle$ is positive semi-definite is necessarily a parallel vector field.
+\end{thm}
+
+\begin{thm}
+In a coordinate neighborhood of a compact and orientable Riemannian manifold with the local coordinates $u^1, \ldots, u^n$, $ \alpha$ is a harmonic one form if and only if
+\[
+R^j_i \alpha_j = g^{ ik }D_k D_j \alpha_i = 0
+\]
+
+\end{thm}
+
