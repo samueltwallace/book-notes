@@ -1,0 +1,127 @@
+\section{The Uniform Boundedness Principle and the Closed Graph Theorem}
+
+\subsection{The Baire Category Theorem}
+
+\begin{thm}[Baire]
+	Let $X$ be a complete metric space and $ \left( X_n \right)_{n \geq q}$ be a sequence of closed subsets in $X$. If
+	\[
+	\mathrm{Int} X_n = \emptyset
+	\]
+	Then
+	\[
+		\mathrm{Int} \left( \bigcup_{n}X_n \right) = \emptyset
+	\]
+	
+\end{thm}
+
+\subsection{The Uniform Boundedness Principle}
+
+\begin{defn}
+	Let $E$ and $F$ be two normed vector spaces. Let $ \mathcal{L}(E,F)$ be the space of continuous (bounded) \textit{linear} operators equipped with the norm
+	\[
+		\Vert T \Vert_{ \mathcal{L}(E,F)} = \sup_{ \Vert x \Vert \leq 1} \Vert Tx \Vert
+	\]
+	And we write $ \mathcal{L}(E) = \mathcal{L}(E,E)$.
+\end{defn}
+
+\begin{thm}[Banach-Steinhaus, uniform boundedness principle]
+	Let $E$ and $F$ be two Banach spaces and let $ \left( T_i \right)_{i \in I}$ be a family of continuous linear operator from $E$ into $F$. If
+	\[
+	\forall x \in E \hspace{4pt} \sup_{i \in I} \Vert T_i x \Vert \leq \infty
+	\]
+	Then
+	\[
+		\sup_{i \in I} \Vert T_i \Vert_{ \mathcal{L}(E,F)}
+	\]
+	
+\end{thm}
+
+\begin{cor}
+	Let $E$ and $F$ be two Banch spaces. Let $ \left( T_n \right)$ be a sequence of continuous linear operators from $E$ into $F$ such that $ \forall x \in E \hspace{4pt} T_n x$ converges (to a limit we call $Tx$). Then
+\begin{enumerate}
+	\item $\sup_n \Vert T_n \Vert_{ \mathcal{L}(E,F)} < \infty$
+	\item $ T \in \mathcal{L}(E,F)$
+	\item $ \Vert T \Vert_{ \mathcal{L}(E,F)} \leq \mathrm{liminf}_n \Vert T_n \Vert_{ \mathcal{L}(E,F)}$
+\end{enumerate}	
+\end{cor}
+
+\begin{cor}
+Let $G$ be a Banach space and let $B$ be a subset of $G$. If
+\[
+	\forall f \in G^* \hspace{4pt} f(B) \text{ is bounded in } \mathbb{R}
+\]
+Then $B$ is bounded.
+\end{cor}
+
+\begin{cor}
+Let $G$ be a Banach space and let $B^*$ be a subset of $G^*$. If
+\[
+	\forall x \in G \hspace{4pt} \langle B^*,x \rangle \text{ is bounded in } \mathbb{R}
+\]
+Then $B^*$ is bounded.
+\end{cor}
+
+
+\subsection{The Open Mapping Theorem and the Closed Graph Theorem}
+
+\begin{thm}[Open Mapping Theorem]
+Let $E$ and $F$ be two Banach spaes and let $T$ be a continuous linear operator from $E$ into $F$ that is surjective. Then there exists $ \delta > 0$ such that
+\[
+	T \left( B_E(0,1) \right) \supset B_F(0, \delta)
+\]
+Which says $T$ is an open mapping.
+\end{thm}
+
+\begin{cor}
+Let $E$ and $F$ be two Banach spaces and let $T$ be a continuous linear operator from $E$ into $F$ that is bijective. Then $T^{-1}$ is also continuous.
+\end{cor}
+
+\begin{cor}
+Let $E$ be a vector space with two norms $ \Vert \cdot \Vert_1, \Vert \cdot \Vert_2$ with both make $E$ into a Banach Space, and that there is a constant $C \geq 0$ such that
+\[
+\Vert x \Vert_2 \leq C \Vert x \Vert_1
+\]
+Then the two norms are equivalent.
+\end{cor}
+
+\begin{thm}[Closed Graph Theorem]
+	Let $E$ and $F$ be two Banach spaces. Let $T$ be a linear operator from $E$ to $F$. If the graph of $T$, $G(T)$, is closed in $ E \times F$, then $T$ is continuous.
+\end{thm}
+
+\subsection{Complementary Subspaces. Right and Left Invertibility of Linear Operators}
+
+\begin{thm}
+Let $E$ be a Banach space. Assume that $G$ and $L$ are two closed linear suspaces such that $G+L$ is closed. Then there exists a constant $C \geq 0$ such that $z \in G+L \Rightarrow z = x + y$ with $ C \Vert z \Vert \geq \Vert x \Vert, x \in G$ and $ C \Vert z \Vert \geq \Vert y \Vert, y \in L$.
+
+\end{thm}
+
+\begin{defn}
+Let $G \subset E$ be a closed subspace of a Banach space $E$. A subspace $L \subset E$ is said to be a \textit{topological complement} or simply a \textit{complement} of $G$ if
+\begin{enumerate}
+	\item $L$ is closed
+	\item $ G \cap L = 0$ and $G+L = E$
+\end{enumerate}
+We also say $G$ and $L$ are \textit{complementary} subspaces of $E$. If this holds, then every $z$ can be decomposed into components in $G$ and $L$, for which the projection operators are continuous.
+\end{defn}
+
+\begin{defn}
+	Let $T \in \mathcal{L}(E,F)$. A \textit{right inverse} is an operator $S \in \mathcal{L}(F,E)$ such that $ T \circ S = I_F$. A \textit{left inverse} is an operator $S \in \mathcal{L}(F,E)$ such that $S \circ T = I_E$.
+\end{defn}
+
+\begin{thm}
+	Let $T \in \mathcal{L}(E,F)$ be surjective. The following are equivalent:
+	\begin{enumerate}
+		\item $T$ admits a right inverse.
+		\item $N(T) = T^{-1}(0)$ admits a complements in $E$.
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Let $T \in \mathcal{L}(E,F)$ be injective. The following are equivalent:
+	\begin{enumerate}
+		\item $T$ admits a left inverse.
+		\item $R(T) = T(E)$ is closed and admits a complement in $F$.
+	\end{enumerate}
+\end{thm}
+
+\subsection{Orthogonality Revisited}
