@@ -1,0 +1,218 @@
+\section{The Hahn-Banach Theorems.}
+\subsection{The Analytic Form of the Hahn-Banach Theorem: Extensions of Linear Functionals}
+Let $E$ be a vector space over $ \mathbb{R}$. We recall that a \textit{functional
+} is a function defined n $E$, or a subspace of $E$, \textit{with values in} $ \mathbb{R}$.
+
+\begin{thm}[Helly, Hahn-Banach analytic form]
+Let $p: E \to \mathbb{R}$ be a function satisfying
+\begin{enumerate}
+	\item $p( \lambda x) = \lambda p (x)$
+	\item $p (x+y) \leq p(x) + p(y)$
+\end{enumerate}
+Let $G \subset E$ be a linear subspace and let $g: G \to \mathbb{R}$ be a linear functional such that
+\[
+	g(x) \leq p(x) \hspace{4pt} \forall x \in G
+\]
+Then there exists a linear functional $f: E \to \mathbb{R}$ such that $f \restriction_G = g$.
+\end{thm}
+
+\subsection{The Geometric Forms of the Hahn-Banach Theorem: Separation of Convex Sets}
+
+\begin{defn}
+An affine \textit{hyperplane} is a subset $H \subset E$ of the form
+\[
+	H = \left\{ x \in E: f(x) = \alpha \right\}
+\]
+where $f$ is a linear functional that does not vanish identically and $ \alpha \in \mathbb{R}$. We write $H = \left[ f = \alpha \right]$ and say that $f = \alpha$ is the equation of $H$.
+\end{defn}
+
+\begin{prop}
+The hyperplane $H = \left[ f= \alpha \right]$ is closed if and only if $f$ is continuous.
+\end{prop}
+
+\begin{defn}
+Let $A$ and $B$ be two subsets of $E$. We say the hyperplane $H = \left[ f= \alpha \right]$ separates $A$ and $B$ if
+\[
+	f(a) \leq \alpha \hspace{4pt} \forall a \in A \text{ and } f(b) \geq \alpha \hspace{4pt} \forall b \in B
+\]
+We say that $H$ strictily separates $A$ and $B$ if there exists an $ \epsilon > 0$ such that
+\[
+	f(a) \leq \alpha - \epsilon \hspace{4pt} \forall a \in A \text{ and } f(b) \geq \alpha + \epsilon \hspace{4pt} \forall b \in B
+\]
+A subset $A \subset E$ is \textit{convex} if
+\[
+	tx + (1-t)y \in A \hspace{4pt} \forall x,y \in A \hspace{4pt} \forall t \in \left[ 0,1 \right]
+\]
+\end{defn}
+
+
+\begin{thm}[Hahn-Banach, first geometric form]
+Let $A \subset E$ and $B \subset E$ be two nonempty convex disjoint subsets, one of which is open. Then there exists a closed hyperplane separating them.
+\end{thm}
+
+\begin{thm}[Hahn-Banach,second geometric form]
+Let $A \subset E$ and $B \subset E$ be two empty convex disjoint subsets. If $A$ is closed and $B$ is compact, then there exists a closed hyperplan separating $A$ and $B$.
+\end{thm}
+
+\begin{cor}
+	Let $F \subset E$ be a linear subspace such that $ \overline{F} \neq E$. Then there exists some $ f \in E^*$ not identically zero such that $f(F)=0$
+\end{cor}
+
+\subsection{The Bidual $E^{**}$. Orthogonality Relations}
+
+Let $E$ be a normed vector space and let $E^*$ be the dual space with norm
+\[
+\Vert f \Vert_{E^*} = \sup_{ \Vert x \Vert \leq 1} \vert \langle f,x \rangle \vert
+\]
+The bidual $E^{**}$ is the dual of $E^*$ with norm
+\[
+\Vert \xi \Vert_{E^{**}} = \sup_{ \Vert f \Vert \leq 1} \vert \langle xi,f \rangle \vert
+\]
+There is a canonical injection $J: E \to E^{**}$ defined as
+\[
+\langle Jx, f \rangle_{E^{**}, E^*} = \langle f,x \rangle_{E^*, E}
+\]
+which is an \textit{isometry}. $J$ may not be surjective, but if it is, we say $E$ is reflexive.
+
+\begin{defn}
+If $M \subset E$ is a linear subspace, let
+\[
+M^{\perp} = \left\{ f \in E^*: \langle f,x \rangle =0 \hspace{4pt} \forall x \in M \right\}
+\]
+If $N \subset E^*$ is a linear subspace we set
+\[
+N^{\perp} = \left\{ x \in E: \langle f,x \rangle = 0 \hspace{4pt} \forall f \in N \right\}
+\]
+
+\end{defn}
+
+\begin{prop}
+Let $M \subset E$ be a linear subspace. Then
+\[
+	\left( M^{\perp} \right)^{\perp} = \overline{M}
+\]
+Let $N \subset E^*$ be a linear subspace. Then
+\[
+	\overline{N} \subset \left( N^{\perp} \right)^{\perp}
+\]
+
+\end{prop}
+
+\subsection{A Quick Introduction to the Theory of Conjugate Convex Functions}
+
+\begin{defn}
+	Let $E$ be a set, and $ \phi: E \to \left( - \infty, + \infty \right]$ a function. Let
+	\[
+		D( \phi) = \left\{ x \in E: \phi(x) < + \infty \right\}
+	\]
+	be the domain of $ \phi$. We define the epigraph of $ \phi$
+	\[
+		\mathrm{epi} \phi = \left\{ \left[ x, \lambda \right] \in E \times \mathbb{R}; \phi(x) \leq \lambda \right\}
+	\]
+	If $E$ is a topological space, we say $ \phi$ is \textit{lower semicontinuous} if $ \lambda \in \mathbb{R}$ the set
+	\[
+		\left[ \phi \leq \lambda \right] = \left\{ x \in E: \phi(x) \leq \lambda \right\}
+	\]
+	is closed.
+\end{defn}
+
+
+\begin{prop}
+	If $ \phi$ is lower-semicontinuous, then 
+\begin{enumerate}
+	\item $ \mathrm{epi} \phi$ is closed in $ E \times \mathbb{R}$ and conversely,
+	\item for every $x \in E$ and $ \epsilon>0$ there is a neighborhood $V$ of $x$ such that
+		\[
+			\phi(y) \geq \phi(x) - \epsilon \hspace{4pt} \forall y \in V
+		\]
+		and conversely.
+	\item If $ \phi_1$ and $ \phi_2$ are lower semicontinuous, then so is $ \phi_1 + \phi_2$
+	\item If $ \left( \phi_i \right)_{i \in I}$ is a family of lsc functions then so is
+		\[
+			\phi(x) = \sup_{i \in I} \phi_i (x)
+		\]
+		called the \textit{superior envelope}. 
+	\item If $E$ is \textit{compact} and $ \phi$ is lsc, then $ \inf_E \phi$ is achieved.
+\end{enumerate}
+\end{prop}
+
+\begin{defn}
+	A function $ \phi: E \to \left( - \infty, + \infty \right]$ is \textit{convex} if
+	\[
+		\phi \left( tx + (1-t)y \right) \leq t \phi(x) + (1-t) \phi(y) \hspace{4pt} \forall x,y \in E, \hspace{4pt} \forall t \in \left( 0,1 \right)
+	\]
+	
+\end{defn}
+
+\begin{prop}
+	If $ \phi$ is a convex function, then
+\begin{enumerate}
+	\item $ \mathrm{epi} \phi$ is a convex set in $ E \times \mathbb{R}$ and conversely
+	\item $ \forall \lambda \in \mathbb{R}$ the set $ \left[ \phi \leq \lambda \right]$ is convex, but not the converse
+	\item a sum of convex functions is again convex
+	\item the superior envelope of a family of convex functions is again convex.
+\end{enumerate}
+\end{prop}
+
+Let $E$ be a normed vector space.
+
+\begin{defn}
+	Let $ \phi: E \to \left( - \infty , + \infty \right]$ be a function with nonempty domain. We define the \textit{conjugate function} $ \phi^* : E^* \to \left( - \infty, + \infty \right]$ by 
+	\[
+		\phi^* (f) = \sup_{x \in E} \left\{ \langle f,x \rangle - \phi(x) \right\}
+	\]
+\end{defn}
+
+
+\begin{prop}
+	Assume that $ \phi: E \to \left( - \infty, + \infty \right]$ is convex lsc with nonempty domain. Then $ \phi^*$ has nonempty domain and is bounded below by an affine continuous function.
+\end{prop}
+
+\begin{defn}
+Instead of defining $ \phi^{**}$ on $E^{**}$, we can define it on $E$ by
+\[
+	\phi^{**}(x) = \sup_{f \in E^*} \left\{ \langle f,x \rangle - \phi^* (f) \right\}
+\]
+
+\end{defn}
+
+\begin{thm}[Fenchel-Moreau]
+	Let $ \phi: E \to \left( - \infty, + \infty \right]$ is convex lsc with nonempty domain. Then $ \phi^{**} = \phi$.
+\end{thm}
+
+\begin{thm}[Fenchel-Rockafeller]
+	Let $ \phi, \psi$ be two convex functions. Assume there is some $ x_0 \in D( \phi) \cap D( \psi)$ such that $ \phi$ is continuous at $x_0$. Then
+	\[
+		\inf_{x \in E} \left\{ \phi(x) + \psi(x) \right\} = \sup_{f \in E^*} \left\{ - \phi^* (-f) - \psi^* (f) \right\}
+	\]
+	\[
+		= \max_{f \in E^*} \left\{ - \phi^* (-f) - \psi^* (f) \right\} = - \min_{f \in E^*} \left\{ \phi^* (-f) + \psi^* (f) \right\}
+	\]
+	
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
