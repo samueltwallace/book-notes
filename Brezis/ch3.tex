@@ -2,4 +2,213 @@
 
 \subsection{The Coarsest Topology for Which a Collection of Maps Becomes Continuous}
 
+\begin{defn}
+	The \textit{weak topology} $ \sigma(E,E^{*})$ on $E$ is the coarsest topology such that the collection
+	\[
+	\left\{ \phi_{f}:E \to \mathbb{R}; \hspace{4pt} x \mapsto \langle f,x \rangle: f \in E^{*} \right\}
+	\]
+	of functions contains continuous functions.
+\end{defn}
 
+\begin{prop}
+	The weak topology $ \sigma(E, E^{*})$ is Hausdorff.
+\end{prop}
+
+\begin{prop}
+	Let $x_{0} \in E$ and let $ \epsilon > 0$ and let $F = \left\{ f_{1}, f_{2}, \ldots, f_{k} \right\}$ be a finite set  in $E^{*}$. Let
+	\[
+		V = V( f_{1}, \ldots f_{k}, \epsilon) = \left\{ x \in E; \vert \langle f_{i}, x-x_{0} \rangle \vert < \epsilon \right\}
+	\]
+	Then $V$ is a neighborhood of $x_{9}$ for the topology $ \sigma(E, E^{*})$. Neighborhood of this form make up a basis for all the neighborhoods around $x_{0}$.
+\end{prop}
+
+\begin{prop}
+	Let $(x_{n})$ be a sequence in $E$. Then
+	\begin{enumerate}
+		\item $x_{n} \to x$ weakly $\iff \forall f \in E^{*} \langle f,x_{n} \rangle \to \langle f,x \rangle$
+		\item $x_{n} \to x$ weakly then $x_{n} \to x$ strongly.
+		\item $x_{n} \to x$ weakly, then $ \Vert x_{n} \Vert$ is bounded and $ \Vert x \Vert \leq \mathrm{liminf} \Vert x_{n} \Vert$
+		\item If $x_{n} \to x$ weakly and if $f_{n} \to f$ strongly in $E^{*}$, then $ \langle f_{n}, x_{n} \rangle \to \langle f,x \rangle$
+	\end{enumerate}
+\end{prop}
+
+\begin{prop}
+	When $E$ is \textbf{finite-dimensional}, the weak topology and strong topology coincide.
+\end{prop}
+
+\subsection{Weak Topology Convex Sets, and Linear Operators}
+
+\begin{thm}
+Let $C$ be a convex subset of $E$. Then $C$ is closed in the weak topology if and only iff it is closed in the strong topology.
+\end{thm}
+
+\begin{cor}[Mazur]
+	Assume $(x_{n})$ converges \textbf{weakly} to x. Then there is a sequence $ (y_{n})$ made up of convex combinations of the $x_{n}$'s that converge \textbf{strongly} to x.
+\end{cor}
+
+\begin{cor}
+	Assume that $ \phi:E \to \left( - \infty, + \infty \right]$ is convex and lsc in the strong topology. Then $ \phi$ is lsc in the weak topology.
+\end{cor}
+
+\begin{thm}
+Let $E$ and $F$ be two Banach spaces and let $T$ be a linear operator from $E$ into $F$. Assume that $T$ is continuous in the strong topologies. Then $T$ is continuous on $E$ with the weak topology to $F$ with its weak topology.
+\end{thm}
+
+\subsection{The Weak* Topology  $ \sigma(E^{*},E)$}
+
+\begin{defn}
+	The \textit{weak* topology}, $ \sigma(E^{*},E)$ is the coarsest topology on $E^{8}$ associated to the evaluation maps
+	\[
+	\left\{ \phi_{x}: E^{*} \to \mathbb{R}: x \in E \right\}
+	\]
+	such that all the evaluation maps are continuous.
+\end{defn}
+
+\begin{prop}
+The weak* topology is Hausdorff.
+\end{prop}
+
+\begin{prop}
+	Let $f_{0} \in E^{*}$; given a \textbf{finite} set $ \left\{ x_{1},\ldots, x_{k} \right\}$ and an $ \epsilon > 0$, let
+	\[
+		V = V(x_{1}, \ldots, x_{k}, \epsilon) = \left\{ f \in E^{*}: \vert \langle f- f_{0},x_{i} \rangle \vert \right\}
+	\]
+	Then $V$ is a neighborhood of $f_{0}$ for the weak* topology; neighborhoods of this form become a \textbf{basis of neighborhoods} for $f_{0}$.
+	
+\end{prop}
+
+\begin{defn}
+	If a sequence $(f_{n})$ converges to $f$ in the weak* topology we will write
+	\[
+		f_{n} \xrightarrow{*} f
+	\]
+	
+\end{defn}
+
+
+\begin{prop}
+	Let $(f_{n})$ be a sequence in $E^{*}$.
+	\begin{enumerate}
+		\item $f_{n} \xrightarrow{*} f$ if and only iff $ \langle f_{n}, x \rangle \to \langle f,x \rangle$
+		\item $ f_{n} \to f$ strongly $ \Rightarrow f_{n} \to f$ in the weak topology on $E^{*}$ $ \Rightarrow f_{n} \xrightarrow{*} f$
+		\item $f_{n} \xrightarrow{*} f$ then $ \Vert f_{n} \Vert$ is bounded and $ \Vert f \Vert \leq \mathrm{liminf} \Vert f_{n} \Vert$
+		\item $f_{n} \xrightarrow{*} f$ and if $x_{n} \to x$ strongly, then $ \langle f_{n},x_{n} \rangle \to \langle f,x \rangle$
+	\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Let $ \phi: E^{*} \to \mathbb{R}$ be a linear functional that is continuous in the weak* topology. Then there is some $x_{0} \in E$ such that
+\[
+	\phi(f) = \langle f,x_{0} \rangle
+\]
+
+\end{prop}
+
+
+\begin{lem}
+Let $X$ be a vector space and let $ \phi, \phi_{1}, \ldots, \phi_{k}$ be linear functionals on $X$ such that
+\[
+	\phi_{i}(v) = 0 \hspace{4pt} \forall i \Rightarrow \phi(v) = 0
+\]
+Then there are constants $ \lambda_{1}, \ldots, \lambda_{k} \in \mathbb{R}$ such that $ \phi = \sum_{i} \lambda_{i} \phi_{i}$
+\end{lem}
+
+\begin{cor}
+Assume that $H$ is a hyperplane in $E^{*}$ that is closed in the weak* topology. Then $ H $ has the form
+\[
+H = \left\{ f \in E^{*}: \langle f,x_{0} \rangle = \alpha \right\}
+\]
+for some $x_{0} \in E$ and an $ \alpha \in \mathbb{R}$.
+\end{cor}
+
+\begin{thm}[Banach-Alaoglu-Bourbaki]
+The closed unit ball
+\[
+B_{E^{*}} = \left\{ f \in E^{*}: \Vert f \Vert \leq 1 \right\}
+\]
+is compact in the weak* topology on $ E^{*} $
+\end{thm}
+
+\subsection{Reflexive Spaces}
+
+\begin{defn}
+Let $ E $ be a Banach space and let $ J: E \to E^{**} $ be the canonical injetion from $ E $ to $ E^{**} $. The space $ E $ is reflexive if $ J $ is surjective.\\
+\indent When $ E $ is reflexive, $ E^{**} $ is usually identified with $ E $.
+\end{defn}
+
+\begin{thm}
+Let $ E $ be a Banach space. Then $ E $ is reflexive if and only if
+\[
+B_{E} = \left\{ x \in E: \Vert x \Vert \leq 1 \right\}
+\]
+is compact in the weak topology.
+\end{thm}
+
+
+\begin{thm}
+	Assume $ E $ is a reflexive Banach space and let $ (x_{n}) $ be a bounded sequence in $ E $. Then there is a subsequence $ x_{n_{k}} $ that converges in the weak topology.
+\end{thm}
+
+\begin{thm}[Eberlein-Smulian]
+Assume $ E $ is a Banach space such that every bounded sequence in $ E $ admits a weakly convergent subsequence. Then $ E $ is reflexive.
+\end{thm}
+
+\begin{prop}
+Assume $ E $ is a reflexive Banach space and let $ M \subset E $ be a closed subspace of $ E $. The $ M $ is reflexive.
+\end{prop}
+
+\begin{cor}
+A Banach space $ E $ is reflexive if and only if its dual space $ E^{*} $ is reflexive.
+\end{cor}
+
+\begin{cor}
+Let $ E $ be a reflexive Banach space. Let $ K \subset E $ be a bounded, closed, convex subset of $ E $. Then $ K $ is compact in the weak topology.
+\end{cor}
+
+\begin{cor}
+	Let $ E $ be a reflexive Banach space and let $ A \subset E $ be a nonempty closed, convex subset of $ E $. Let $ \phi: A \to \left( -\infty, + \infty \right] $ be a convex lsc function with nonempty domain and
+	\[
+		\lim_{ \Vert x \Vert \to \infty} \phi(x) = + \infty
+	\]
+	Then $ \phi $ achieves its minimum on $ A $.
+\end{cor}
+
+\begin{thm}
+	Let $ E $ and $ F $ be two reflexive Banach spaces. Let $ A: D(A) \subset E \to F $ be a linear operator that is densely defined and closed. Then $ D(A^{*}) $ is dense in $ F^{*} $. Thus $ A^{**} $ is well-defined ( $ A^{**}: D(A^{**}) \subset E^{**} \to F^{**} $) and it may be viewed as an unbounded operator from $ E $ to $ F $ (by identifying $ E^{**}= E $ and respectively). Then
+	\[
+	A^{**} = A
+	\]
+	
+\end{thm}
+
+\subsection{Separable Spaces}
+
+\begin{defn}
+A metric space is \textit{separable} if there exists a subset $ D \subset E $ that is countable and dense.
+\end{defn}
+
+\begin{prop}
+Let $ E $ be a separable metric space and let $ F \subset E $ be any subset. Then $ F $ is also separable.
+\end{prop}
+
+\begin{thm}
+Let $ E $ be a Banach space such that $ E^{*} $ is separable. Then $ E $ is separable.
+\end{thm}
+
+\begin{cor}
+Let $ E $ be a Banach space. Then $ E $ is reflexive and separable if and only if $ E^{*} $ is reflexive and separable.
+\end{cor}
+
+\begin{thm}
+Let $ E $ be a separable Banach space. Then $ B_{E^{*}} $ is metrizable in the weak* topology. Conversely, if $ B_{E^{*}} $ is metrizable in the weak* topology, then $ E $ is separable.
+\end{thm}
+
+\begin{thm}
+Let $ E $ be a Banach space such that $ E^{*} $ is separable. Then $ B_{E} $ is metrizable in the weak topology. Conversely, if $ B_{E} $ is metrizable in the weak topology, then $ E^{*} $ is separable.
+\end{thm}
+
+\begin{cor}
+	Let $ E $ be a separable Banach space and let $ (f_{n}) $ be a bounded sequence in $ E^{*} $. Then there is a subsequence $ (f_{n_{k}}) $ that converges in the weak* topology.
+\end{cor}
+
+\subsection{Uniformly Convex Spaces}

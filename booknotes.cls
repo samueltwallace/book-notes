@@ -27,12 +27,12 @@
 \lhead{\textit{\@booktitle}}
 \cfoot{\thepage}
 
-\newtheorem{thm}{Theorem}
-\newtheorem{lem}{Lemma}
-\newtheorem{cor}{Corollary}
-\newtheorem{defn}{Definition}
-\newtheorem{rmk}{Remark}
-\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{prop}{Proposition}[section]
 \newtheorem*{pf}{Proof}
 
 \renewcommand{\maketitle}{%
