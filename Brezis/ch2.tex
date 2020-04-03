@@ -125,3 +125,120 @@ We also say $G$ and $L$ are \textit{complementary} subspaces of $E$. If this hol
 \end{thm}
 
 \subsection{Orthogonality Revisited}
+
+\begin{prop}
+Let $G$ and $L$ be two closed subspaces in $E$. Then
+\[
+	G \cap L = \left( G^{\perp} + L^{\perp} \right)^{\perp}
+\]
+\[
+	G^{\perp} \cap L^{\perp} = \left( G + L \right)^{\perp}
+\]
+
+\end{prop}
+
+
+\begin{cor}
+	\[
+		\left( G \cap L \right)^{\perp} \supset \overline{G^{\perp} + L^{\perp}}
+	\]
+	\[
+		\left( G^{\perp} \cap L^{\perp} \right)^{\perp} = \overline{G + L}
+	\]
+	
+\end{cor}
+
+\begin{thm}
+Let $G$ and $L$ be two closed subpsaces in a Banach spaces $E$. The following are equivalent:
+\begin{enumerate}
+	\item $G+L$ is closed in $E$
+	\item $G^{\perp} + L^{\perp}$ is closed in $E^{*}$
+	\item $G+L = \left( G^{\perp} + L^{\perp} \right)^{\perp}$
+	\item $G^{\perp} + L^{\perp} = \left( G \cap L \right)^{\perp}$
+\end{enumerate}
+\end{thm}
+
+\subsection{An Introduction to Unbounded Linear Operators. Definition of the Adjoint}
+
+\begin{defn}
+	Let $E$ and $F$ be two Banach spaces. An \textit{unbounded linear operator} from $E$ into $F$ is a linear map $A: D(A) \subset E \to F$ where $D(A)$ is a linear subspace called the \textit{domain} of $A$. \\
+	\indent $A$ is \textit{bounded} (or \textit{continuous}) if $D(A) = E$ and there is a $c \geq 0$ such that
+	\[
+	\Vert Au \Vert \leq c \Vert u \Vert
+	\]
+	The norm of a bounded operator is defined as
+	\[
+		\Vert A \Vert_{ \mathcal{L}(E,F)} = \sup_{u \neq 0} \frac{ \Vert Au \Vert}{ \Vert u \Vert} 
+	\]
+	Some additional definitions are as follows:
+	\begin{enumerate}
+		\item $G(A) = \left\{ (u, Au): u \in D(A) \right\} \subset E \times F$, the Graph of $A$
+		\item $R(A) = \left\{ Au: u \in D(A) \right\} \subset F$, the range of $A$
+		\item $N(A) = \left\{ u \in D(A): Au=0 \right\} \subset E$, the kernel of $A$.
+	\end{enumerate}
+	An operator $A$ is \textit{closed} if $G(A)$ is closed in $E \times F$.
+	
+\end{defn}
+
+\begin{defn}
+	Let $A: D(A) \subset E \to F$ be an unbounded linear operator that is \textit{densely defined} ($D(A)$ is dense in $E$). We introduce a new operator $A^{*}: D(A^{*}) \subset F^{*} \to E^{*}$ as follows. First we define
+	\[
+		D(A^{*}) = \left\{ v \in F^{*}: \exists c \geq 0 \hspace{4pt} \vert \langle v, Au \rangle \vert \leq c \Vert u \Vert \hspace{4pt} \forall u \in D(A) \right\}
+	\]
+	Now we go about defining $A^{*}v$. Given $v \in D(A^{*})$, we define $g(u) = \langle v, Au \rangle$. Use Hahn-Banach to extend $g$ to a bounded functional $f \in E^{*}$, which is unique if $D(A)$is dense in $E$. Let $A^{*}v = f$. In brief, 
+	\[
+	\langle v, Au \rangle_{F^{*}, F} = \langle A^{*}v, u \rangle_{E^{*},E}
+	\]
+	
+\end{defn}
+
+\begin{prop}
+	Let $A: D(A) \subset E \to F$ be a densely defined unbounded linear operator. Then $A^{*}$ is closed. 
+\end{prop}
+
+\begin{cor}
+	Let $A: D(A) \subset E \to F$ be an unbounded linear operator that is densely defined and closed. Then
+	\begin{enumerate}
+		\item $N(A) = R(A^{*})^{\perp}$
+		\item $N(A^{*}) = R(A)^{\perp}$
+		\item $N(A)^{\perp} \supset \overline{R(A^{*})}$
+		\item $N(A^{*})^{\perp} = \overline{R(A)}$
+	\end{enumerate}
+\end{cor}
+
+\subsection{A Characterization of Operators with Closed Range. A Characterization of Surjective Operators}
+
+\begin{thm}
+	Let $A: D(A) \subset E \to F$ be an unbounded linear operator that is densely defined and closed. The following are equivalent:
+	\begin{enumerate}
+		\item $R(A)$ is closed
+		\item $R(A^{*})$ is closed
+		\item $R(A) = N(A^{*})^{\perp}$
+		\item $R(A^{*}) = N(A)^{\perp}$
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Let $A: D(A) \subset E \to F$ be a linear operator that is densely defined and closed. The following are equivalent:
+	\begin{enumerate}
+		\item $A$ is surjective
+		\item There is a constant $C$ such that
+			\[
+			\Vert v \Vert \leq C \Vert A^{*}v \Vert
+			\]
+		\item $N(A^{*}) = \left\{ 0 \right\}$ and $R(A^{*})$ is closed.
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Let $A: D(A) \subset F$ ($ \to E^{*}$?) be an unbounded linear operator that is densely defined and closed. The following are equivalent:
+	\begin{enumerate}
+		\item $ A^{*}$ is surjective
+		\item there is a constant $C$ such that
+			\[
+			\Vert u \Vert \leq C \Vert Au \Vert
+			\]
+		\item $N(A) = 0$ and $R(A)$ is closed.
+	\end{enumerate}
+\end{thm}
+
