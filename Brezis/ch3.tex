@@ -212,3 +212,24 @@ Let $ E $ be a Banach space such that $ E^{*} $ is separable. Then $ B_{E} $ is 
 \end{cor}
 
 \subsection{Uniformly Convex Spaces}
+
+\begin{defn}
+A Banach space is \textit{uniformly convex} if 
+\[
+	\forall \epsilon > 0 \hspace{4pt} \exists \delta > 0 \hspace{4pt} x,y \in B_{E} \& \Vert x-y \Vert > \epsilon \Rightarrow \Vert \frac{x+y}{2}  \Vert < 1 - \delta
+\]
+
+\end{defn}
+
+\begin{thm}[Milman-Pettis]
+	Every uniformly convex Banach space is reflexive.
+\end{thm}
+
+\begin{prop}
+	Assume that $ E $ is a uniformly convex Banach space. Let $ (x_{n}) $ be a sequence such that $ x_{n} \to x $ weakly and
+	\[
+	\mathrm{limsup} \Vert x_{n} \Vert \leq \Vert x \Vert
+	\]
+	Then $ x_{n} \to x $ strongly.
+\end{prop}
+
