@@ -5,8 +5,6 @@
 \newcommand*{\booktitle}[1]{\gdef\@booktitle{#1}}
 \newcommand*{\bookauthor}[1]{\gdef\@bookauthor{#1}}
 \newcommand*{\notesauthor}[1]{\gdef\@notesauthor{#1}}
-\newcommand*{\pubdescrip}[1]{\gdef\@pubdescrip{#1}}
-\newcommand*{\transcribernotes}[1]{\gdef\@transcribernotes{#1}}
 
 
 \RequirePackage{amsthm}
@@ -57,30 +55,10 @@ taken by \@notesauthor
 \pagestyle{fancy}
 }
 
-\newcommand{\introduction}{%
-\Large
-\textbf{Publisher's Description}
-\smallskip
-\\
-\normalsize
-\@pubdescrip \\
-\bigskip
 
-\Large
-\textbf{Transcription Notes} 
-\smallskip \\
-\normalsize
-\@transcribernotes
-\\
-\tableofcontents 
-}
+\newenvironment{pubdescrip}[1][Publisher's Description]{%
+\Large \textbf{#1} \\
+\normalsize}{\bigskip \\}
 
-
-
-
-
-
-
-
-
-
+\newenvironment{transcribernote}[1][A Note From the Transcriber]{%
+\\ \Large \textbf{#1} \smallskip \\ \normalsize}{\bigskip}
