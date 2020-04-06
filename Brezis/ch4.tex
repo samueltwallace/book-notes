@@ -1,2 +1,19 @@
 \section{$L^p$ Spaces}
 
+Let $ ( \Omega, \mathcal{M}, \mu) $ denote a \textit{measure space}, i.e. $ \Omega $ is a set such that
+\begin{enumerate}
+	\item $ \mathcal{M} $ is a $  \sigma $-algebra in $ \Omega $, i.e. $ \mathcal{M} $ is a collection of subset of $ \Omega $ such that
+		\begin{enumerate}
+			\item $ \emptyset \in \mathcal{M} $ 
+			\item $ A \in \mathcal{M} \Rightarrow A^{c} \in \mathcal{M}$ 
+			\item $ \cup_{n} A_{n} \in \mathcal{M}$ whenever $ A_{n} \in \mathcal{M} $
+		\end{enumerate}
+	\item $ \mu $ is a \textit{measure}, i.e., $ \mu: \mathcal{M} \to [0, \infty] $ satisfies
+		\begin{enumerate}
+			\item $ \mu( \emptyset) = 0 $
+			\item $ \mu \left( \cup_{n} A_{n} \right) = \sum_{n} \mu(A_{n}) $; members of $ \mathcal{M} $ are called the \textit{measurable sets}. Sometimes $ \vert A \vert $ is written for $ \mu(A) $.
+		\end{enumerate}
+	\item $ \Omega $ is $ \sigma $-finite; i.e., there is a countable family $ ( \Omega_{n}) $ in $ \mathcal{M} $ that cover $ \Omega $ and the measure of each element is finite.
+\end{enumerate}
+
+The sets $ E: \mu(E) = 0 $ are called \textit{null sets}. We say a property holds almost everywhere (a.e.) if it holds except on a null set.
