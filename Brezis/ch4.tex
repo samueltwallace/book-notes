@@ -17,3 +17,124 @@ Let $ ( \Omega, \mathcal{M}, \mu) $ denote a \textit{measure space}, i.e. $ \Ome
 \end{enumerate}
 
 The sets $ E: \mu(E) = 0 $ are called \textit{null sets}. We say a property holds almost everywhere (a.e.) if it holds except on a null set.
+\indent We will not review the notion of measurable, integrable functions. We will write $ \int f = \int_{ \Omega} f$ and use the notation
+\[
+\Vert f \Vert_{L^{1}} = \Vert f \Vert_{1} = \int \vert f \vert
+\]
+and identify funtions that agree almost everywhere.
+
+\subsection{Some Results about Integration That Everyone Must Know}
+
+\begin{thm}[monotone convergence theorem, Beppo Levi]
+	Let $( f_{n}) $ be a sequence of functions in $ L^{1} $ that satisfy
+	\begin{enumerate}
+		\item $ f_{1} \leq f_{2} \leq \cdots \leq f_{n} \leq f_{n+1} \leq \cdots $ a.e. on $ \Omega $
+		\item $ \sup_{n} \int f_{n} < \infty$
+	\end{enumerate}
+	Then $ f_{n}(x) $ converges a.e. on $ \Omega $ to a finite limit (denoted by $ f(x) $), the function is in $ L^{1} $ and $ \Vert f_{n} - f \Vert_{1} \to 0 $.
+\end{thm}
+
+\begin{thm}[dominated convergence theorem, Lebesgue]
+	Let $ (f_{n}) $ be a sequence of functions in $ L^{1} $ that satisfy
+	\begin{enumerate}
+		\item $ f_{n}(x) \to f(x) $ a.e. on $ \Omega $
+		\item there is a function $ g \in L^{1} $ such that for all $ n $, $ \vert f_{n}(x) \leq g(x) \vert $ a.e. on $ \Omega $
+	\end{enumerate}
+	Then $ f \in L^{1} $ and $ \Vert f_{n} - f \Vert_{1} \to 0 $.
+\end{thm}
+
+\begin{lem}[Fatou's Lemma]
+	Let $ (f_{n}) $ be a sequence of functions in $ L^{1} $ that satisfy
+	\begin{enumerate}
+		\item $ f_{n} \geq 0 $
+		\item $ \sup_{n} \int f_{n} < \infty $
+	\end{enumerate}
+	For almost all $ x \in \Omega $ we set $ f(x) = \mathrm{liminf}_{n} f_{n}(x) \leq + \infty $. Then $ f \in L^{1} $ and
+	\[
+	\int f \leq \mathrm{liminf}_{n} \int f_{n}
+	\]
+	
+\end{lem}
+
+\begin{defn}
+	We denote by $ C_{c} \left( \mathbb{R}^{N} \right) $ the space ofall continuous functionson $ \mathbb{R}^{N} $ with \textit{compact support}.
+\end{defn}
+
+\begin{thm}[density]
+	The space $ C_{c} \left( \mathbb{R}^{N} \right) $ is dense in $ L^{1} \left( \mathbb{R}^{N} \right) $, which is to say
+	\[
+		\forall f \in L^{1} \hspace{4pt} \forall \epsilon > 0 \hspace{4pt} \exists f_{1} \in C_{c} \left( \mathbb{R}^{N} \right): \hspace{4pt} \Vert f-f_{1} \Vert_{1} \leq \epsilon
+	\]
+	
+\end{thm}
+
+\begin{thm}[Tonelli]
+Let $ F: \Omega_{1} \times \Omega_{2} \to \mathbb{R} $ be a measurable function satifying
+\begin{enumerate}
+	\item $ \int_{ \Omega_{1}} \vert F(x,y) \vert d \mu_{2}(y) < \infty $ for a.e. $ x \in \Omega_{1} $
+	\item $ \int_{ \Omega_{1}} \left[ \int_{ \Omega_{2}} \vert F(x,y) \vert d \mu_{2}(y) \right] d \mu_{1}(x) < \infty $
+\end{enumerate}
+Then $ F \in L^{1}( \Omega_{1} \times \Omega_{2} ) $
+\end{thm}
+
+\begin{thm}[Fubini]
+	Assume that $ F \in L^{1}( \Omega_{1} \times \Omega_{2}) $. Then a.e. on $ \Omega_{1} $, 
+\end{thm}
+
+\subsection{Definition and Elementary Properties of $ L^{p} $ Spaces}
+\begin{defn}
+Let $ p \in \mathbb{R} $ with $ 1 < p < \infty$; we set
+\[
+	L^{p}( \Omega) = \left\{ f: \Omega \to \mathbb{R}: f \text{ is measurable and } \vert f \vert^{p} \in L^{1}( \Omega) \right\}
+\]
+with
+\[
+	\Vert f \Vert_{L^{p}} = \Vert f \Vert_{p} = \left[ \int_{ \Omega} \vert f(x) \vert^{p} d \mu (x) \right]^{1/p}
+\]
+
+\end{defn}
+
+\begin{defn}
+Let
+\[
+	L^{\infty} ( \Omega ) = \left\{ f: \Omega \to \mathbb{R}: \text{f is measurable and bounded.} \right\}
+\]
+
+
+\end{defn}
+
+\begin{defn}
+Let $ 1 \leq p \leq \infty $, we denote by $ p' $ the \textit{conjugate exponent}:
+\[
+\frac{1}{p} + \frac{1}{p'} =1
+\]
+
+\end{defn}
+
+\begin{thm}[H\"older's inequality]
+	Assume that $ f \in L^{p} $ and $  g \in L^{p'} $ with $ 1 \leq p \leq \infty $. Then $ fg \in L^{1} $ and
+	\[
+	\int \vert fg \vert \leq \Vert f \Vert_{p} \Vert g \Vert_{p'}
+	\]
+	
+\end{thm}
+
+\begin{thm}
+$ L^{p} $ is a vector space and $ \Vert \cdot \Vert_{p} $ is a norm for any $ p $, $ 1 \leq p \leq \infty $.
+\end{thm}
+
+\begin{thm}[Fischer-Riesz]
+$ L^{p} $ is a Banach space for any $ p $, $ 1 \leq p \leq \infty $.
+\end{thm}
+
+\begin{thm}
+	Let $ (f_{n}) $ be a sequence in $ L^{p} $ and let $ f \in L^{p} $ be such that $ \Vert f_{n} - f \Vert_{p} \to 0$. Then there is a subsequence $ (f_{n_{k}}) $ and a function $ h \in L^{p} $ such that
+	\begin{enumerate}
+		\item $ f_{n_{k}}(x) \to f(x) $ a.e. on $ \Omega $
+		\item $ \vert f_{n_{k}}(x) \leq h(x) \vert $ a.e. on $ \Omega $
+	\end{enumerate}
+\end{thm}
+
+\subsection{Reflexivity, Separability, Dual of $ L^{p} $}
+
+
