@@ -1,0 +1,22 @@
+\section{Introduction}
+
+\subsection{Weighted Residual Methods}
+
+Consider the following general problem:
+\[
+	\partial_t u(x,t) -  \mathcal{L} u (x,t) =  \mathcal{N}(u)(x,t),  \hspace{8pt} t>0, x \in  \Omega
+\]
+
+Where $ \mathcal{L} $ is a leading spatial derivative operator, and $ \mathcal{N} $ is a lower-order linear or non-linear operator involving only spatial derivatives. Here, $ \Omega $ denotes a bounded domain of $ \mathbb{R}^d $, $ d=1,2, \text{ or } 3 $. This equation is to be supplemented with an initial condition and suitable boundary conditions. \\
+\indent We shall only consider the WRM for the spatial discretization, and assume that the time derivative is discretized with a suitable time-stepping scheme. Among various time-stepping methods, semi-implicit schemes or linearly-implicit schemes, in which the principal linear operators are treated \textit{implicitly} to reduce the associated stability constraint, while the non-linear equations are treated explicitly to avoid the expensive process of solving nonlinear equations at each time step, are most frequently used int eh context of spectral methods. \\
+\indent Let $ \tau $ be the step size, and $ u^k(\cdot) $ be an approximation of $ u(\cdot ,k \tau) $. As an example, we consider the Crank-Nicolson leap-frog scheme for the equation:
+\[
+	\frac{u^{ n+1 } - u^{ n-1 }}{2 \tau} - \mathcal{L}\left( \frac{u^{ n+1 } + u^{ n-1 }}{2}  \right) =  \mathcal{N}\left( u^{ n } \right) \hspace{4pt} n \geq 1
+\]
+
+We can rewrite this as
+\[
+	\mathbf{L}u(x) := \alpha u(x) - \mathcal{L}u(x) = f(x), \hspace{4pt} x \in \Omega
+\]
+
+where $ u = \frac{u^{ n+1 } + u^{ n+1 }}{2} , \alpha = \tau^{-1} $ and $ f = \alpha^{ n-1 } + \mathcal{N}\left( u^{ n } \right) $.
