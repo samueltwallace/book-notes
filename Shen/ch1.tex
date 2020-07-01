@@ -3,20 +3,103 @@
 \subsection{Weighted Residual Methods}
 
 Consider the following general problem:
-\[
+\begin{equation}
 	\partial_t u(x,t) -  \mathcal{L} u (x,t) =  \mathcal{N}(u)(x,t),  \hspace{8pt} t>0, x \in  \Omega
-\]
+\end{equation}
 
 Where $ \mathcal{L} $ is a leading spatial derivative operator, and $ \mathcal{N} $ is a lower-order linear or non-linear operator involving only spatial derivatives. Here, $ \Omega $ denotes a bounded domain of $ \mathbb{R}^d $, $ d=1,2, \text{ or } 3 $. This equation is to be supplemented with an initial condition and suitable boundary conditions. \\
 \indent We shall only consider the WRM for the spatial discretization, and assume that the time derivative is discretized with a suitable time-stepping scheme. Among various time-stepping methods, semi-implicit schemes or linearly-implicit schemes, in which the principal linear operators are treated \textit{implicitly} to reduce the associated stability constraint, while the non-linear equations are treated explicitly to avoid the expensive process of solving nonlinear equations at each time step, are most frequently used int eh context of spectral methods. \\
 \indent Let $ \tau $ be the step size, and $ u^k(\cdot) $ be an approximation of $ u(\cdot ,k \tau) $. As an example, we consider the Crank-Nicolson leap-frog scheme for the equation:
-\[
+\begin{equation}
 	\frac{u^{ n+1 } - u^{ n-1 }}{2 \tau} - \mathcal{L}\left( \frac{u^{ n+1 } + u^{ n-1 }}{2}  \right) =  \mathcal{N}\left( u^{ n } \right) \hspace{4pt} n \geq 1
-\]
+\end{equation}
 
 We can rewrite this as
-\[
+\begin{equation}
 	\mathbf{L}u(x) := \alpha u(x) - \mathcal{L}u(x) = f(x), \hspace{4pt} x \in \Omega
+\end{equation}
+
+where $ u = \frac{u^{ n+1 } + u^{ n+1 }}{2} , \alpha = \tau^{-1} $ and $ f = \alpha^{ n-1 } + \mathcal{N}\left( u^{ n } \right) $. Hence, at each time step, we need to solve a steady-state problem of the form of (3). \\
+\indent At this point, it is important to emphasize that the construction of efficient numerical solvers for some important equations in the form of (3), such as Poisson-type equations and advection-diffusion equations, is an essential step in solving general nonlinear PDEs. With this in mind, a particular emphasis for equations of the form (3) where $ \mathcal{L} $ is a \textit{linear elliptic} operator. \\
+\indent The starting point of the WRM is to approximate the solution $ u $ is to approximate (3) by a finite sum
+\begin{equation}
+	u(x) \approx u_N (x) = \sum_{ k=0 }^{ N } a_{ k } \phi_{ k } (x)
+\end{equation}
+
+where $ \{ \phi_{ k } \} $ are the \textit{trial (or basis) functions}, and the expansion coefficients are to be determined. Substituting $ u_{ N } $ for $ u $ in (3) leads to the \textit{residual}
+\begin{equation}
+	\mathbf{R}_{ N }(x) = \mathbf{L}u_{ N }(x) - f(x) \neq 0 \hspace{4pt} x \in \Omega
+\end{equation}
+
+The notion of the WRM is to force the residual to zero by requiring
+\begin{equation}
+	\left( \mathbf{R}_{ N }, \mathbf{\psi}_{ j } \right)_{ \omega } = \int_{ \Omega } \mathbf{R}_{ N }(x) \mathbf{\psi}_{ j }(x) \omega (x) dx = 0, \hspace{4pt} 0 \leq j \leq N
+\end{equation}
+
+where $ \{ \mathbf{\psi}_{ j } \} $ are the \textit{test functions}, and $ \omega $ is a positive weight function; or 
+\begin{equation}
+	\langle \mathbf{ R }_{ N }, \mathbf{ \psi }_{ j }  \rangle_{ N, \omega } := \sum_{ k=0 }^{ N } \mathbf{ R }_{ N } (x_{ k }) \mathbf{ \psi }_{ j } (x_{ k }) \omega_{ k } = 0, \hspace{4pt} 0 \leq j \leq N
+\end{equation}
+
+where $ \{ x_{ k } \}_{ k=0 }^{ N } $ are a set of preselected collocation points, and $ \{ \omega_{ k } \}_{ k=0 }^{ N } $ are the weights of a numerical quadrature formula. \\
+\indent  The choice of trial/test functions is one of the main features that distinguishes spectral methods from finite-elements and finite-difference methods. In the latter two methods, the trial/test functions are local in character with finite regularities. In contrast, spectral methods employ globally smooth functions as trial/test functions. The most commonly used trial/test functions are trigonometric functions of orthogonal polynomials (typically, the eigenfunctions of singular Sturm-Liouville problems), which include
+
+\begin{itemize}
+	\item $ \phi_{ k } (x) = e^{ i k x } $ (Fourier spectral method)
+	\item $ \phi_{ k }(x) = T_{ k }(x) $ (Chebyshev spectral method)
+	\item $ \phi_{ k } = L_{ k }(x) $ (Legendre spectral method)
+	\item $ \phi_{ k }= \mathcal{L}_{ k } (x) $ (Laguerre spectral method)
+	\item $ \phi_{ k }(x) = H_{ k }(x) $ (Hermite spectral method) 
+\end{itemize}
+
+Here, $ T_{ k }, L_{ k }, \mathcal{L}_{ k }, \text{ and } H_{ k } $ are the Chebyshev, Legendre, Laguerre and Hermite polynomials of degree $ k $ respectively. \\
+\indent The choice of test functions distinguishes the following formulations:
+
+\begin{itemize}
+	\item \textit{Galerkin.} The test functions are the same as the trial ones (i.e., $ \phi_{ k } = \psi_{ k } $ in (6) or (7)), assuming the boundary conditions are periodic of homogeneous.
+	\item \textit{Petrov-Galerkin}. The test functions are different from the trial ones.
+	\item \textit{Collocation}. The test functions $ \{ \psi_{ k } \} $ in (7) are the Lagrange basis polynomials such that $ \psi_{ k }(x_{ j }) = \delta_{ jk } $ , where $ \{ x_{ j } \} $  are preassigned collocation points. Hence, the residual is forced to zero at each $ x_{ j } $ , i.e. $ \mathbf{ R }_{ N } (x_{ j }) = 0 $. 
+\end{itemize}
+
+\begin{rmk}
+In the  literature, the term of pseudo-spectral methods is often used to describe any spectral method where some operations involve a collocation approach or a numerical quadrature which produces aliasing errors. In this sense, almost all practical spectral methods are pseudo-spectral. In this book, we shall not classify a method as pseudo-spectral of spectral. Instead, it will be classified as Galerkin type or collocation type.
+\end{rmk}
+
+\begin{rmk}
+	The so-called \textit{tau} method is a particular class of Petrov-Galerkin method. While the \textit{tau} method offers some advantages in certain situations, for most problems, it is usually better to use a well-designed Galerkin or Petrov-Galerkin method. So in this book, we shall not touch on this topic, and refer to the references therein for a thorough discussion of this approach.
+\end{rmk}
+
+In the forthcoming sections, we shall demonstrate how to construct spectral methods for solving differential equations by examining several spectral schemes based on Galerkin, Petrov-Galerkin, and collocation formulas in a general manner. We shall revisit these illustrative examples in a more rigorous fashion in the main body of the book.
+
+\subsection{Spectral-Collocation Method}
+
+To fix the idea, let us consider the following linear problem:
+
+\[
+	\mathbf{ L }u(x) = -u''(x) + p(x) u'(x) + q(x) u(x) = f(x), \hspace{4pt} x \in (-1,1)
+\]
+\begin{equation}
+	B_{ \pm }u(\pm 1) = g_{ \pm }
+\end{equation}
+
+Where $ B_{ \pm } $ are linear operators corresponding to Dirichlet, Neumann, or Robin boundary conditions, and the data $ p,q,f $ and $ g_{ \pm } $ are given such that the above problem is well-posed. \\
+\indent As mentioned above, the collocation method forces the residual to vanish pointwisely at a set of preassigned points. More precisely, let $ \{ x_{ j } \}_{ j=0 }^{ N } $ (with $ x_{ 0 }= -1 $ and $ x_{ N } = 1 $ ) be a set of Gauss-Lobatto points (see Chap. 3), and let $ P_{ N } $ be the set of all real algebraic polynomials of degree $ \leq N $ . The spectral-collocation method for (8) amounts to finding $ u_{ N } \in P_{ N } $ such that
+
+\begin{enumerate}
+	\item the residual $ \mathbf{ R }_{ N }(x_{ k }) = \mathbf{ L }u_{ N }(x_{ k }) - f(x_{ k }) = 0, \hspace{4pt} 1 \leq K \leq N-1 $ 
+	\item $ u_{ N } $ satisfies exactly the boundary conditions, i.e.,
+		\begin{equation}
+			B_{ - }u_{ N }(x_{ 0 }) = g_{ - }, \hspace{4pt} B_{ + }u_{ N }\left( x_{ N } \right) = g_{ + }
+		\end{equation}
+\end{enumerate}
+
+The spectral-collocation method is usually implemented in the physical space by seeking approximate solution in the form
+\begin{equation}
+	u_{ N }(x) = \sum_{ j=0 }^{ N } u_{ N }(x_{ j }) h_{ j }(x)	
+\end{equation}
+where $ \{ h_{ j } \} $ are the Lagrange basis polynomials (also referred to as \textit{nodal} basis functions), i.e., $ h_{ j } \in P_{ N } $ and $ h_{ j } (x_{ k }) = \delta_{ jk } $. Hence, in inserting (11) into (9)-(10) leads to the linear system
+\[
+	\sum_{ j=0 }^{ N } \left[ \mathbf{ L }h_{ j }(x_{ k }) \right] u_{ N }(x_{ j }) = f(x_{ k }), \hspace{4pt}
 \]
 
-where $ u = \frac{u^{ n+1 } + u^{ n+1 }}{2} , \alpha = \tau^{-1} $ and $ f = \alpha^{ n-1 } + \mathcal{N}\left( u^{ n } \right) $.
+		
