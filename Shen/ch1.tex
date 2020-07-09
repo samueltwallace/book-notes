@@ -159,3 +159,99 @@ Observe that the collocation method is easy to implement, once the differentiati
 
 
 \subsection{Spectral Methods of Galerkin Type}
+
+The collocation method described in the previous section is implemented in the physical space. In this section, we shall describe Galerkin-type spectral methods in the frequency space, and present hte basic principles of the spectral-Galerkin method, spectral-Petrov-Galerkin method, and spectral-Galerkin method with numerical integration.
+
+\subsubsection{Galerkin Method}
+
+Without loss of generality, we consider (8) with $ g_{ \pm } = 0 $. The non homogeneous boundary conditions can be easily handled by considering $ \nu = u - \tilde{u} $, where $ \tilde{ u } $ is a "simple" function satisfying the non homogeneous boundary conditions (cf. Chap. 4). \\
+\indent Define the finite-dimensional approximation space:
+\[
+	X_{ N } = \{ \phi \in P_{ N }: B_{ \pm } \phi \left( \pm 1 \right) = 0 \} \Rightarrow \mathrm{ dim } \left( X_{ N } \right) = N-1
+\]
+
+Let $ \{ \phi_{ k } \}_{ k=0 }^{ N-2 } $ be a set of basis function of $ X_{ N } $. We expand the approximate solution as
+\begin{equation}
+	u_{ N }(x) = \sum_{ k=0 }^{ N-2 } \widehat{u}_{ k } \phi_{ k } \left( x \right) \in X_{ N }
+\end{equation}
+
+Then, the expansion coefficients $ \{ \widehat{ u }_{ k } \}_{ k=0 }^{ N-2 } $ can be determined by by the residual equation (6) with $ \{ \mathbf{ \psi_{ j } = \mathbf{ \phi }_{ j } } \} $ :
+
+\begin{equation}
+	\int_{ -1 }^{ 1 } \left( \mathbf{ L } u_{ N }(x) - f(x) \right) \phi_{ j } (x) \omega (x) dx = 0, \hspace{4pt} 0 \leq j \leq N-2
+\end{equation}
+
+which is equivalent to finding $ u_{ N } \in X_{ N } $ such that
+\begin{equation}
+	\left( \mathbf{ L } u_{ N }, \nu_{ N } \right)_{ \omega } = \left( f, \nu_{ N } \right)_{ \omega }, \hspace{4pt} \forall \nu_{ N } \in X_{ N }
+\end{equation}
+
+Here $ \left( \cdot, \cdot \right)_{ \omega } $ is the inner system product of $ L^{ 2 }_{ \omega } \left( -1,1 \right) $ (cf. Appendix B).
+\indent The linear system of the above scheme is obtained by substituting by substituting (19) into (20). More precisely, setting
+\[
+	\mathbf{ u } = \left( \widehat{ u }_{ 0 }, \widehat{ u }_{ 1 }, \ldots, \widehat{ u }_{ N-2 } \right)^{ T }
+\]
+
+\[
+	f_{ j } = \left( f, \phi_{ j } \right)_{ \omega }
+\]
+
+\[
+	\mathbf{ f } = \left( f_{ 0 }, f_{ 1 }, \ldots, f_{ N-2 } \right)^{ T }
+\]
+\[
+	s_{ jk } = \left( \mathbf{ L } \phi_{ k }, \phi_{ j } \right)_{ \omega }
+\]
+\[
+	S = \left( s_{ jk } \right)_{ j,k=0,\ldots,N-2 }
+\]
+the system (20) reduces to 
+\[
+S \mathbf{ u } = \mathbf{ f }
+\]
+
+Therefore, it is crucial to choose basis functions $ \{ \phi_{ j } \} $ such that:
+
+\begin{itemize}
+	\item the right-hand side $ \left( f, \phi_{ j } \right)_{ \omega } $ can be computed efficiently.
+	\item The linear system (22) can be solved efficiently.
+\end{itemize}
+
+The key idea is to used \textit{compact combinations} of orthogonal polynomials or orthogonal functions to construct basis functions. To demonstrate the basic principle, we consider the Legendre spectral approximation (i.e. $ \omega \equiv 1 $ in (20)-(22)). Let $ L_{ k }(x) $ be the Legendre polynomial of degree $ k $ , and set
+
+\begin{equation}
+	\phi_{ k }(x) = L_{ k }(x) + \alpha_{ k } L_{ k+1 } (x) + \beta_{ k } L_{ k+2 } (x), \hspace{4pt} k \geq 0
+\end{equation}
+
+Where the constants $ \alpha_{ k } $ and $ \beta_{ k } $ are uniquely determined by the boundary conditions: $ B_{ \pm } \phi_{ k } \left( \pm 1 \right) = 0 $ (cf. Sect. 4.1). We shall refer to such basis functions as \textit{modal} basis functions. Therefore, we have
+
+\begin{equation}
+	X_{ N } = \mathrm{ span } \{ \phi_{ 0 }, \phi_{ 1 }, \ldots, \phi_{ N-2 } \}
+\end{equation}
+\indent Using the properties of the Legendre polynomials (cf. Sect. 3.3), one verifies easily that, if $ p(x) $ and $ q(x) $  are constants, the coefficient matrix $ S $ is \textit{sparse} so the linear system (22) can be solved efficiently. However, for more general $ p(x) $ and $ q(x) $, the coefficient matrix $ S $ is full an done needs to resort to an iterative method (cf. Sect. 4.4). \\
+\indent In the case above, we just considered the Legendre case. In fact, th construction of such a basis is also feasible for the Chebyshev, Laguerre, and Hermite cases (see Chaps. 4-7). The notion of using compact combinations of orthogonal polynomials/functions to develop efficient spectral solvers will be repeatedly emphasized in this book. \\
+\indent We now consider the evaluation of $ \left( f, \phi_{ j } \right)_{ \omega } $ . In general, this term can not be computed exactly and is usually approximated by $ \left( I_{ N }f, \phi_{ j } \right)_{ \omega } $, where $ I_{ N } $ is an interpolation operator upon $ P_{ N } $ relative to the Gauss-Lobatto Points. Thus, we can write
+\begin{equation}
+	\left( I_{ N } f \right) (x) = \sum_{ k=0 }^{ N } \tilde{ f }_{ k } \phi_{ k } (x)
+\end{equation}
+
+Where $ \{ \phi_{ k } \} $ is an orthonormal polynomial of $ P_{ N } $ (orthogonal with respect to $ \omega $ , i.e. $ \left( \phi_{ k }, \phi_{ j } \right)_{ \omega } = \delta_{ jk } $ ). Thanks to orthogonality, the \textit{discrete transforms} between the physical values $ \{ f(x_{ j }) \}_{ j=0 }^{ N } $ and the expansion coefficients $ \{ f(x_{ j }) \}_{ j=0 }^{ N } $ can be computed efficiently. In particular, the computational complexity of using the Fourier and Chebyshev discrete transforms can be reduced to $ O(N \mathrm{ log }_{ 2 } N) $ by using the fast Fourier transform (FFT). An approach for implementing discrete transforms relative to general orthogonal polynomials is given in Sec. 3.1.5. \\
+\indent It is important to point out that insolving time-dependent nonlinear problems, $ f $ usually contains nonlinear terms involving derivatives of hte numerical solution $ u_{ N } $ at previous time steps (cf. (3)). Hence, numerical differentiations in the frequency space and/or in the physical space are required. Differentiation techniques relative to general orthogonal polynomials are addressed in Sects. 3.1.6 and  3.1.7.\\
+
+\subsubsection{Petrov-Galerkin Method}
+
+As pointed out in Sect. 1.1, the use of different test and trial functions distinguishes the Petrov-Galerkin method from the Galerkin method. Thanks to this flexibility, the Petrov-Galerkin method can be very useful for some non-self-adjoint problems such as odd-order equations. \\
+\indent As an illustrative example, we consider the following third-order equation:
+\begin{equation}
+	\mathbf{ L } u(x) := u'''(x) + u(x) = f(x)\, \hspace{4pt} x \in (-1,1)
+\end{equation}
+\[
+	u( \pm 1) = u'(1) = 0
+\]
+
+As with the Galerkin case, we enforce the boundary conditions on the approximate solution. So we set
+\[
+	X_{ N } = \{ \phi \in P_{ N } \vert \phi( \pm 1) = \phi' (1) = 0 \} \Rightarrow \dim (X_{ N }) = N-2
+\]
+
+
