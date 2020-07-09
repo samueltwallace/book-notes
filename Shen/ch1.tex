@@ -75,9 +75,9 @@ In the forthcoming sections, we shall demonstrate how to construct spectral meth
 
 To fix the idea, let us consider the following linear problem:
 
-\[
+\begin{equation}
 	\mathbf{ L }u(x) = -u''(x) + p(x) u'(x) + q(x) u(x) = f(x), \hspace{4pt} x \in (-1,1)
-\]
+\end{equation}
 \begin{equation}
 	B_{ \pm }u(\pm 1) = g_{ \pm }
 \end{equation}
@@ -98,14 +98,64 @@ The spectral-collocation method is usually implemented in the physical space by 
 	u_{ N }(x) = \sum_{ j=0 }^{ N } u_{ N }(x_{ j }) h_{ j }(x)	
 \end{equation}
 where $ \{ h_{ j } \} $ are the Lagrange basis polynomials (also referred to as \textit{nodal} basis functions), i.e., $ h_{ j } \in P_{ N } $ and $ h_{ j } (x_{ k }) = \delta_{ jk } $. Hence, in inserting (11) into (9)-(10) leads to the linear system
-\[
+\begin{equation}
 	\sum_{ j=0 }^{ N } \left[ \mathbf{ L }h_{ j }(x_{ k }) \right] u_{ N }(x_{ j }) = f(x_{ k }), \hspace{4pt}
-\]
+\end{equation}
 
-\[
+\begin{equation}
 	\sum_{ j=0 }^{ N } \left[ \mathbf{ L } h_{ j }(x_{ k }) \right] u_{ N }\left( x_{ j } \right) = f\left( x_{ k } \right), \hspace{4pt} 1 \leq k \leq N-1
-\]
+\end{equation}
 
 \begin{equation}
 	\sum_{ j=0 }^{ N } \left[ B_{ - }j_{ j }\left( x_{ 0 } \right) \right] u_{ N } \left( x_{ j } \right) = g_{ - }, \sum_{ j=0 }^{ N } \left[ B_{ + } j_{ j } \left( x_{ N } \right) \right] u_{ N } (x_{ j }) = g_{ + }
 \end{equation}
+
+The above system contains $ N+1 $ unknowns, so we can rewrite it in a matrix form. To fix the idea, we consider (8) with Dirchlet boudnary conditions: $ u( \pm 1) = g_{ \pm } $. In this case, setting $ u_{ N }\left( x_{ 0 } \right) g_{ - } $ and $ u_{ N } \left( x_{ N } \right) = g_{ + } $  in the first equation of (12) reduces to 
+\begin{equation}
+	\sum_{ j=1 }^{ N-1 } \left[ \mathbf{ L } h_{ j } (x_{ k }) \right] u_{ N } \left( x_{ j } \right) = f(x_{ k }) - \left\{ \left[ \mathbf{ L }h_{ 0 }\left( x_{ k } \right) \right]g_{ - } + \left[ \mathbf{ L } h_{ N } (x_{ k }) \right] g_{ + } \right\}
+\end{equation}
+
+for $ 1 \leq K \leq N-1 $. Differentiating (11) $ m $ times leads to 
+\begin{equation}
+	u_{ N }^{ \left( m \right) } \left( x_{ k } \right) = \sum_{ j=0 }^{ N } d_{ kj }^{ \left( m \right) } u_{ N } \left( x_{ j } \right)
+\end{equation}
+where
+\begin{equation}
+	d_{ kj }^{ \left( m \right) } = h_{ j }^{ \left( m \right) } \left( x_{ k } \right)
+\end{equation}
+
+
+The matrix $ D^{ (m) } \left( d_{ kj }^{ (m) } \right)_{ k,j=0 \ldots N } $ is called the differentiation matrix of order $ m $ relative to the $ \{ s_{ j } \}_{ j=0 }^{ N } $. If we denote by $ \mathbf{ u }^{ (m) } $ the vector whose components are the values of $ u_{ N }^{ (m) } $ at the collocation points, it follows from (14) that 
+\begin{equation}
+	\mathbf{ u }^{ (m) } = D^{ (m) } \mathbf{ u }^{ (0) }, \hspace{4pt} m \geq 1
+\end{equation}
+
+Hence, we have
+\begin{equation}
+	\mathbf{ L } h_{ j } \left( x_{ k } \right) = - d^{ (2) }_{ kj } + p(x_{ k }) d^{ (1) }_{ kj } + q\left( x_{ k } \right) \delta_{ kj }
+\end{equation}
+
+Denote by $ \mathbf{ f } $ the vector with $ N-1 $ components given by the right-handside of (13). Setting
+\begin{equation}
+	\tilde{D}_{ m } = \left( d_{ kj }^{ (m) } \right)_{ kj=1,\ldots,N }, \hspace{4pt} m=1,2
+\end{equation}
+
+\[
+	P = \mathrm{diag} \left( p(x_{ 1 }), \ldots, p(x_{ N-1 }) \right), \hspace{4pt} Q = \mathrm{ diag } \left( q(x_{ 1 }), \ldots, q(x_{ N-1 }) \right)
+\]
+
+the system (13) reduces to
+\begin{equation}
+	\left( - \tilde{D}_{ 2 } + P \tilde{D}_{ 1 } + Q \right) \mathbf{ u }^{ (0) } = \mathbf{ f }
+\end{equation}
+
+Observe that the collocation method is easy to implement, once the differentiation matrices are precomputed. Moreover, it is very convenient for solving problems with variable coefficients and/or nonlinear problems, since we work in the physical space and derivatives can be valuated by (14) directly. As a result, the collocation method has been extensively used in practice. However, three important issues should be considered in the implementation and analysis of a collocation method:
+
+\begin{itemize}
+	\item The coefficient matrix of the collocation system is always full with a condition number behaving like $ O\left( N^{ 2m } \right) $ ( $ m $ is the order of the differential equation).
+	\item The choice of collocation points is crucial in terms of stability, accuracy, and ease of dealing with boudnary conditions. In general, they are chosen as nodes (typically, zeros of orthogonal polynomials) of Gauss-type quadrature formulas.
+	\item The aforementioned collocation scheme is formulated in a \textit{strong} form. In terms of error analysis, it is more convenient to reformulate it as a (but not always equivalent) \textit{weak} form, see Sect. 1.3.3 and Chap. 4.
+\end{itemize}
+
+
+\subsection{Spectral Methods of Galerkin Type}

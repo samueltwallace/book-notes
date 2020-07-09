@@ -61,4 +61,4 @@ taken by \@notesauthor
 \normalsize}{\bigskip \\}
 
 \newenvironment{transcribernote}[1][A Note From the Transcriber]{%
-\\ \Large \textbf{#1} \smallskip \\ \normalsize}{\bigskip}
+\Large \textbf{#1} \smallskip \\ \normalsize}{\bigskip}
