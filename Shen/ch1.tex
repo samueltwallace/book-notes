@@ -254,4 +254,66 @@ As with the Galerkin case, we enforce the boundary conditions on the approximate
 	X_{ N } = \{ \phi \in P_{ N } \vert \phi( \pm 1) = \phi' (1) = 0 \} \Rightarrow \dim (X_{ N }) = N-2
 \]
 
+Assuming that $ \{ \phi_{ k } \}_{ k=0 }^{ N-3 } $ is a basis of $ X_{ N } $ are dtermined by the residual equation (6) (with $ \omega = 1 $ ):
 
+\begin{equation}
+	\int_{ -1 }^{ 1 } \left( \mathbf{ L } u_{ N } (x) - f(x) \right) \psi_{ j } (x) dx = 0, \hspace{4pt} 0 \leq j \leq N-3
+\end{equation}
+
+Since the leading third-odrer operator is not self-adjoint, it is natural to use a Petrov-Galerkin method with the test function space:
+
+\[
+	X_{ N }^{ * } = \{ \psi \in P_{ N } \vert \psi( \pm 1) = \psi'(-1) = 0 \} \Rightarrow \dim ( X^{ * }_{ N } ) = N-2
+\]
+
+Assume that $ \{ \psi_{ k } \}_{ k=0 }^{ N-3 } $ is a basis of $ X^{ * }_{ N } $ . Then, (27) is equivalent to the variational formulation:
+
+\begin{center}
+	Find $ u_{ N } \in X_{ N } $ such that
+	\[
+		\left( \mathbf{ L }u_{ N }, \nu_{ N } \right) = \left( f, \nu_{ N } \right) \hspace{4pt} \forall \nu_{ N } \in X^{ * }_{ N }
+	\]
+\end{center}
+
+Where $ \left( \cdot, \cdot \right) $ is the inner product of the usual $ L^{ 2 } $ -space. \\
+\indent The theoretical aspects of the above scheme will be examined in Chap. 6. We now consider its implementation. Setting
+
+\[
+	\mathbf{ u } = \left( \widehat{ u }_{ 0 }, \widehat{ u }_{ 1 }, \ldots, \widehat{ u }_{ N-3 } \right)^{ T }
+\]
+
+\[
+	f_{ j } = \left( f, \psi_{ j } \right)
+\]
+
+\[
+	\mathbf{ f } \left( f_{ 0 }, f_{ 1 }, \ldots, f_{ N-3 } \right)^{ T };
+\]
+
+\[
+	s_{ jk } = \left( \phi_{ k }', \psi_{ j }'' \right)
+\]
+
+\[
+	S = \left( s_{ jk } \right)_{ j,k=0,\ldots , N-3 }
+\]
+
+\[
+	m_{ jk } = \left( \phi_{ k }, \psi_{ j } \right)
+\]
+
+\[
+	M = \left( m_{ jk } \right)_{ j,k=0,\ldots,N-3 }
+\]
+
+The linear system becomes
+
+\begin{equation}
+	(S+M) \mathbf{ u } = \mathbf{ f }
+\end{equation}
+
+As described in the previous section, we wish to construct basis functions for $ X_{ N } $ and $ X_{ N }^{ * } $ so that the linear system (29) can be inverted efficiently. Once again, this goal can be achieved by using compact combinations of orthogonal polynomials. It can be checked that for $ 0 \leq k \leq N-3 $ ,  
+
+\[
+	\phi_{ k } =L_{ k } - \frac{2k+3}{2k+5} L_{ k+1 } - L_{ k+2 } + \frac{2k+3}{2k+5} L_{ k+3 } \in X_{ N }
+\]
