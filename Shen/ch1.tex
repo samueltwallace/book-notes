@@ -317,3 +317,38 @@ As described in the previous section, we wish to construct basis functions for $
 \[
 	\phi_{ k } =L_{ k } - \frac{2k+3}{2k+5} L_{ k+1 } - L_{ k+2 } + \frac{2k+3}{2k+5} L_{ k+3 } \in X_{ N }
 \]
+
+\[
+\psi_{ k } = L_{ k } + \frac{2k+3}{2k+5} L_{ k+1 } - L_{ k+2 } - \frac{2k+3}{2k+5} L_{ k+3 } \in X_{ N }^{ * }
+\]
+
+where $ L_{ n } $ is the Legendre polynomial of degree $ n $ (cf. Sect. 3.3). Hence, $ \{ \phi_{ k }\}_{ k=0 }^{ N-3 }  $ (resp. $ \{ \psi_{ j } \}_{ j=0 }^{ N-3 } $ ) forms a basis of $ X_{ N } $ (resp. $ X_{ N }^{ * } $ ). Moreover, using the properties of the Legendre polynomials, one verifies easily that the matrix $ M $ is seven-diagonal, i.e. $ m_{ jk } = 0 $ for all $ \vert j-k \vert > 3 $ . More importantly, the matrix $ S $ is diagonal. 
+
+\subsubsection{Galerkin Method with Numerical Integration}
+
+We considered previously Galerkin-type methods in the frequency space, which are well-suited for linear problems with constant (or polynomial) coefficients. However, their implementations are not convenient for problems with general variable coefficients. On the other hand, the collocation method is easy to implement, but it can not always be reformulated as a suitable variational formulation (most convenient for error analysis). A combination of these two approaches leads to the so-called \textit{Galerkin-Method with numerical integration}, or sometimes called the \textit{collocation method in the weak form}. \\
+\indent The key idea of this approach is to \textit{replace the continuous inner products in the Galerkin formulation by the discrete ones}. As an example, we consider again (8) with $ g_{ \pm } = 0 $. The spectral method with numerical integration is 
+
+\begin{center}
+	Find $ u_{ N } \in X_{ N } := \{ \phi \in P_{ N } \vert B_{ \pm } \phi ( \pm 1) = 0 \} $ such that
+	\begin{equation}
+		a_{ N } \left( u_{ N }, \nu_{ N } \right) := \langle L u_{ N }, \nu_{ N } \rangle_{ N } = \langle f, \nu_{ N } \rangle_{ N }, \hspace{4pt} \forall \nu_{ N } \in X_{ N }
+	\end{equation}
+	
+\end{center}
+where the discrete inner product is defined by 
+\begin{equation}
+	\langle u,v \rangle_{ N } = \sum_{ j=0 }^{ N } u(x_{ j }) v_{ N } (x_{ j }) \omega_{ j }
+\end{equation}
+with $ \{ x_{ j }, \omega_{ j } \}_{ j=0 }^{ N } $ being the set of Legendre-Gauss-Lobatto quadrature nodes and weights (cf. Theorem 3.29). \\
+
+\indent For problems with variable coefficients, the above methods is easier to implement, thanks to the discrete inner product, than the spectral-Galerkin method (21). It is also more convenient for error analysis, thanks to the weak formulation, than the spectral-collocation method (12). \\
+\indent We note than in the particular case of homogeneous Dirichlet boundary conditions, i.e. $ B_{ \pm }u( \pm 1) = u(\pm 1) = 0 $ , by taking $ \nu_{ N } = h_{ j }, 1 \leq j \leq N-1 $ in (31) and using the exactness of Legendre-Gauss-Lobatto quadrature, i.e.,
+
+\begin{equation}
+	\langle u, v \rangle_{ N } = \left( u,v \right), \hspace{4pt} \forall u \cdot v \in P_{ 2N-1 }
+\end{equation}
+
+we find that the formulation (31) is equivalent to the collocation formulation (12). However, this is not true for general boundary conditions (see Chap. 4).
+
+\subsection{Fundamental Tools for Error Analysis}
