@@ -352,3 +352,54 @@ with $ \{ x_{ j }, \omega_{ j } \}_{ j=0 }^{ N } $ being the set of Legendre-Gau
 we find that the formulation (31) is equivalent to the collocation formulation (12). However, this is not true for general boundary conditions (see Chap. 4).
 
 \subsection{Fundamental Tools for Error Analysis}
+
+In the previous sections, we briefly described several families of spatial discretization schemes using the notion of weighted residual methods. In this section, we present some fundamental apparatuses for stability and convergence analysis of numerical schemes based on weak (or variational) formulations. \\
+\indent We consider the family of boundary value problems (3):
+\begin{equation}
+	\mathbf{ L }u = f, \hspace{4pt} \text{ in } \Omega; \hspace{4pt} Bu = 0, \text{ on } \partial \Omega
+\end{equation}
+
+where $ \mathbf{ L } $ and $ B $ are linear operators, and $ f $ is a given function on $ \Omega $ . \\
+\indent As shown before, the starting point is to reformulate (33) in a \textit{weak formulation}:
+
+\begin{center}
+	Find $ u \in X $ such that
+	\begin{equation}
+		a(u,v) = F(v)
+	\end{equation}
+	
+\end{center}
+
+Where $ X $ is the space of trial functions, $ Y $ is the space of test functions, and $ F $ is a linear functional on $ Y $ . The expression $ a(u,v) $ defines a bilinear form on $ X \times Y $ . It is conventional to assume that $ X $ and $ Y $ are Hilbert spaces. We refer to Appendix B for the basic functional analysis settings. \\
+\indent No we consider what conditions should be placed on (34) to guarantee its well-posedness in the sense that:
+
+\begin{itemize}
+	\item \textit{Existence-Uniqueness}: There exists one solution of the problem.
+	\item \textit{Stability}: The solution must be stable which means that it depends on the data continuously. In other words, a small change of the given data produces a small change of the solution correspondingly.
+\end{itemize}
+
+\indent The first fundamental result concerning the existence-uniqueness and stability is known as the Lax-Milgram lemma (see Theorem B.1) related to the abstract problem (34) with $ X = Y $, i.e. \\
+\indent
+
+\begin{center}
+	Find $ u \in X $ such that
+	\begin{equation}
+		a(u,v) = F(v), \forall v \in X
+	\end{equation}
+	
+\end{center}
+
+More precisely, if the bilinear form $ a(\cdot, \cdot): X \times X \to \mathbb{R} $ satisfies
+
+\begin{itemize}
+	\item Continuity:
+		\begin{equation}
+			\exists C > 0 \text{ such that } \vert a(u,v) \vert \leq C \Vert u \Vert_{ X } \Vert v \Vert_{ X }
+		\end{equation}
+		
+	\item Coercitivity:
+		\begin{equation}
+			\exists \alpha > 0 \text{ such that } a(u,u) \geq \alpha \Vert u \Vert_{ X }^{ 2 }
+		\end{equation}
+\end{itemize}
+
