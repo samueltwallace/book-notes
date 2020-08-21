@@ -1,0 +1,49 @@
+\section{Topological Vector Spaces. Definition}
+
+Let $ E $ be a vector space over the complex numbers. Let
+\[
+	A: E \times E \to E; \hspace{4pt} (x,y) \mapsto x+y
+\]
+
+\[
+	M: \mathbb{C} \times E \to E; \hspace{4pt} ( \lambda, x) \mapsto \lambda x
+\]
+
+be the basic vector operations on $ E $ . A topology $ \mathcal{T} $ in $ E $ is said to be \textit{compatible with the linear structure} of $ E $ if the two maps are continuous in the product topology on each domain. We call $ E $ a \textit{topological vector space} if it has a topology compatible with the linear structure. \\
+
+Note that the topology is "translation-invariant," i.e. neighborhoods uniformly shifted are still neighborhoods. Thus is it only necessary to study the topology near the origin. \\
+
+\begin{thm}
+	A filter $ \mathcal{F} $ on a vector space $ E $ is the filter of neighborhoods of the origin compatible with the linear structure of $ E $ if and only if the following hold:
+	\begin{enumerate}
+		\item The origin belongs to every $ U \in \mathcal{F} $ 
+		\item For every $ U \in \mathcal{F} $ there is $ V \in \mathcal{F} $ such that $ V + V \subset U $ 
+		\item For every $ U \in \mathcal{F} $ and every $ \lambda \in \mathbb{C} $ nonzero, we have that $ \lambda U \in \mathcal{F} $ 
+		\item Every $ U \in \mathcal{F} $ is \textit{absorbing}
+		\item Every $ U $ contains some $ V \in \mathcal{F} $ which is \textit{balanced}
+	\end{enumerate}
+	
+\end{thm}
+
+\begin{defn}
+	A subset $ A $ of a vector space $ E $ is said to be absorbing if for every $ x \in E $ there exists $ c_{ x } > 0 $ such that for all $ \lambda \in \mathbb{C} $ , $ \vert \lambda \vert \leq c_{ x } $ $ \lambda x \in A $ . 
+\end{defn}
+
+\begin{defn}
+	A subset $ A $ of a vector space $ E $ is said to be absorbing if for every $ x \in A $ and every $ \lambda \in \mathbb{C}, \hspace{4pt} \vert \lambda \vert \leq 1 $ then $ \lambda x \in A $ .
+\end{defn}
+
+\begin{prop}
+	There is a basis of neighborhoods of zero in a TVS $ E $ consisting of only closed sets.
+\end{prop}
+
+\begin{cor}
+	There is a basis of neighborhoods of 0 in $ E $ consisting of closed balanced sets.
+\end{cor}
+
+\begin{prop}
+	In a TVS $ E $ , if a vector subspace $ M $ is open, then it is the entire space
+\end{prop}
+
+
+
