@@ -1,0 +1,49 @@
+\section{Cauchy Filters. Complete Subsets. Completion}
+
+The definition of a \textit{Cauchy sequence} in a TVS $ E $ is simple.
+
+\begin{defn}
+	Let $ S $ be a sequence in $ E $ , then $ S $ is a Cauchy sequence if for every neighborhood $ U $  of the origin in $ E $ , there is an integer $ N $ such that $ n,m \geq N \Rightarrow x_{ m } - x_{ n } \in U $ .
+\end{defn}
+
+\begin{defn}
+	$ A \subset E $ is said to be complete if every Cauchy sequence in $ A $ converges.
+\end{defn}
+
+\begin{prop}
+	In a Haussdorff TVS $ E $ , any complete subset is closed.
+\end{prop}
+
+\begin{prop}
+	In a complete TVS $ E $ , any closed subset is complete.
+\end{prop}
+
+\begin{defn}
+	Let $ A \subset E $ . A mapping $ f: A \to F $ is said to be uniformly continuous if for every neighborhood, $ V $ , of zero in $ F $ , there is a neighborhood of $ U \subset E $ of zero such that for $ x_{ 1 }, x_{ 2 } \in A $ , $ x_{ 1 } - x_{ 2 } \in U \Rightarrow f(x_{ 1 }) - f(x_{ 2 }) \in V $ .
+\end{defn}
+
+\begin{prop}
+	Every continuous linear map of a linear subspace $ A $ of TVS $ E $  into a TVS $ F $ is uniformly continuous.
+\end{prop}
+
+\begin{prop}
+	Let $ f $ be a uniformly continuous map of $ A \subset E $ into $ F $ . The image under $ f $ of a Cauchy sequence is again a Cauchy sequence.
+\end{prop}
+
+\begin{thm}
+	Let $ E,F $ be two Hausdorff TVS, $ A $ a dense subset of $ E $ , and $ f $ a uniformly continuous mapping of $ A $ into $ F $ . \\
+	\indent If $ F $ is complete, there is a unique continuous mapping $ \tilde{ f } $ of $ E $ into $ F $ which extends $ f $ , i.e. they agree on points of $ A $ . Moreover, $ \tilde{ f } $ is uniformly continuous, and $ \tilde{ f } $ if $ A $ is a linear subspace and if $ f $ is linear.
+\end{thm}
+
+\begin{thm}
+	Let $ E $ be a TVS. If $ E $ is Hausdorff, there exists a complete Hausdorff TVS $ \widehat{ E } $ and a mapping $ i $ of $ E $ into $ \widehat{ E } $ with the following properties:
+
+	\begin{enumerate}
+		\item The mapping $ i $ is an isomorphism of $ E $ into $ \widehat{ E } $ .
+		\item The image of $ E $ under $ i $ is dense in $ \widehat{ E } $ .
+		\item To every complete Hausdorff TVS $ F $ and to every continuous linear map $ f:E \to F $ there is a continuous linear map $ \widehat{ f }: \widehat{ E } \to F $ such that $ f = \widehat{ f } \circ i $ .
+	\end{enumerate}
+
+	Furthermore, these maps are unique up to isomorphism.
+\end{thm}
+

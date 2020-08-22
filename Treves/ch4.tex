@@ -35,3 +35,24 @@ Throughout we denote by $ E $ a TVS over the field of complex numbers.
 \end{prop}
 
 \subsection{Quotient Topological Vector Spaces}
+
+Let $ E $ be a TVS and $ M $ a subspace of $ E $ . Then the map $ \phi: E \to E/M $ can be made a quotient map in the topological sense by saying a set $ \dot{U} $ of $ E/M $ if there is an open set $ U \subset E $ such that $ \phi(U) = \dot{U} $ . In other words, we impose the finest topology such that $ \phi $ is an open map (in the topological space). Clearly the quotient topology is compatible with the linear structure on $ E/M $ .
+
+\begin{prop}
+	Let $ E $ be a TVS and $ M $ a vector subspace of $ E $ . The following two properties are equivalent:
+	\begin{enumerate}
+		\item $ M $ is closed
+		\item $ E/M $ is Hausdorff
+	\end{enumerate}
+	
+\end{prop}
+
+\begin{cor}
+	The TVS $ E/ \overline{ \{ 0 \} } $ is Hausdorff.
+\end{cor}
+
+
+\subsection{Continuous Linear Mappings}
+\indent Let $ E $ , $ F $ be two TVS, and $ f: E \to F $ a linear map. If $ F $ is Hausdorff and $ f $ is continuous, then $ \mathrm{ Ker }f $ is is closed. Note that these are not necessary conditions, there are other ways of having a closed kernel.
+
+

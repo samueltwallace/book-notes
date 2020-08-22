@@ -1,0 +1,130 @@
+\section{Locally Convex Spaces. Seminorms}
+
+A subset $ K $ of a vector space $ E $ is convex if, whenever $ K $ contains two points $ x $ and $ y $ , $ K $ also contains the straight line joining them. Now let $ S $ be any subset of $ E $ . We define the \textit{convex hull} of $ S $ to be the set of all finite linear combinations with nonnegative coefficients that sum to one. A set is convex if it is equal to its own convex hull. \\
+\indent Intersections of convex subsets, but unions may not be. Sums of convex sets are convex, and the image of convex sets under linear maps are convex. \\
+
+\begin{prop}
+	Let $ E $ be a TVS. The closure and interior of convex sets are convex.
+\end{prop}
+
+\begin{defn}
+	A subset $ T $ of a TVS $ E $ is called a barrel if $ T $ has the following four properties:
+	\begin{enumerate}
+		\item $ T $ is absorbing
+		\item $ T $ is balanced
+		\item $ T $ is closed
+		\item $ T $ is convex
+	\end{enumerate}
+	We can construct barrels in the following way: let $ U $ be a neighborhood of 0 in $ E $ . Then we define $ T(U) $ the closure of the convex hull of the set 
+	\[
+	\bigcup_{ \vert \vert \lambda \vert \leq 1 \vert } \lambda U
+	\]
+	And $ T(U) $ is a barrel.
+\end{defn}
+
+\begin{defn}
+	A TVS $ E $ is said to be a locally convex space if there is a neighborhoods in $ E $ consisting of convex sets.
+\end{defn}
+
+\begin{prop}
+	In a locally convex space $ E $ , there is a basis of neighborhoods of zero consisting of barrels.
+\end{prop}
+
+\begin{defn}
+	A nonnegative function $ p: E \to \mathbb{R} $ on a vector space $ E $ is called a seminorm if it satisfies the following conditions:
+	\begin{enumerate}
+		\item $ p $ is subadditive: $ p(x+y) \leq p(x) + p(y) $ 
+		\item $ p $ is positively homogeneous of degree 1: $ p( \lambda x) = \vert \lambda \vert p(x) $ 
+		\item $ p(0) = 0 $ 
+	\end{enumerate}
+	A seminorm on a vector space $ E $ is called a norm if $ p(x) = 0 \Rightarrow x=0 $ .
+\end{defn}
+
+\begin{defn}
+	A vector space $ E $ over the field of complex numbers, provided with a Hermitian nonnegative form,  is called a complex pre-Hilbert space.
+\end{defn}
+
+\begin{defn}
+	Let $ E $ be a vector space, and $ p $ a seminorm on $ E $ . The sets
+	\[
+		U_{ p } = \{ x \in E : p(x) \leq 1 \} \hspace{4pt} \dot{U}_{ p } = \{ x \in E: p(x) < 1 \}
+	\]
+	are called the closed and open unit semiball of $ p $ .
+\end{defn}
+
+\begin{prop}
+	Let $ E $ be a topological vector space, and $ p $ a seminorm on $ E $ . Then the following are equivalent:
+	\begin{enumerate}
+		\item the open unit semiball of $ p $ is an open set
+		\item $ p $ is continuous at the origin
+		\item $ p $ is continuous at every point
+	\end{enumerate}
+	
+\end{prop}
+
+\begin{prop}
+	If $ p $ is a continuous seminorm on a TVS $ E $ , its closed unit semiball is a barrel.
+\end{prop}
+
+\begin{prop}
+	The $ E $ be a TVS, and $ T $ a barrel in $ E $ . There exists a unique seminorm $ p $ on $ E $ such that $ T $ is the closed unit semiball of $ p $ . The seminorm $ p $ is continuous if and only if $ T $ is a neighborhood of $ 0 $ .
+\end{prop}
+
+\begin{cor}
+	Let $ E $ be a locally convex space. The closed unit semiballs of the continuous seminorms on $ E $ form a basis of neighborhoods of the origin.
+\end{cor}
+
+\begin{defn}
+	A family $ \mathcal{P} $  of continuous seminorms on a locally convex space $ E $ will be called a basis of continuous seminorms on $ E $ if for any continuous seminorm $ p $ on $ E $ there is a continuous seminorm $ q $ belonging to $ \mathcal{P} $ and a constant $ C > 0 $ such that $ p(x) \leq C q(x) $ .
+\end{defn}
+
+\begin{prop}
+	Let $ \mathcal{P} $ be a basis of continuous seminorms on the locally convex space $ E $ . Then the sets $ \lambda U_{ p } $ where $ U_{ p } $ is the closed unit semiball of $ p  \in \mathcal{P} $ and $ \lambda $ is a positive number, form a basis of neighborhoods of 0. Conversely, given a family, $ \mathcal{B} $  of neighborhoods of zero and consisting of barrels and such that the sets $ \lambda U, \hspace{4pt} U \in \mathcal{B} $ form a basis of neighborhoods of 0 in $ E $ , then the seminorms whose closed unit semiballs are the barrels belonging to $ \mathcal{B} $ form a basis of continuous seminorms in $ E $ .
+\end{prop}
+
+We shall even say that a basis of continuous seminorms on a locally convex space $ E $ \textit{defines} the topology of $ E $ . We shall also use the expression \textit{"a family of seminorms on E defining the topology of E"} in which the family under consideration need not be a basis of continuous seminorms. The meaning it is the following: first: every seminorm $ p_{ \alpha } $ is continuous; second, the family obtained by forming the supremum of finite numbers of seminorms $ p_{ \alpha } $ is a basis of of continuous seminorms on $ E $ . This family consists of the seminorms
+\[
+	x \mapsto p_{ (B) } (x) = \sup_{ \alpha \in B } p_{ \alpha } (x)
+\]
+where $ B $ ranges over all the finite subsets of the set of indices $ A $ of the family $ \{ p_{ \alpha } \} $ . Forming the supremum of a finite number of seminorms is the equivalent of forming the intersection of their closed unit semiballs and taking the "gauge" of this intersection (a seminorm $ p $ is the \textit{gauge} of a set $ U $ if $ U $ is the closed unit semiball of $ p $ ).
+
+\begin{prop}
+	Let $ E,F $ be two locally convex spaces. A linear map $ f:E \to F $ is continuous if and only if to every continuous seminorm $ q $ on $ F $ there is a continuous seminorm $ p $ on $ E $ such that
+	\[
+		q \left( f\left( x \right) \right) \leq p(x)
+	\]
+\end{prop}
+
+\begin{cor}
+	A linear form $ f $ on a locally convex space, $ E $ , is continuous if and only if there is a continuous seminorm $ p $ on $ E $ such that $ \vert f(x) \vert \leq p(x) $ .
+\end{cor}
+
+\begin{prop}
+	Let $ E $ be a locally convex space, and $ M $ a linear subspace of $ E $ . Let $ \phi $ be the canonical mapping of $ E \to E/M $ . Then the following are true:
+	\begin{enumerate}
+		\item the topology of the quotient $ TVS $ is locally convex
+		\item if $ \mathcal{P} $ is a basis of continuous seminorms on $ E $ , let us dentoe by $ \dot{ \mathcal{P} } $ the family of seminorms on $ E/M $  consisting of the seminorms
+			\[
+				\dot{x} \mapsto \dot{p}(\dot{x}) = \inf_{ \phi(x) = \dot{x} } p(x)
+			\]
+		Then $ \dot{ \mathcal{P} } $ is a basis of continuous seminorms on  $ E/M $.
+	\end{enumerate}
+\end{prop}
+
+We call the \textit{kernel} of a seminorm $ p $ on $ E $ the set of vectors with vanishing seminorm. This is a subspace of $ E $ and we denote is by $ \mathrm{ Ker }p $ . It is closed, and in a locally convex space $ E $ , the closure of the origin is 
+\[
+\bigcap_{ p } \mathrm{ Ker } p
+\]
+
+\begin{prop}
+	In a locally convex space $ E $ , the closure of the singleton set containing zero is the intersection of the closed linear subspaces $ \mathrm{ Ker }p $ , where $ p $ varies over a basis of continuous seminorms on $ E $ .
+\end{prop}
+
+\begin{prop}
+	Let $ E $ be a locally convex Hausdorff TVS, and $ K $ a precompact subset of $ E $ . Then the convex hull $ \Gamma(K) $ of $ K $ is precompact.
+\end{prop}
+
+\begin{cor}
+	If $ E $ is complete the closed convex hull of a compact subset of $ E $ is compact.
+\end{cor}
+
