@@ -1,0 +1,36 @@
+\section{Fr\'echet Spaces. Examples}
+
+A \textit{Fr\'echet space} (or \textit{F-space}) is a TVS with the following three properties:
+
+\begin{enumerate}
+	\item it is metrizable ( $ \Rightarrow $ metrizable)
+	\item it is complete ( $ \Rightarrow $ Baire)
+	\item it is \textit{locally convex} (and carries a metric based on seminorms as presented in previous propositions)
+\end{enumerate}
+
+\begin{prop}
+	\begin{enumerate}
+		\item Any closed subspace of an F-space is an F-space
+		\item Any product of two F-spaces is an F-space
+		\item The quotient of an F-space module a closed subspace is an F-space.
+	\end{enumerate}
+\end{prop}
+
+\subsection{Example I. The space of $ \mathcal{C}^{ k } $ Functions in an open subset $ \Omega $ of $ \mathbb{R}^{ n } $ .}
+
+The set of functions under consideration is $ \mathcal{C}^{ k } \left( \Omega \right) $ , where $ \Omega $ is open and $ k \geq 0, k= \infty $ . We impose the seminorms 
+\[
+	\vert f \vert_{ m,K } = \sup_{ \vert p \vert \leq m } \left( \sup_{ x \in K } \vert (\partial/\partial x)^{ p } f(x) \vert \right)
+\]
+Where $ 0 < m < k $ and $ K \subset \Omega $ is compact. Clearly the seminorms are defined for every function since we deal with continuously differentiable functions of order $ \leq k $ . We give $ \mathcal{C}^{ k } $ the topology induced by these seminorms, called the \textit{topology of uniform convergence on compact sets}. \\
+\indent This space is a Fre\`echet space as it is indeed metrizable, complete, and locally convex.
+
+\subsection{Example II. The Space of Holomorphic Functions in an Open subset $ \Omega $ of $ \mathbb{C}^{ n } $ }
+
+This is clearly a subspace of $ \mathcal{C}^{ \infty } ( \mathbb{R}^{ 2n } ) $ , and with the fact that uniform convergence of a holomorphic function is again holomorphic, we are therefore led to the conclusion that $ H( \Omega ) $ is a closed subspace. Thus $ H( \Omega ) $ is an F-space.
+
+\subsection{Example III. The Space of Formal Power Series in $ n $ Indeterminates}
+
+Skipped.  I don't like it. 
+
+\subsection{Example IV. The space $ \mathscr{S} $ of $ \mathcal{C}^{ \infty } $ functions Rapidly Decreasing at Infinity}

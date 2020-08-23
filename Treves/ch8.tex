@@ -1,0 +1,49 @@
+\section{Metrizable Topological Vector Spaces}
+
+A TVS $ E $ is said to be \textit{metrizable} if it is Hausdorff and if there is a \textit{countable} basis of neighborhoods of zero in $ E $ . The motivation for the name metrizable lies in the following fact (which we shall not prove in such a general form): \\
+
+\indent \textit{The topology of a TVS E can be defined by a metric if and only if E is Hausdorff and has a countable basis of neighborhoods of 0.} \\
+
+\indent Note that a norm on a vector space defines a metric on $ E $ , by the rule $ d(x,y) = \Vert x - y \Vert $ , but not all metrizable spaces can be defined by a norm.
+
+\begin{prop}
+	Let $ E $ be a locally convex metrizable TVS, and $ \{ p_{ 1 }, p_{ 2 }, \ldots \} $ a nondecreasing countable basis of seminorms on $ E $ . Let $ a_{ n } $ be a sequence positive of numbers whose sum converges. Then the function
+	\[
+		(x,y) \mapsto \sum_{ j=1 }^{ \infty } a_{ j } p_{ j }(x-y) / \left[ 1 + p_{ j }(x-y) \right]
+	\]
+	is a translation invariant metric on $ E $ defining the topology of $ E $ .
+\end{prop}
+
+\begin{prop}
+	A subset $ K $ of a metrizable space $ E $ is complete if and only if every Cauchy sequence in $ K $ converges to a point of $ K $ .
+\end{prop}
+
+\begin{prop}
+	A complete metrizable TVS $ E $ is a Baire space, i.e., has the equivalent properties:
+	\begin{enumerate}
+		\item The union of a countable family of closed sets with empty interior again has empty interior
+		\item The intersection of any countable family of open dense subsets is again dense.
+	\end{enumerate}
+	
+\end{prop}
+
+\begin{rmk}
+	There exist complete TVS which are not Baire spaces, for example the LF spaces we will study later.
+\end{rmk}
+
+\begin{rmk}
+	Note that completeness and metrizability and not necessary conditions for being a Baire space: there are nonmetrizable Baire spaces and incomplete Baire spaces.
+\end{rmk}
+
+\begin{prop}
+	In a metrizable TVS $ E $ , a set $ K $ is compact if and only if every sequence has a limit point in $ K $ .
+\end{prop}
+
+\begin{defn}
+	A mapping $ f $ toa  topological space $ E $ into a topological space $ F $ is said to be sequentially continuous if for every convergent sequence $ x_{ n } $ , the sequence $ f(x_{ n }) $ also converges to $ f(x) $ .
+\end{defn}
+
+\begin{prop}
+	A mapping $ f $ of a metrizable TVS into a TVS $ F $ is continuous if and only if it is sequentially continuous.
+\end{prop}
+
