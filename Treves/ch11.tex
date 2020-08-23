@@ -1,0 +1,31 @@
+\section{Normable Spaces. Banach Spaces. Examples}
+
+We say a TVS is \textit{normable} if its topology can be defined by a norm; i.e., if there is a norm $ \Vert \hspace{4pt} \Vert $ on $ E $ such that the balls 
+\[
+	B_{ r } = \{ x \in E: \Vert x \Vert \leq r \}
+\]
+form a basis of neighborhoods of the origin. Finite dimensional Hausdorff spaces are normable. Infinite dimensional metrizable TVS are not - in general. In this chapter and in the nexxt one, we shall study two very important classes of normable spaces. The topology of a normable space $ E $ can be defined by many different norms.
+
+\begin{defn}
+	Let $ p,q $ be two seminorms on a vector space $ E $ . We say that $ p $ is stronger than $ q $ when there exists a constant $ C > 0 $ such that, for all $ x \in E $ , 
+	\[
+		q(x) \leq C p(x)
+	\]
+We say that $ p $ and $ q $ are equivalent if each on is stronger than the other.
+	
+\end{defn}
+
+\begin{prop}
+	If two norms define the topology of a normable space $ E $ , they are equivalent.
+\end{prop}
+
+\begin{cor}
+	Any two norms on a finite dimensional vector space are equivalent.
+\end{cor}
+
+A normed space is not the same as a normable space. A \textit{normed space} is a pair of a vector space and a norm function on the space. Usually, one puts the topology induced by the norm on the space. If there are other norms that induce the same topology, the norm of the normed space is preferred. A norm-preserving map between normed spaces is called a isomorphism of normed spaces.
+
+\begin{defn}
+	A normed space $ E $ which is complete (in the metric sense) is called a Banach space (or a B-space).
+\end{defn}
+
